@@ -313,7 +313,7 @@ function rainBg(amt){if(!amt||amt<1)return null;if(amt<5)return'#dbeafe';if(amt<
 function makeCellHtml(row,type){
   if(!row)return`<td class="cell-empty">—</td>`;
   const rb=rainBg(row.amount),dark=rb==='#3b82f6';
-  const bg=rb||(type==='official'?'#f0f7ff':type==='ai'?'#f9f7ff':'#fff');
+  const bg=rb||(type==='official'?'#f7f7f8':type==='ai'?'#f7f7f8':'#fff');
   const t=dark?'color:#fff':'';
   return`<td class="weather-cell" style="background:${bg};${t}">
     <span class="wicon">${row.icon}</span>
