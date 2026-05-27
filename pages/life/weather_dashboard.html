@@ -244,7 +244,8 @@ function setProgress(pct,label){
 const ARCHIVE='https://archive-api.open-meteo.com/v1/archive';
 const FORECAST='https://api.open-meteo.com/v1/forecast';
 const GEO='https://geocoding-api.open-meteo.com/v1/search';
-const VARS='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,relativehumidity_2m_mean';
+const VARS_ARCHIVE='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,relative_humidity_2m_mean';
+const VARS_FORECAST='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,relative_humidity_2m_mean';
 
 async function geocode(city,country){
   const r=await fetch(`${GEO}?name=${encodeURIComponent(city+' '+country)}&count=1&language=ko`);
@@ -256,17 +257,17 @@ async function geocode(city,country){
 async function fetchWeather(lat,lon,start,end){
   const today=todayStr();
   const archiveEnd=offsetDate(today,-6);
-  const params=`latitude=${lat}&longitude=${lon}&daily=${VARS}&timezone=auto`;
+  const params=`latitude=${lat}&longitude=${lon}&timezone=auto`;
   let rows=[];
   if(start<=archiveEnd){
     const s=start,e=end<=archiveEnd?end:archiveEnd;
-    const r=await fetch(`${ARCHIVE}?${params}&start_date=${s}&end_date=${e}`);
+    const r=await fetch(`${ARCHIVE}?${params}&daily=${VARS_ARCHIVE}&start_date=${s}&end_date=${e}`);
     const d=await r.json();
     if(d.daily)rows=[...rows,...parseMeteo(d.daily)];
   }
   if(end>archiveEnd){
     const s=start>archiveEnd?start:offsetDate(archiveEnd,1),e=end;
-    const r=await fetch(`${FORECAST}?${params}&start_date=${s}&end_date=${e}`);
+    const r=await fetch(`${FORECAST}?${params}&daily=${VARS_FORECAST}&start_date=${s}&end_date=${e}`);
     const d=await r.json();
     if(d.daily)rows=[...rows,...parseMeteo(d.daily)];
   }
@@ -282,7 +283,7 @@ function parseMeteo(d){
     tempMin:Math.round(d.temperature_2m_min?.[i]??0),
     amount:+((d.precipitation_sum?.[i]||0)).toFixed(1),
     prob:Math.round(d.precipitation_probability_max?.[i]||0),
-    humidity:Math.round(d.relativehumidity_2m_mean?.[i]||0),
+    humidity:Math.round(d.relative_humidity_2m_mean?.[i]||0),
     wind:+((d.windspeed_10m_max?.[i]||0)/3.6).toFixed(1),
   }));
 }
