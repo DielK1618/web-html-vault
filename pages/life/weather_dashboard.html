@@ -157,7 +157,7 @@ thead th:first-child{z-index:20;background:#181818}
   <div class="filter-summary" id="filterSummary" onclick="toggleFilter()">
     <button class="f-hamburger open" id="fToggle">✕</button>
     <span class="f-title">날씨 조회 설정</span>
-    <span class="ver-badge">v6.2</span>
+    <span class="ver-badge">v6.3</span>
   </div>
   <div class="filter-content" id="filterContent">
   <div class="filter-row">
@@ -258,10 +258,7 @@ thead th:first-child{z-index:20;background:#181818}
 
 <div class="chart-panel" id="chartPanel" style="display:none">
   <div class="chart-section">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-      <div class="chart-title" style="margin-bottom:0">기온 캔들차트 — 오전/오후 최고 (몸통) · 일최저/최고 (심지)</div>
-      <button class="btn btn-gray sel-mode-btn" id="selModeBtn" onclick="toggleSelMode()">⊟ 선택 모드</button>
-    </div>
+    <div class="chart-title">기온 캔들차트 — 일최저~최고 기온 범위 (범주 클릭으로 토글)</div>
     <div class="chart-legend" id="tempLegend"></div>
     <div style="position:relative;width:100%;height:260px"><canvas id="tempChart"></canvas></div>
   </div>
@@ -298,7 +295,7 @@ const HVARS='temperature_2m,relative_humidity_2m,precipitation,cloud_cover';
 
 let tempChart=null,rainChart=null;
 let _tColors=[],_tWidths=[],_rColors=[];
-let _selMode=false,_activeItems=new Set(),_renderYears=[];
+let _activeItems=new Set();
 let currentLocation=null;
 let favorites=[];
 let _geoResults=[];
@@ -816,45 +813,15 @@ function calcStats(histMap,yearList,dates){
 }
 
 /* ── 차트 ── */
-const wickPlugin={id:'wick',afterDatasetsDraw(chart){const ctx=chart.ctx;chart.data.datasets.forEach(function(ds,di){if(!ds._wickData)return;const meta=chart.getDatasetMeta(di);if(meta.hidden)return;ctx.save();ctx.strokeStyle=ds.borderColor||'#888';ctx.lineWidth=1;ctx.lineCap='round';ds._wickData.forEach(function(wick,bi){if(!wick)return;const bar=meta.data[bi];if(!bar)return;const x=bar.x;const bodyTop=Math.min(bar.y,bar.base);const bodyBottom=Math.max(bar.y,bar.base);const maxPx=chart.scales.y.getPixelForValue(wick[1]);const minPx=chart.scales.y.getPixelForValue(wick[0]);ctx.beginPath();ctx.moveTo(x,bodyTop);ctx.lineTo(x,maxPx);ctx.moveTo(x,bodyBottom);ctx.lineTo(x,minPx);ctx.stroke();});ctx.restore();});}};
 function withAlpha(c,a){
   if(c.startsWith('rgba'))return c.replace(/[\d.]+\)$/,a+')');
   const r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);
   return'rgba('+r+','+g+','+b+','+a+')';
 }
-function toggleSelMode(){if(_selMode)exitSelMode();else enterSelMode();}
-function enterSelMode(){
-  _selMode=true;
-  _activeItems=new Set(_renderYears);
-  _activeItems.add('forecast');
-  const b=document.getElementById('selModeBtn');
-  if(b){b.classList.add('active');b.textContent='✕ 선택 종료';}
-  document.getElementById('chartPanel').classList.add('sel-mode');
-  applySelection();
-}
-function exitSelMode(){
-  _selMode=false;
-  _activeItems.clear();
-  const b=document.getElementById('selModeBtn');
-  if(b){b.classList.remove('active');b.textContent='⊟ 선택 모드';}
-  document.getElementById('chartPanel').classList.remove('sel-mode');
-  showAllCharts();
-}
 function toggleItem(key){
-  if(!_selMode)return;
   if(_activeItems.has(key))_activeItems.delete(key);
   else _activeItems.add(key);
   applySelection();
-}
-function showAllCharts(){
-  if(!tempChart||!rainChart)return;
-  tempChart.data.datasets.forEach(function(ds,i){
-    ds.borderColor=_tColors[i];ds.borderWidth=_tWidths[i];
-    ds.backgroundColor=ds._bodyBg||withAlpha(_tColors[i],.55);
-  });
-  rainChart.data.datasets.forEach(function(ds,i){ds.backgroundColor=_rColors[i];});
-  tempChart.update('none');rainChart.update('none');
-  document.querySelectorAll('[data-yr]').forEach(function(el){el.classList.remove('sel-off');});
 }
 function applySelection(){
   if(!tempChart||!rainChart)return;
@@ -863,7 +830,7 @@ function applySelection(){
     const on=_activeItems.has(key);
     ds.borderColor=on?_tColors[i]:withAlpha(_tColors[i],.08);
     ds.borderWidth=on?_tWidths[i]:.5;
-    ds.backgroundColor=on?(ds._bodyBg||withAlpha(_tColors[i],.55)):withAlpha(_tColors[i],.04);
+    ds.backgroundColor=on?(ds._bodyBg||withAlpha(_tColors[i],.45)):withAlpha(_tColors[i],.04);
   });
   rainChart.data.datasets.forEach(function(ds,i){
     const key=ds._yr!==null?ds._yr:'forecast';
@@ -879,20 +846,18 @@ function applySelection(){
 function renderCharts(yearList,histMap,offRows,dates){
   document.getElementById('chartPanel').style.display='block';
   _tColors=[];_tWidths=[];_rColors=[];
-  _selMode=false;_activeItems.clear();_renderYears=yearList.slice();
-  const b=document.getElementById('selModeBtn');if(b){b.classList.remove('active');b.textContent='⊟ 선택 모드';}
-  document.getElementById('chartPanel').classList.remove('sel-mode');
+  _activeItems=new Set();
   const labels=dates.map(function(d){return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');});
   const tDs=[],rDs=[],tLeg=[],rLeg=[];
   yearList.forEach(function(yr,idx){
     const rows=histMap[yr]||[];
     const p=PALETTE[idx%PALETTE.length];
-    const bg=withAlpha(p.max,.55);
+    const bg=withAlpha(p.max,.45);
+    _activeItems.add(yr);
     tDs.push({label:yr+'년',type:'bar',
-      data:rows.map(function(r){if(!r)return null;const lo=Math.min(r.amTempMax||r.tempMax,r.pmTempMax||r.tempMax);const hi=Math.max(r.amTempMax||r.tempMax,r.pmTempMax||r.tempMax);return[lo,hi];}),
-      _wickData:rows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
+      data:rows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
       backgroundColor:bg,_bodyBg:bg,borderColor:p.max,borderWidth:1.5,
-      borderSkipped:false,borderRadius:1,barPercentage:.5,categoryPercentage:.9,_yr:yr});
+      borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:yr});
     _tColors.push(p.max);_tWidths.push(1.5);
     rDs.push({label:yr+'년',data:rows.map(function(r){return r?r.amount:0;}),backgroundColor:p.rain,borderRadius:2,borderSkipped:false,_yr:yr});
     _rColors.push(p.rain);
@@ -900,12 +865,12 @@ function renderCharts(yearList,histMap,offRows,dates){
     rLeg.push({label:yr+'년',yr:yr,color:p.rain});
   });
   if(offRows.length){
-    const bg=withAlpha(OFF.max,.6);
+    const bg=withAlpha(OFF.max,.55);
+    _activeItems.add('forecast');
     tDs.push({label:'예보',type:'bar',
-      data:offRows.map(function(r){if(!r)return null;const lo=Math.min(r.amTempMax||r.tempMax,r.pmTempMax||r.tempMax);const hi=Math.max(r.amTempMax||r.tempMax,r.pmTempMax||r.tempMax);return[lo,hi];}),
-      _wickData:offRows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
+      data:offRows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
       backgroundColor:bg,_bodyBg:bg,borderColor:OFF.max,borderWidth:2,
-      borderSkipped:false,borderRadius:1,barPercentage:.5,categoryPercentage:.9,_yr:null});
+      borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:null});
     _tColors.push(OFF.max);_tWidths.push(2);
     rDs.push({label:'예보',data:offRows.map(function(r){return r?r.amount:0;}),backgroundColor:OFF.rain,borderRadius:2,borderSkipped:false,_yr:null});
     _rColors.push(OFF.rain);
@@ -914,14 +879,14 @@ function renderCharts(yearList,histMap,offRows,dates){
   }
   const mkAttr=function(it){const k=it.yr!==null?it.yr:'forecast';const kw=it.yr!==null?it.yr:"'forecast'";return'data-yr="'+k+'" onclick="toggleItem('+kw+')"';};
   document.getElementById('tempLegend').innerHTML=tLeg.map(function(it){
-    return'<div class="cl-item" '+mkAttr(it)+'><span style="display:inline-block;width:14px;height:12px;background:'+withAlpha(it.color,.55)+';border:1.5px solid '+it.color+';border-radius:1px;flex-shrink:0"></span><span>'+it.label+'</span></div>';
+    return'<div class="cl-item" '+mkAttr(it)+'><span style="display:inline-block;width:14px;height:14px;background:'+withAlpha(it.color,.45)+';border:1.5px solid '+it.color+';border-radius:1px;flex-shrink:0"></span><span>'+it.label+'</span></div>';
   }).join('');
   document.getElementById('rainLegend').innerHTML=rLeg.map(function(it){
     return'<div class="cl-item" '+mkAttr(it)+'><span class="cl-dot" style="background:'+it.color+';height:10px;border-radius:2px"></span><span>'+it.label+'</span></div>';
   }).join('');
   const opts=function(yFmt){return{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:14,color:'#7D7D7D'},grid:{color:'#202020'}},y:{ticks:{font:{size:10},callback:function(v){return v+yFmt;},color:'#7D7D7D'},grid:{color:'#202020'},beginAtZero:yFmt==='mm'}}};};
   if(tempChart)tempChart.destroy();
-  tempChart=new Chart(document.getElementById('tempChart'),{type:'bar',data:{labels:labels,datasets:tDs},options:opts('°'),plugins:[wickPlugin]});
+  tempChart=new Chart(document.getElementById('tempChart'),{type:'bar',data:{labels:labels,datasets:tDs},options:opts('°')});
   if(rainChart)rainChart.destroy();
   rainChart=new Chart(document.getElementById('rainChart'),{type:'bar',data:{labels:labels,datasets:rDs},options:opts('mm')});
 }
