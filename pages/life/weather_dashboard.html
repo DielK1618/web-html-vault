@@ -287,6 +287,7 @@ const PALETTE=[
   {max:'#84cc16',pm:'#d9f99d',rain:'rgba(132,204,22,.7)'},
 ];
 const OFF={max:'#1d4ed8',pm:'#93c5fd',rain:'rgba(29,78,216,.85)'};
+const PRED={max:'#7c3aed',pm:'#c4b5fd',rain:'rgba(124,58,237,.75)'};
 const ARCHIVE='https://archive-api.open-meteo.com/v1/archive';
 const FORECAST='https://api.open-meteo.com/v1/forecast';
 const GEO='https://nominatim.openstreetmap.org/search';
@@ -846,7 +847,7 @@ function applySelection(){
   });
   tempChart.update();rainChart.update();
   document.querySelectorAll('[data-yr]').forEach(function(el){
-    const k=el.dataset.yr==='forecast'?'forecast':parseInt(el.dataset.yr);
+    const k=/^\d+$/.test(el.dataset.yr)?parseInt(el.dataset.yr):el.dataset.yr;
     el.classList.toggle('sel-off',allOn?false:!_activeItems.has(k));
   });
 }
@@ -875,11 +876,11 @@ function renderCharts(yearList,histMap,offRows,dates){
     const bg=withAlpha(OFF.max,.55);
     _activeItems.add('forecast');_allItems.add('forecast');
     tDs.push({label:'예보',
-      data:offRows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
+      data:dates.map(function(_,i){var r=offRows[i];return r?[r.tempMin,r.tempMax]:null;}),
       backgroundColor:bg,_bodyBg:bg,borderColor:OFF.max,borderWidth:2,
       borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:null});
     _tColors.push(OFF.max);_tWidths.push(2);
-    rDs.push({label:'예보',data:offRows.map(function(r){return r?r.amount:0;}),backgroundColor:OFF.rain,borderRadius:2,borderSkipped:false,_yr:null});
+    rDs.push({label:'예보',data:dates.map(function(_,i){var r=offRows[i];return r?r.amount:0;}),backgroundColor:OFF.rain,borderRadius:2,borderSkipped:false,_yr:null});
     _rColors.push(OFF.rain);
     tLeg.push({label:'예보',yr:null,color:OFF.max});
     rLeg.push({label:'예보',yr:null,color:OFF.rain});
@@ -896,6 +897,26 @@ function renderCharts(yearList,histMap,offRows,dates){
   tempChart=new Chart(document.getElementById('tempChart'),{type:'bar',data:{labels:labels,datasets:tDs},options:opts('°')});
   if(rainChart)rainChart.destroy();
   rainChart=new Chart(document.getElementById('rainChart'),{type:'bar',data:{labels:labels,datasets:rDs},options:opts('mm')});
+}
+
+function addPredToCharts(predRows,dates){
+  if(!tempChart||!rainChart||!predRows||!predRows.length)return;
+  if(_allItems.has('pred'))return;
+  const bg=withAlpha(PRED.max,.45);
+  _activeItems.add('pred');_allItems.add('pred');
+  tempChart.data.datasets.push({label:'AI 예측',
+    data:dates.map(function(_,i){var r=predRows[i];return r?[r.tempMin,r.tempMax]:null;}),
+    backgroundColor:bg,_bodyBg:bg,borderColor:PRED.max,borderWidth:1.5,
+    borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:'pred'});
+  rainChart.data.datasets.push({label:'AI 예측',
+    data:dates.map(function(_,i){var r=predRows[i];return r?r.amount:0;}),
+    backgroundColor:PRED.rain,borderRadius:2,borderSkipped:false,_yr:'pred'});
+  _tColors.push(PRED.max);_tWidths.push(1.5);
+  _rColors.push(PRED.rain);
+  const mkA='data-yr="pred" onclick="toggleItem(\'pred\')"';
+  document.getElementById('tempLegend').innerHTML+='<div class="cl-item" '+mkA+'><span style="display:inline-block;width:14px;height:14px;background:'+bg+';border:1.5px solid '+PRED.max+';border-radius:1px;flex-shrink:0"></span><span>AI 예측</span></div>';
+  document.getElementById('rainLegend').innerHTML+='<div class="cl-item" '+mkA+'><span class="cl-dot" style="background:'+PRED.rain+';height:10px;border-radius:2px"></span><span>AI 예측</span></div>';
+  tempChart.update();rainChart.update();
 }
 
 function extractJson(txt){
@@ -999,6 +1020,7 @@ async function applyFilter(){
       const cell=document.getElementById('ai-'+i);
       if(cell) cell.outerHTML=r?makeCellHtml(r,'ai'):'<td class="cell-fail">예측 불가</td>';
     });
+    addPredToCharts(statsRows,dates);
   } else {
     const API_KEY=document.getElementById('apiKeyInput').value.trim();
     const provider=document.getElementById('apiProvider').value;
@@ -1036,6 +1058,7 @@ async function applyFilter(){
           const cell=document.getElementById('ai-'+i);
           if(cell) cell.outerHTML=makeCellHtml(r,'ai');
         });
+        addPredToCharts(aiRows,dates);
       }catch(err){
         dates.forEach(function(_,i){
           const cell=document.getElementById('ai-'+i);
