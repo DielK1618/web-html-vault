@@ -48,6 +48,7 @@
         #timeline-drawer{transition:transform .3s cubic-bezier(.4,0,.2,1);}
         #floating-info-card{transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .3s ease;}
         #drawer-backdrop{transition:opacity .3s ease;}
+        #map{transition:bottom .3s cubic-bezier(.4,0,.2,1);}
     </style>
 </head>
 <body class="bg-black text-white h-screen flex flex-col overflow-hidden">
@@ -188,6 +189,10 @@
         <div id="floating-info-card"
              class="absolute bottom-0 right-0 left-0 md:bottom-4 md:right-4 md:left-auto md:w-[400px] z-[200] transform translate-y-full opacity-0 pointer-events-none"
              style="border-radius:0;background:rgba(0,0,0,0.96);backdrop-filter:blur(10px);border:1px solid #202020;">
+            <!-- [C] Peek handle — mobile only -->
+            <div id="card-peek-handle" onclick="toggleCardExpand()" class="md:hidden flex items-center justify-center py-2 border-b border-charcoal cursor-pointer select-none flex-shrink-0">
+                <div style="width:32px;height:3px;background:#444;border-radius:2px;"></div>
+            </div>
             <!-- Card Header -->
             <div class="flex items-center gap-2 px-3 pt-3 pb-2 border-b border-charcoal">
                 <div class="flex-1 min-w-0">
@@ -342,6 +347,38 @@
         let map, currentJourneyId=1, routePolyline, markers=[], currentStationIndex=-1;
         let animationTimer=null, isAnimating=false, currentAnimationStep=0;
         let regionsLayerGroup=null, drawerOpen=false;
+
+        // [C] Peek bottom sheet
+        let cardState = 'hidden'; // 'hidden' | 'peek' | 'expanded'
+        const PEEK_H = 80; // px visible above bottom edge in peek state
+
+        function toggleCardExpand() {
+            if (cardState === 'peek') expandCard();
+            else if (cardState === 'expanded') collapseCard();
+        }
+
+        function expandCard() {
+            cardState = 'expanded';
+            const card = document.getElementById('floating-info-card');
+            card.style.transform = 'translateY(0)';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                const cardH = card.offsetHeight;
+                document.getElementById('map').style.bottom = cardH + 'px';
+                setTimeout(() => {
+                    map.invalidateSize();
+                    const s = journeysData[currentJourneyId].stations[currentStationIndex];
+                    if (s) map.panTo(s.coords, {animate: true, duration: 0.4});
+                }, 60);
+            }));
+        }
+
+        function collapseCard() {
+            cardState = 'peek';
+            const card = document.getElementById('floating-info-card');
+            card.style.transform = `translateY(calc(100% - ${PEEK_H}px))`;
+            document.getElementById('map').style.bottom = PEEK_H + 'px';
+            setTimeout(() => map.invalidateSize(), 320);
+        }
 
         const journeyColors = {1:"#FFC000", 2:"#10b981", 3:"#3b82f6", 4:"#ef4444", 5:"#8b5cf6"};
 
@@ -500,9 +537,24 @@
             if (prevBtn) { const d=index===0; prevBtn.style.opacity=d?'0.2':'1'; prevBtn.style.pointerEvents=d?'none':'auto'; prevBtn.style.cursor=d?'not-allowed':'pointer'; }
             if (nextBtn) { const d=index===total-1; nextBtn.style.opacity=d?'0.2':'1'; nextBtn.style.pointerEvents=d?'none':'auto'; nextBtn.style.cursor=d?'not-allowed':'pointer'; }
             const card = document.getElementById('floating-info-card');
-            card.style.transform = 'translateY(0)';
             card.style.opacity = '1';
             card.style.pointerEvents = 'auto';
+
+            // [C] Mobile: preserve expanded/peek state when navigating; first open → peek
+            if (window.innerWidth < 768) {
+                if (cardState === 'expanded') {
+                    card.style.transform = 'translateY(0)';
+                    map.panTo(s.coords, {animate: true, duration: 0.4});
+                } else {
+                    cardState = 'peek';
+                    card.style.transform = `translateY(calc(100% - ${PEEK_H}px))`;
+                    document.getElementById('map').style.bottom = PEEK_H + 'px';
+                    setTimeout(() => map.invalidateSize(), 60);
+                }
+            } else {
+                cardState = 'expanded';
+                card.style.transform = 'translateY(0)';
+            }
         }
 
         function prevStation() {
@@ -515,10 +567,15 @@
         }
 
         function closeInfoCard() {
+            cardState = 'hidden';
             const card = document.getElementById('floating-info-card');
             card.style.transform = 'translateY(100%)';
             card.style.opacity = '0';
             card.style.pointerEvents = 'none';
+            if (window.innerWidth < 768) {
+                document.getElementById('map').style.bottom = '0';
+                setTimeout(() => map.invalidateSize(), 320);
+            }
         }
 
         function toggleDrawer() {
