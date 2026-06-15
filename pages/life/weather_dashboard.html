@@ -122,7 +122,8 @@ thead th:first-child{z-index:20;background:#181818}
 .chart-section{margin-bottom:28px}
 .chart-title{font-size:12px;font-weight:600;color:#7D7D7D;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
 .chart-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
-.cl-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#7D7D7D}
+.cl-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#7D7D7D;cursor:pointer;transition:opacity .2s}
+.cl-item:hover{opacity:.75}
 .cl-dot{width:24px;height:3px;border-radius:0}
 .cl-dash{width:24px;height:0;border-top:2px dashed}
 .vault-nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:44px;background:#000;border-bottom:1px solid #202020;font-family:'Inter',Roboto,'Helvetica Neue',Arial,sans-serif;}
@@ -290,6 +291,7 @@ const DVARS='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum
 const HVARS='temperature_2m,relative_humidity_2m,precipitation,cloud_cover';
 
 let tempChart=null,rainChart=null;
+let _selectedYear=null,_tColors=[],_tWidths=[],_rColors=[];
 let currentLocation=null;
 let favorites=[];
 let _geoResults=[];
@@ -807,35 +809,72 @@ function calcStats(histMap,yearList,dates){
 }
 
 /* ── 차트 ── */
+function withAlpha(c,a){
+  if(c.startsWith('rgba'))return c.replace(/[\d.]+\)$/,a+')');
+  const r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);
+  return'rgba('+r+','+g+','+b+','+a+')';
+}
+function highlightYear(yr){
+  _selectedYear=(_selectedYear===yr)?null:yr;
+  applyHighlight();
+}
+function applyHighlight(){
+  if(!tempChart||!rainChart)return;
+  tempChart.data.datasets.forEach(function(ds,i){
+    const dim=_selectedYear!==null&&ds._yr!==null&&ds._yr!==_selectedYear;
+    ds.borderColor=dim?withAlpha(_tColors[i],.1):_tColors[i];
+    ds.borderWidth=dim?.5:_tWidths[i];
+    if(ds.pointBackgroundColor)ds.pointBackgroundColor=dim?withAlpha(_tColors[i],.1):_tColors[i];
+  });
+  rainChart.data.datasets.forEach(function(ds,i){
+    const dim=_selectedYear!==null&&ds._yr!==null&&ds._yr!==_selectedYear;
+    ds.backgroundColor=dim?withAlpha(_rColors[i],.1):_rColors[i];
+  });
+  tempChart.update('none');
+  rainChart.update('none');
+  document.querySelectorAll('[data-year]').forEach(function(el){
+    el.style.opacity=(_selectedYear!==null&&parseInt(el.dataset.year)!==_selectedYear)?'.2':'1';
+  });
+}
 function renderCharts(yearList,histMap,offRows,dates){
   document.getElementById('chartPanel').style.display='block';
+  _selectedYear=null; _tColors=[]; _tWidths=[]; _rColors=[];
   const labels=dates.map(function(d){return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');});
   const tDs=[],rDs=[],tLeg=[],rLeg=[];
   yearList.forEach(function(yr,idx){
     const rows=histMap[yr]||[];
     const p=PALETTE[idx%PALETTE.length];
-    tDs.push({label:yr+'년 오전',data:rows.map(function(r){return r?r.amTempMax||r.tempMax:null;}),borderColor:p.max,borderWidth:1.5,pointRadius:0,tension:.3,fill:false});
-    tDs.push({label:yr+'년 오후',data:rows.map(function(r){return r?r.pmTempMax||r.tempMax:null;}),borderColor:p.pm,borderWidth:1.5,pointRadius:0,tension:.3,fill:false,borderDash:[3,3]});
-    rDs.push({label:yr+'년',data:rows.map(function(r){return r?r.amount:0;}),backgroundColor:p.rain,borderRadius:2,borderSkipped:false});
-    tLeg.push({label:yr+'년',a:p.max,b:p.pm});
-    rLeg.push({label:yr+'년',color:p.rain});
+    tDs.push({label:yr+'년 오전',data:rows.map(function(r){return r?r.amTempMax||r.tempMax:null;}),borderColor:p.max,borderWidth:1.5,pointRadius:0,tension:.3,fill:false,_yr:yr});
+    _tColors.push(p.max);_tWidths.push(1.5);
+    tDs.push({label:yr+'년 오후',data:rows.map(function(r){return r?r.pmTempMax||r.tempMax:null;}),borderColor:p.pm,borderWidth:1.5,pointRadius:0,tension:.3,fill:false,borderDash:[3,3],_yr:yr});
+    _tColors.push(p.pm);_tWidths.push(1.5);
+    rDs.push({label:yr+'년',data:rows.map(function(r){return r?r.amount:0;}),backgroundColor:p.rain,borderRadius:2,borderSkipped:false,_yr:yr});
+    _rColors.push(p.rain);
+    tLeg.push({label:yr+'년',yr:yr,a:p.max,b:p.pm});
+    rLeg.push({label:yr+'년',yr:yr,color:p.rain});
   });
   if(offRows.length){
-    tDs.push({label:'예보 오전',data:offRows.map(function(r){return r?r.amTempMax||r.tempMax:null;}),borderColor:OFF.max,borderWidth:2.5,pointRadius:3,pointBackgroundColor:OFF.max,tension:.3,fill:false});
-    tDs.push({label:'예보 오후',data:offRows.map(function(r){return r?r.pmTempMax||r.tempMax:null;}),borderColor:OFF.pm,borderWidth:2.5,pointRadius:3,pointBackgroundColor:OFF.pm,tension:.3,fill:false,borderDash:[4,4]});
-    rDs.push({label:'예보',data:offRows.map(function(r){return r?r.amount:0;}),backgroundColor:OFF.rain,borderRadius:2,borderSkipped:false});
-    rLeg.push({label:'예보',color:OFF.rain});
+    tDs.push({label:'예보 오전',data:offRows.map(function(r){return r?r.amTempMax||r.tempMax:null;}),borderColor:OFF.max,borderWidth:2.5,pointRadius:3,pointBackgroundColor:OFF.max,tension:.3,fill:false,_yr:null});
+    _tColors.push(OFF.max);_tWidths.push(2.5);
+    tDs.push({label:'예보 오후',data:offRows.map(function(r){return r?r.pmTempMax||r.tempMax:null;}),borderColor:OFF.pm,borderWidth:2.5,pointRadius:3,pointBackgroundColor:OFF.pm,tension:.3,fill:false,borderDash:[4,4],_yr:null});
+    _tColors.push(OFF.pm);_tWidths.push(2.5);
+    rDs.push({label:'예보',data:offRows.map(function(r){return r?r.amount:0;}),backgroundColor:OFF.rain,borderRadius:2,borderSkipped:false,_yr:null});
+    _rColors.push(OFF.rain);
+    tLeg.push({label:'예보',yr:null,a:OFF.max,b:OFF.pm});
+    rLeg.push({label:'예보',yr:null,color:OFF.rain});
   }
   document.getElementById('tempLegend').innerHTML=tLeg.map(function(it){
-    return'<div class="cl-item"><span class="cl-dot" style="background:'+it.a+'"></span><span class="cl-dash" style="border-color:'+it.b+'"></span><span>'+it.label+'</span></div>';
+    const a=it.yr!==null?'data-year="'+it.yr+'" onclick="highlightYear('+it.yr+')"':'';
+    return'<div class="cl-item" '+a+'><span class="cl-dot" style="background:'+it.a+'"></span><span class="cl-dash" style="border-color:'+it.b+'"></span><span>'+it.label+'</span></div>';
   }).join('');
   document.getElementById('rainLegend').innerHTML=rLeg.map(function(it){
-    return'<div class="cl-item"><span class="cl-dot" style="background:'+it.color+';height:10px;border-radius:2px"></span><span>'+it.label+'</span></div>';
+    const a=it.yr!==null?'data-year="'+it.yr+'" onclick="highlightYear('+it.yr+')"':'';
+    return'<div class="cl-item" '+a+'><span class="cl-dot" style="background:'+it.color+';height:10px;border-radius:2px"></span><span>'+it.label+'</span></div>';
   }).join('');
   const opts=function(yFmt){return{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:14,color:'#7D7D7D'},grid:{color:'#202020'}},y:{ticks:{font:{size:10},callback:function(v){return v+yFmt;},color:'#7D7D7D'},grid:{color:'#202020'},beginAtZero:yFmt==='mm'}}};};
-  if(tempChart) tempChart.destroy();
+  if(tempChart)tempChart.destroy();
   tempChart=new Chart(document.getElementById('tempChart'),{type:'line',data:{labels:labels,datasets:tDs},options:opts('°')});
-  if(rainChart) rainChart.destroy();
+  if(rainChart)rainChart.destroy();
   rainChart=new Chart(document.getElementById('rainChart'),{type:'bar',data:{labels:labels,datasets:rDs},options:opts('mm')});
 }
 
