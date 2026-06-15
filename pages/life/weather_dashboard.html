@@ -12,7 +12,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;font-si
 ::-webkit-scrollbar{height:5px;width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#313131;border-radius:0}
-.filter-panel{background:#181818;border-bottom:1px solid #313131;padding:14px 20px;position:sticky;top:44px;z-index:100}
+.filter-panel{background:#181818;padding:14px 20px 0;position:sticky;top:44px;z-index:100}
 .ver-badge{font-size:10px;font-weight:600;color:#7D7D7D;background:#202020;border:1px solid #313131;border-radius:0;padding:2px 7px;flex-shrink:0;margin-left:auto}
 .filter-summary{display:flex;align-items:center;cursor:pointer;gap:8px;user-select:none;-webkit-user-select:none;min-height:20px}
 .filter-summary:hover .f-hamburger{border-color:#FFC000;color:#FFC000}
@@ -20,7 +20,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;font-si
 .f-detail{font-size:12px;color:#fff;display:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 .f-hamburger{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #313131;color:#7D7D7D;flex-shrink:0;transition:border-color .15s,color .15s;font-size:15px;line-height:1;background:none;cursor:pointer;padding:0;font-family:inherit}
 .f-hamburger.open{border-color:#FFC000;color:#FFC000}
-.query-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:10px;margin-top:8px;border-top:1px solid #313131}
+.query-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 20px 12px;margin:8px -20px 0;border-top:1px solid #313131}
 .query-bar .btn-primary{margin-left:auto;flex-shrink:0;height:34px;padding:0 20px;font-size:12px;white-space:nowrap}
 .qchip-empty{background:#181818;border-color:#313131;color:#494949}
 .qchip-mode{background:#1a0d2e;border-color:#4c1d95;color:#c4b5fd}
@@ -47,16 +47,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .btn-green{background:#052e16;color:#4ade80;border:1px solid #14532d}
 .btn-gray{background:#202020;color:#7D7D7D;border:1px solid #313131}
 .panel-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.mode-row{display:flex;align-items:center;gap:12px;margin-top:10px;padding-top:10px;border-top:1px solid #313131;flex-wrap:wrap}
+.mode-row{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
 .mode-label{font-size:12px;color:#fff;display:flex;align-items:center;gap:5px;cursor:pointer}
-.api-row{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #313131}
+.api-row{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
 .loc-search-wrap{position:relative;flex:1;min-width:160px;max-width:280px}
 .loc-results{display:none;position:absolute;top:57px;left:0;z-index:300;background:#202020;border:1px solid #FFC000;min-width:280px;max-height:220px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.7)}
 .loc-result{padding:8px 12px;cursor:pointer;border-bottom:1px solid #313131;transition:background .1s}
 .loc-result:hover{background:#2a2a2a}
 .loc-result:last-child{border-bottom:none}
 #locInfoBar{display:none;margin-top:8px;padding:6px 10px;background:#202020;border:1px solid #313131;align-items:center;gap:10px;flex-wrap:wrap}
-.fav-row{display:none;gap:5px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #313131;align-items:center}
+.fav-row{display:none;gap:5px;flex-wrap:wrap;margin-top:10px;align-items:center}
 .slider-row{display:flex;align-items:center;gap:8px;height:34px}
 .fav-tag{font-size:11px;padding:3px 8px;background:#1a1400;border:1px solid #4a3800;border-radius:0;cursor:pointer;color:#FFC000;transition:all .12s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .fav-tag:hover{background:#252000;border-color:#FFC000}
@@ -64,7 +64,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .fav-tag.fav-active .fav-del{color:#000}
 .fav-del{font-size:14px;line-height:1;opacity:.55;margin-left:1px;flex-shrink:0}
 .fav-del:hover{opacity:1}
-.kpi-bar{background:#181818;border-bottom:1px solid #313131;padding:14px 20px}
+.kpi-bar{background:#181818;padding:14px 20px}
 .kpi-title{font-size:15px;font-weight:600;margin-bottom:10px;color:#fff}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
 .kc{background:#202020;border-left:2px solid #313131;padding:10px 12px}
@@ -81,7 +81,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .prog-track{height:3px;background:#313131;border-radius:0;overflow:hidden}
 .prog-fill{height:100%;background:#FFC000;border-radius:0;transition:width .4s}
 .prog-label{font-size:11px;color:#7D7D7D;margin-top:4px}
-.legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 20px;background:#181818;border-bottom:1px solid #313131}
+.legend{display:flex;gap:12px;flex-wrap:wrap;padding:8px 20px 12px;background:#181818}
 .li{display:flex;align-items:center;gap:5px;font-size:11px;color:#7D7D7D}
 .ld{width:10px;height:10px;border-radius:0;flex-shrink:0}
 .matrix-wrap{overflow-x:auto;padding:0 0 24px}
@@ -133,7 +133,7 @@ thead th:first-child{z-index:20;background:#181818}
 .vbtn:hover{color:#FFC000}
 .vsep{width:1px;height:16px;background:#202020;flex-shrink:0}
 @media(max-width:768px){.filter-row{gap:5px}.filter-row input[type=text],.filter-row input[type=date],.filter-row input[type=password]{width:auto;min-width:80px}}
-@media(max-width:600px){.vault-nav{padding:0 20px;height:40px}.vbtn{padding:0 10px;height:40px;font-size:9px}.vault-logo{font-size:13px}.filter-panel{padding:10px 12px}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}.loc-results{min-width:220px}}
+@media(max-width:600px){.vault-nav{padding:0 20px;height:40px}.vbtn{padding:0 10px;height:40px;font-size:9px}.vault-logo{font-size:13px}.filter-panel{padding:10px 12px 0}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}.loc-results{min-width:220px}.query-bar{margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}}
 </style>
 </head>
 <body>
