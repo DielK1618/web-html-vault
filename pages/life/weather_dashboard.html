@@ -31,13 +31,23 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .btn-green{background:#052e16;color:#4ade80;border:1px solid #14532d}
 .btn-gray{background:#202020;color:#7D7D7D;border:1px solid #313131}
 .panel-title-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.recent-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;align-items:center}
-.rtag{font-size:11px;padding:3px 9px;background:#202020;border:1px solid #313131;border-radius:0;cursor:pointer;color:#7D7D7D;transition:all .12s}
-.rtag:hover{background:#FFC000;border-color:#FFC000;color:#000}
 .mode-row{display:flex;align-items:center;gap:12px;margin-top:10px;padding-top:10px;border-top:1px solid #313131;flex-wrap:wrap}
 .mode-label{font-size:12px;color:#fff;display:flex;align-items:center;gap:5px;cursor:pointer}
 .api-row{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #313131}
-
+.loc-search-wrap{position:relative;flex:1;min-width:160px;max-width:280px}
+.loc-results{display:none;position:absolute;top:57px;left:0;z-index:300;background:#202020;border:1px solid #FFC000;min-width:280px;max-height:220px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.7)}
+.loc-result{padding:8px 12px;cursor:pointer;border-bottom:1px solid #313131;transition:background .1s}
+.loc-result:hover{background:#2a2a2a}
+.loc-result:last-child{border-bottom:none}
+#locInfoBar{display:none;margin-top:8px;padding:6px 10px;background:#202020;border:1px solid #313131;align-items:center;gap:10px;flex-wrap:wrap}
+.fav-row{display:none;gap:5px;flex-wrap:wrap;margin-top:8px;padding-top:8px;border-top:1px solid #313131;align-items:center}
+.slider-row{display:flex;align-items:center;gap:8px;height:34px}
+.fav-tag{font-size:11px;padding:3px 8px;background:#1a1400;border:1px solid #4a3800;border-radius:0;cursor:pointer;color:#FFC000;transition:all .12s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.fav-tag:hover{background:#252000;border-color:#FFC000}
+.fav-tag.fav-active{background:#FFC000;color:#000;border-color:#FFC000}
+.fav-tag.fav-active .fav-del{color:#000}
+.fav-del{font-size:14px;line-height:1;opacity:.55;margin-left:1px;flex-shrink:0}
+.fav-del:hover{opacity:1}
 .kpi-bar{background:#181818;border-bottom:1px solid #313131;padding:14px 20px}
 .kpi-title{font-size:15px;font-weight:600;margin-bottom:10px;color:#fff}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
@@ -45,7 +55,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .kc-label{font-size:11px;color:#7D7D7D;text-transform:uppercase;margin-bottom:3px}
 .kc-val{font-size:18px;font-weight:600;line-height:1.2;color:#fff}
 .kbadge{font-size:10px;font-weight:600;padding:1px 5px;border-radius:0;margin-left:3px;vertical-align:middle;background:#052e16;color:#4ade80}
-
 .sbar{padding:9px 20px;font-size:12px;display:none;align-items:center;gap:8px}
 .sbar-info{background:#0f172a;color:#93c5fd;border-bottom:1px solid #1e3a5f}
 .sbar-err{background:#1a0505;color:#f87171;border-bottom:1px solid #7f1d1d}
@@ -56,11 +65,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 .prog-track{height:3px;background:#313131;border-radius:0;overflow:hidden}
 .prog-fill{height:100%;background:#FFC000;border-radius:0;transition:width .4s}
 .prog-label{font-size:11px;color:#7D7D7D;margin-top:4px}
-
 .legend{display:flex;gap:12px;flex-wrap:wrap;padding:10px 20px;background:#181818;border-bottom:1px solid #313131}
 .li{display:flex;align-items:center;gap:5px;font-size:11px;color:#7D7D7D}
 .ld{width:10px;height:10px;border-radius:0;flex-shrink:0}
-
 .matrix-wrap{overflow-x:auto;padding:0 0 24px}
 table{border-collapse:collapse;width:max-content;min-width:100%}
 th,td{padding:6px 8px;border:1px solid #313131;vertical-align:top}
@@ -74,7 +81,6 @@ thead th:first-child{z-index:20;background:#181818}
 .sb-h{background:#202020;color:#7D7D7D}
 .sb-o{background:#0d1b2a;color:#93c5fd}
 .sb-a{background:#1a0d2e;color:#c4b5fd}
-
 .weather-cell{min-width:130px;font-size:11px;padding:6px 8px!important;background:#181818}
 .ampm-wrap{display:flex;gap:5px;margin-bottom:4px}
 .slot{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:3px 2px;border-radius:0}
@@ -96,7 +102,6 @@ thead th:first-child{z-index:20;background:#181818}
 .cb-m{background:#422006;color:#fbbf24}
 .cb-l{background:#1a0505;color:#f87171}
 .reason{font-size:10px;color:#7D7D7D;display:block;margin-top:2px;max-width:130px;white-space:normal;line-height:1.3}
-
 .chart-panel{background:#181818;border-top:1px solid #202020;padding:20px 20px 8px}
 .chart-section{margin-bottom:28px}
 .chart-title{font-size:12px;font-weight:600;color:#7D7D7D;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
@@ -112,7 +117,7 @@ thead th:first-child{z-index:20;background:#181818}
 .vbtn:hover{color:#FFC000}
 .vsep{width:1px;height:16px;background:#202020;flex-shrink:0}
 @media(max-width:768px){.filter-row{gap:5px}.filter-row input[type=text],.filter-row input[type=date],.filter-row input[type=password]{width:auto;min-width:80px}}
-@media(max-width:600px){.vault-nav{padding:0 20px;height:40px}.vbtn{padding:0 10px;height:40px;font-size:9px}.vault-logo{font-size:13px}.filter-panel{padding:10px 12px}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}}
+@media(max-width:600px){.vault-nav{padding:0 20px;height:40px}.vbtn{padding:0 10px;height:40px;font-size:9px}.vault-logo{font-size:13px}.filter-panel{padding:10px 12px}.kpi-grid{grid-template-columns:repeat(auto-fit,minmax(100px,1fr))}.loc-results{min-width:220px}}
 </style>
 </head>
 <body>
@@ -128,63 +133,46 @@ thead th:first-child{z-index:20;background:#181818}
   </div>
 </nav>
 
-<div class="filter-panel" style="position:relative">
-  <span class="ver-badge">v5.7</span>
+<div class="filter-panel">
+  <span class="ver-badge">v6.0</span>
   <div class="panel-title-row">
     <div class="panel-title" style="margin-bottom:0">날씨 조회 설정</div>
   </div>
   <div class="filter-row">
-    <div class="fg">
-      <span class="flabel">나라</span>
-      <select id="countrySelect">
-        <option value="">선택</option>
-        <option value="대한민국 🇰🇷">대한민국 🇰🇷</option>
-        <option value="일본 🇯🇵">일본 🇯🇵</option>
-        <option value="미국 🇺🇸">미국 🇺🇸</option>
-        <option value="영국 🇬🇧">영국 🇬🇧</option>
-        <option value="프랑스 🇫🇷">프랑스 🇫🇷</option>
-        <option value="독일 🇩🇪">독일 🇩🇪</option>
-        <option value="호주 🇦🇺">호주 🇦🇺</option>
-        <option value="중국 🇨🇳">중국 🇨🇳</option>
-        <option value="태국 🇹🇭">태국 🇹🇭</option>
-        <option value="기타 ✏️">기타 ✏️</option>
-      </select>
-    </div>
-    <div class="fg" id="citySelectGroup" style="display:none">
-      <span class="flabel">도시</span>
-      <select id="citySelect"></select>
-    </div>
-    <div class="fg" id="cityInputGroup" style="display:none">
-      <span class="flabel">도시 직접 입력</span>
-      <input type="text" id="cityInput" placeholder="예: 파주" style="width:120px">
-    </div>
-    <div class="fg" id="countryInputGroup" style="display:none">
-      <span class="flabel">나라 직접 입력</span>
-      <input type="text" id="countryInput" placeholder="예: 캐나다" style="width:110px">
+    <div class="fg loc-search-wrap">
+      <span class="flabel">지역 검색</span>
+      <div style="display:flex;gap:5px">
+        <input type="text" id="locationSearch" placeholder="지역명 검색 (예: 분당구, 파주, Tokyo)" style="flex:1"
+          onkeydown="if(event.key==='Enter')searchLocation()"
+          oninput="onLocInput(this.value)">
+        <button class="btn btn-gray" onclick="searchLocation()" style="padding:0 12px;flex-shrink:0">🔍</button>
+      </div>
+      <div class="loc-results" id="locResults"></div>
     </div>
     <div class="fg">
-      <span class="flabel">시작일</span>
-      <input type="date" id="dateStart">
-    </div>
-    <div class="fg">
-      <span class="flabel">종료일</span>
-      <input type="date" id="dateEnd">
+      <span class="flabel">조회 기간</span>
+      <div style="display:flex;align-items:center;height:34px;gap:0">
+        <input type="date" id="dateStart" style="width:120px;border-right:none">
+        <span style="height:34px;padding:0 6px;background:#202020;border-top:1px solid #313131;border-bottom:1px solid #313131;display:flex;align-items:center;font-size:11px;color:#494949;flex-shrink:0">—</span>
+        <input type="date" id="dateEnd" style="width:120px;border-left:none">
+      </div>
     </div>
     <div class="fg">
       <span class="flabel">과거 데이터</span>
       <div class="slider-row">
-        <input type="range" id="yearSlider" min="1" max="10" value="3" step="1"
-          oninput="document.getElementById('yearVal').textContent=this.value+'년'">
-        <span class="sval" id="yearVal">3년</span>
+        <input type="range" id="yearSlider" min="1" max="10" value="5" step="1"
+          oninput="document.getElementById('yearVal').textContent=this.value+'년';saveSettings()">
+        <span class="sval" id="yearVal">5년</span>
       </div>
     </div>
-    <div class="fg">
-      <span class="flabel">&nbsp;</span>
+    <div class="fg" style="align-self:flex-end">
       <button class="btn btn-primary" id="applyBtn" onclick="applyFilter()">조회</button>
     </div>
   </div>
 
-  <!-- AI 예측 모드 -->
+  <div id="locInfoBar"></div>
+  <div class="fav-row" id="favRow"></div>
+
   <div class="mode-row">
     <span class="flabel">AI 예측 방식</span>
     <label class="mode-label">
@@ -196,20 +184,17 @@ thead th:first-child{z-index:20;background:#181818}
     <span id="modeDesc" style="font-size:11px;color:#7D7D7D">과거 N년 평균 + 기후 트렌드 보정으로 예측합니다</span>
   </div>
 
-  <!-- API Key 입력 (AI API 선택시) -->
   <div class="api-row" id="apiRow">
     <span class="flabel">제공사</span>
     <select id="apiProvider" style="width:120px" onchange="onProviderChange()">
       <option value="claude">🤖 Claude</option>
       <option value="gemini">✨ Gemini</option>
     </select>
-    <input type="password" id="apiKeyInput" placeholder="sk-ant-api..." style="flex:1;max-width:300px;font-family:monospace;font-size:11px">
+    <input type="password" id="apiKeyInput" placeholder="sk-ant-api..." style="flex:1;max-width:320px;font-family:monospace;font-size:11px">
     <button class="btn btn-green" onclick="saveApiKey()">🔒 저장</button>
     <button class="btn btn-gray" onclick="clearApiKey()">🗑️ 삭제</button>
     <span id="apiSaveStatus" style="font-size:11px;color:#7D7D7D"></span>
   </div>
-
-  <div class="recent-row" id="recentRow"></div>
 </div>
 
 <div id="sbar" class="sbar"></div>
@@ -219,7 +204,7 @@ thead th:first-child{z-index:20;background:#181818}
 </div>
 
 <div class="kpi-bar">
-  <div class="kpi-title" id="kpiTitle">도시를 선택하고 조회하세요</div>
+  <div class="kpi-title" id="kpiTitle">지역을 검색하고 조회하세요</div>
   <div class="kpi-grid" id="kpiGrid">
     <div class="kc"><div class="kc-label">평균 최고기온</div><div class="kc-val">—</div></div>
     <div class="kc"><div class="kc-label">평균 최저기온</div><div class="kc-val">—</div></div>
@@ -260,18 +245,6 @@ thead th:first-child{z-index:20;background:#181818}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-/* ── 상수 ── */
-const CITY_DATA = {
-  "대한민국 🇰🇷":{cities:["서울","파주","인천","수원","부산","대구","광주","제주","직접 입력..."],coords:{"서울":[37.5665,126.9780],"파주":[37.7597,126.7801],"인천":[37.4563,126.7052],"수원":[37.2636,127.0286],"부산":[35.1796,129.0756],"대구":[35.8714,128.6014],"광주":[35.1595,126.8526],"제주":[33.4996,126.5312]}},
-  "일본 🇯🇵":{cities:["도쿄","오사카","삿포로","후쿠오카","교토","나고야","직접 입력..."],coords:{"도쿄":[35.6762,139.6503],"오사카":[34.6937,135.5023],"삿포로":[43.0618,141.3545],"후쿠오카":[33.5904,130.4017],"교토":[35.0116,135.7681],"나고야":[35.1815,136.9066]}},
-  "미국 🇺🇸":{cities:["뉴욕","LA","시카고","시애틀","마이애미","라스베이거스","직접 입력..."],coords:{"뉴욕":[40.7128,-74.006],"LA":[34.0522,-118.2437],"시카고":[41.8781,-87.6298],"시애틀":[47.6062,-122.3321],"마이애미":[25.7617,-80.1918],"라스베이거스":[36.1699,-115.1398]}},
-  "영국 🇬🇧":{cities:["런던","맨체스터","에든버러","버밍엄","직접 입력..."],coords:{"런던":[51.5074,-0.1278],"맨체스터":[53.4808,-2.2426],"에든버러":[55.9533,-3.1883],"버밍엄":[52.4862,-1.8904]}},
-  "프랑스 🇫🇷":{cities:["파리","니스","리옹","보르도","직접 입력..."],coords:{"파리":[48.8566,2.3522],"니스":[43.7102,7.262],"리옹":[45.764,4.8357],"보르도":[44.8378,-0.5792]}},
-  "독일 🇩🇪":{cities:["베를린","뮌헨","함부르크","프랑크푸르트","직접 입력..."],coords:{"베를린":[52.52,13.405],"뮌헨":[48.1351,11.582],"함부르크":[53.5753,10.0153],"프랑크푸르트":[50.1109,8.6821]}},
-  "호주 🇦🇺":{cities:["시드니","멜버른","브리즈번","퍼스","직접 입력..."],coords:{"시드니":[-33.8688,151.2093],"멜버른":[-37.8136,144.9631],"브리즈번":[-27.4698,153.0251],"퍼스":[-31.9505,115.8605]}},
-  "중국 🇨🇳":{cities:["베이징","상하이","청두","광저우","직접 입력..."],coords:{"베이징":[39.9042,116.4074],"상하이":[31.2304,121.4737],"청두":[30.5728,104.0668],"광저우":[23.1291,113.2644]}},
-  "태국 🇹🇭":{cities:["방콕","치앙마이","푸켓","직접 입력..."],coords:{"방콕":[13.7563,100.5018],"치앙마이":[18.7883,98.9853],"푸켓":[7.8804,98.3923]}},
-};
 const WL={0:"맑음",1:"대체로맑음",2:"구름조금",3:"흐림",45:"안개",48:"안개",51:"이슬비",53:"이슬비",55:"이슬비",61:"비",63:"비",65:"강한비",71:"눈",73:"눈",75:"강한눈",80:"소나기",81:"소나기",82:"강한소나기",95:"뇌우",96:"뇌우",99:"뇌우"};
 const WI={0:"☀️",1:"🌤️",2:"⛅",3:"☁️",45:"🌫️",48:"🌫️",51:"🌦️",53:"🌦️",55:"🌦️",61:"🌧️",63:"🌧️",65:"🌧️",71:"🌨️",73:"🌨️",75:"🌨️",80:"⛈️",81:"⛈️",82:"⛈️",95:"⛈️",96:"⛈️",99:"⛈️"};
 const DAYS=["일","월","화","수","목","금","토"];
@@ -288,7 +261,17 @@ const PALETTE=[
   {max:'#84cc16',pm:'#d9f99d',rain:'rgba(132,204,22,.7)'},
 ];
 const OFF={max:'#1d4ed8',pm:'#93c5fd',rain:'rgba(29,78,216,.85)'};
-let recentSearches=[],tempChart=null,rainChart=null;
+const ARCHIVE='https://archive-api.open-meteo.com/v1/archive';
+const FORECAST='https://api.open-meteo.com/v1/forecast';
+const GEO='https://nominatim.openstreetmap.org/search';
+const DVARS='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,relative_humidity_2m_mean';
+const HVARS='temperature_2m,relative_humidity_2m,precipitation,cloud_cover';
+
+let tempChart=null,rainChart=null;
+let currentLocation=null;
+let favorites=[];
+let _geoResults=[];
+let _searchTimer=null;
 
 /* ── 유틸 ── */
 const todayStr=()=>new Date().toISOString().slice(0,10);
@@ -302,6 +285,36 @@ function slotCond(rain,cloud){
   if(cloud>=75)return"흐림";if(cloud>=40)return"구름많음";return"맑음";
 }
 
+/* ── localStorage ── */
+function loadFavorites(){
+  try{favorites=JSON.parse(localStorage.getItem('weather_favorites')||'[]');}catch(e){favorites=[];}
+}
+function saveFavorites(){localStorage.setItem('weather_favorites',JSON.stringify(favorites));}
+function loadLastLocation(){
+  try{
+    const saved=JSON.parse(localStorage.getItem('weather_last_location'));
+    if(saved&&saved.lat&&saved.lon){currentLocation=saved;renderLocSelected();renderFavRow();}
+  }catch(e){}
+}
+function saveLastLocation(){
+  if(currentLocation) localStorage.setItem('weather_last_location',JSON.stringify(currentLocation));
+}
+function saveSettings(){
+  localStorage.setItem('weather_years',document.getElementById('yearSlider').value);
+  const m=document.querySelector('input[name="aiMode"]:checked');
+  if(m) localStorage.setItem('weather_ai_mode',m.value);
+  localStorage.setItem('weather_api_provider',document.getElementById('apiProvider').value);
+}
+function loadSettings(){
+  const y=localStorage.getItem('weather_years');
+  if(y){document.getElementById('yearSlider').value=y;document.getElementById('yearVal').textContent=y+'년';}
+  const p=localStorage.getItem('weather_api_provider');
+  if(p) document.getElementById('apiProvider').value=p;
+  const m=localStorage.getItem('weather_ai_mode');
+  if(m){const r=document.querySelector('input[name="aiMode"][value="'+m+'"]');if(r){r.checked=true;onModeChange();}}
+  if(p) onProviderChange();
+}
+
 /* ── UI 초기화 ── */
 document.addEventListener('DOMContentLoaded',function(){
   const t=todayStr();
@@ -313,41 +326,137 @@ document.addEventListener('DOMContentLoaded',function(){
     de.min=this.value;
     if(de.value<this.value) de.value=offsetDate(this.value,6);
   });
-  document.getElementById('countrySelect').addEventListener('change',onCountryChange);
-  document.getElementById('citySelect').addEventListener('change',onCityChange);
-  document.querySelectorAll('input[name="aiMode"]').forEach(function(r){
-    r.addEventListener('change',onModeChange);
-  });
-  document.getElementById('countrySelect').value='대한민국 🇰🇷';
-  onCountryChange();
-  setTimeout(function(){
-    document.getElementById('citySelect').value='파주';
-  },30);
+  document.querySelectorAll('input[name="aiMode"]').forEach(function(r){r.addEventListener('change',onModeChange);});
+  loadFavorites();
+  loadLastLocation();
+  loadSettings();
   loadSavedApiKey();
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.loc-search-wrap')) closeLocResults();
+  });
 });
 
-function onCountryChange(){
-  const v=document.getElementById('countrySelect').value;
-  const sg=document.getElementById('citySelectGroup');
-  const ig=document.getElementById('cityInputGroup');
-  const cig=document.getElementById('countryInputGroup');
-  const cs=document.getElementById('citySelect');
-  if(v==='기타 ✏️'){
-    sg.style.display='none'; ig.style.display='flex'; cig.style.display='flex';
-  } else if(v && CITY_DATA[v]){
-    cs.innerHTML=CITY_DATA[v].cities.map(function(c){return'<option value="'+c+'">'+c+'</option>'}).join('');
-    sg.style.display='flex'; ig.style.display='none'; cig.style.display='none';
-  } else {
-    cs.innerHTML='<option value="">도시 선택</option>';
-    sg.style.display='flex'; ig.style.display='none'; cig.style.display='none';
+/* ── 지역 검색 ── */
+function onLocInput(val){
+  clearTimeout(_searchTimer);
+  if(val.length>=2) _searchTimer=setTimeout(searchLocation,450);
+  else closeLocResults();
+}
+
+function fmtNominatim(item){
+  const a=item.address||{};
+  const country=a.country||'';
+  const parts=[
+    a.state||a.region||'',
+    a.city||a.county||a.municipality||a.town||'',
+    a.suburb||a.city_district||a.district||'',
+    a.neighbourhood||a.quarter||a.village||a.hamlet||''
+  ].filter(Boolean).filter(function(v,i,arr){return arr.indexOf(v)===i;});
+  return{displayName:parts.join(' ')||item.display_name.split(',')[0].trim(),country:country};
+}
+
+async function searchLocation(){
+  const q=document.getElementById('locationSearch').value.trim();
+  if(!q){closeLocResults();return;}
+  const res=document.getElementById('locResults');
+  res.style.display='block';
+  res.innerHTML='<div style="padding:8px 12px;color:#7D7D7D;font-size:12px">검색 중...</div>';
+  try{
+    const r=await fetch(GEO+'?q='+encodeURIComponent(q)+'&format=json&limit=8&accept-language=ko&addressdetails=1');
+    const d=await r.json();
+    if(!Array.isArray(d)||!d.length){
+      res.innerHTML='<div style="padding:8px 12px;color:#f87171;font-size:12px">검색 결과 없음</div>';
+      return;
+    }
+    _geoResults=d;
+    res.innerHTML=d.map(function(item,idx){
+      const f=fmtNominatim(item);
+      return'<div class="loc-result" onclick="selectLocation('+idx+')">'
+        +'<span style="font-size:12px;color:#fff">'+f.displayName+'</span>'
+        +' <span style="font-size:10px;color:#7D7D7D">'+f.country+'</span>'
+        +'</div>';
+    }).join('');
+  }catch(e){
+    res.innerHTML='<div style="padding:8px 12px;color:#f87171;font-size:12px">검색 오류: '+e.message+'</div>';
   }
 }
-function onCityChange(){
-  const v=document.getElementById('citySelect').value;
-  const ig=document.getElementById('cityInputGroup');
-  if(v==='직접 입력...'){ig.style.display='flex'; document.getElementById('cityInput').value='';}
-  else ig.style.display='none';
+
+function closeLocResults(){
+  document.getElementById('locResults').style.display='none';
 }
+
+function selectLocation(idx){
+  const item=_geoResults[idx];
+  const f=fmtNominatim(item);
+  currentLocation={
+    displayName:f.displayName,
+    lat:parseFloat(item.lat),
+    lon:parseFloat(item.lon),
+    country:f.country
+  };
+  document.getElementById('locationSearch').value='';
+  closeLocResults();
+  renderLocSelected();
+  renderFavRow();
+  saveLastLocation();
+}
+
+function renderLocSelected(){
+  const bar=document.getElementById('locInfoBar');
+  if(!currentLocation){bar.style.display='none';bar.innerHTML='';return;}
+  const isFav=favorites.some(function(f){return f.displayName===currentLocation.displayName;});
+  bar.style.display='flex';
+  bar.innerHTML='<span style="color:#FFC000;font-size:12px;font-weight:600">📍 '+currentLocation.displayName+'</span>'
+    +'<span style="color:#494949;font-size:11px">'+currentLocation.country+'</span>'
+    +'<button class="btn btn-gray" style="height:24px;padding:0 10px;font-size:11px;margin-left:auto" onclick="toggleFavorite()">'
+    +(isFav?'★ 관심지역 삭제':'☆ 관심지역 추가')
+    +'</button>';
+}
+
+function toggleFavorite(){
+  if(!currentLocation)return;
+  const idx=favorites.findIndex(function(f){return f.displayName===currentLocation.displayName;});
+  if(idx>=0) favorites.splice(idx,1);
+  else favorites.push(Object.assign({},currentLocation));
+  saveFavorites();
+  renderLocSelected();
+  renderFavRow();
+}
+
+function renderFavRow(){
+  const el=document.getElementById('favRow');
+  if(!favorites.length){el.style.display='none';el.innerHTML='';return;}
+  el.style.display='flex';
+  el.innerHTML='<span style="font-size:11px;color:#7D7D7D;white-space:nowrap;align-self:center">관심지역:</span>'
+    +favorites.map(function(f,idx){
+      const active=currentLocation&&currentLocation.displayName===f.displayName;
+      return'<span class="fav-tag'+(active?' fav-active':'')+'" onclick="selectFavorite('+idx+')">'
+        +'★ '+f.displayName
+        +'<span class="fav-del" onclick="event.stopPropagation();removeFavorite('+idx+')">×</span>'
+        +'</span>';
+    }).join('');
+}
+
+function selectFavorite(idx){
+  currentLocation=Object.assign({},favorites[idx]);
+  renderLocSelected();
+  renderFavRow();
+  saveLastLocation();
+}
+
+function removeFavorite(idx){
+  favorites.splice(idx,1);
+  saveFavorites();
+  renderFavRow();
+  renderLocSelected();
+}
+
+function getSelected(){
+  if(!currentLocation)return{city:null,country:null,coords:null};
+  return{city:currentLocation.displayName,country:currentLocation.country,coords:[currentLocation.lat,currentLocation.lon]};
+}
+
+/* ── AI 모드 ── */
 function onModeChange(){
   const mode=document.querySelector('input[name="aiMode"]:checked').value;
   const row=document.getElementById('apiRow');
@@ -361,18 +470,13 @@ function onModeChange(){
     desc.textContent='과거 N년 평균 + 기후 트렌드 보정으로 예측합니다';
     desc.style.color='#7D7D7D';
   }
+  saveSettings();
 }
 function onProviderChange(){
   const p=document.getElementById('apiProvider').value;
   document.getElementById('apiKeyInput').placeholder=p==='claude'?'sk-ant-api...':'AIza...';
   loadSavedApiKey();
-}
-function getSelected(){
-  const country=document.getElementById('countrySelect').value;
-  if(country==='기타 ✏️') return{country:document.getElementById('countryInput').value.trim()||'알 수 없음',city:document.getElementById('cityInput').value.trim()||'알 수 없음',coords:null};
-  let city=document.getElementById('citySelect').value;
-  if(city==='직접 입력...') city=document.getElementById('cityInput').value.trim();
-  return{country:country.replace(/\s[\uD83C][\uDDE6-\uDDFF]{2}/,'').trim(),city,coords:CITY_DATA[country]?.coords[city]||null};
+  saveSettings();
 }
 
 /* ── API 키 저장 ── */
@@ -389,13 +493,53 @@ function clearApiKey(){
   document.getElementById('apiKeyInput').value='';
   showSaveStatus('🗑️ 삭제됨','#b91c1c');
 }
+/* Gemini 자동 폴백 — 폐기·없는 모델은 건너뛰고 다음 시도 */
+const GEMINI_MODELS=['gemini-2.5-flash-lite','gemini-2.0-flash-001','gemini-2.5-flash'];
+function isModelUnavailable(msg){
+  return /not found|no longer available|deprecated|not available|does not exist|not supported/i.test(msg);
+}
+async function callGemini(apiKey,prompt){
+  let lastErr=new Error('사용 가능한 Gemini 모델이 없습니다');
+  for(const model of GEMINI_MODELS){
+    try{
+      const res=await fetch('https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent?key='+apiKey,{
+        method:'POST',headers:{'content-type':'application/json'},
+        body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:.3,maxOutputTokens:8192}})
+      });
+      const d=await res.json();
+      if(!res.ok){
+        const msg=(d.error&&d.error.message)||'HTTP '+res.status;
+        if(isModelUnavailable(msg)){lastErr=new Error('['+model+'] '+msg);continue;}
+        throw new Error(msg);
+      }
+      if(d.error){
+        if(isModelUnavailable(d.error.message)){lastErr=new Error(d.error.message);continue;}
+        throw new Error(d.error.message);
+      }
+      if(!d.candidates||!d.candidates.length) throw new Error('Gemini 응답 없음 (안전 필터 또는 할당량 초과)');
+      const cand=d.candidates[0];
+      if(!cand.content||!cand.content.parts||!cand.content.parts.length) throw new Error('Gemini 응답 내용 없음');
+      let txt=cand.content.parts[0].text;
+      if(cand.finishReason==='MAX_TOKENS'){
+        const s=txt.indexOf('['),lb=txt.lastIndexOf('}');
+        if(s!==-1&&lb!==-1) txt=txt.slice(s,lb+1)+']';
+        else throw new Error('응답이 잘렸습니다 (MAX_TOKENS). 기간을 줄여보세요.');
+      } else if(cand.finishReason&&cand.finishReason!=='STOP'){
+        throw new Error('응답 차단됨 ('+cand.finishReason+')');
+      }
+      return{text:txt,model:model};
+    }catch(e){
+      if(isModelUnavailable(e.message)){lastErr=e;continue;}
+      throw e;
+    }
+  }
+  throw lastErr;
+}
 function loadSavedApiKey(){
   const p=document.getElementById('apiProvider').value;
   const k=localStorage.getItem('apiKey_'+p);
-  if(k){
-    document.getElementById('apiKeyInput').value=k;
-    showSaveStatus('🔒 저장된 키 불러옴','#166534');
-  }
+  document.getElementById('apiKeyInput').value=k||'';
+  if(k) showSaveStatus('🔒 저장된 키 불러옴','#166534');
 }
 function showSaveStatus(msg,color){
   const el=document.getElementById('apiSaveStatus');
@@ -420,19 +564,6 @@ function setProgress(pct,label){
 }
 
 /* ── Open-Meteo API ── */
-const ARCHIVE='https://archive-api.open-meteo.com/v1/archive';
-const FORECAST='https://api.open-meteo.com/v1/forecast';
-const GEO='https://geocoding-api.open-meteo.com/v1/search';
-const DVARS='weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,relative_humidity_2m_mean';
-const HVARS='temperature_2m,relative_humidity_2m,precipitation,cloud_cover';
-
-async function geocode(city,country){
-  const r=await fetch(GEO+'?name='+encodeURIComponent(city+' '+country)+'&count=1&language=ko');
-  const d=await r.json();
-  if(d.results&&d.results.length) return[d.results[0].latitude,d.results[0].longitude];
-  throw new Error('"'+city+'" 위치를 찾을 수 없습니다');
-}
-
 async function fetchWeather(lat,lon,start,end){
   const today=todayStr();
   const archiveEnd=offsetDate(today,-6);
@@ -510,61 +641,61 @@ function rainBg(a){if(!a||a<1)return null;if(a<5)return'#0a1c33';if(a<15)return'
 
 function makeCellHtml(row,type){
   if(!row) return '<td class="cell-fail">—</td>';
-  var rb=rainBg(row.amount), dark=!!rb;
-  var bg=rb||(type==='official'?'#0d1b2a':type==='ai'?'#1a0d2e':'#181818');
-  var tc=dark?'color:#fff':'';
-  var amC=row.amCond||row.cond, pmC=row.pmCond||row.cond;
-  var arb=rainBg(row.amRain), prb=rainBg(row.pmRain);
-  var amStyle=arb?'background:'+arb+';border-radius:4px':'';
-  var pmStyle=prb?'background:'+prb+';border-radius:4px':'';
-  var aht=arb?'color:#a5f3fc':'', art=arb?'color:#bfdbfe':'';
-  var pht=prb?'color:#a5f3fc':'', prt=prb?'color:#bfdbfe':'';
-  var amRainHtml=(row.amRain&&row.amRain>0)?'<span class="slot-rain" style="'+art+'">🌧 '+row.amRain+'mm</span>':'';
-  var pmRainHtml=(row.pmRain&&row.pmRain>0)?'<span class="slot-rain" style="'+prt+'">🌧 '+row.pmRain+'mm</span>':'';
-  var confHtml='';
+  const rb=rainBg(row.amount),dark=!!rb;
+  const bg=rb||(type==='official'?'#0d1b2a':type==='ai'?'#1a0d2e':'#181818');
+  const tc=dark?'color:#fff':'';
+  const amC=row.amCond||row.cond,pmC=row.pmCond||row.cond;
+  const arb=rainBg(row.amRain),prb=rainBg(row.pmRain);
+  const amStyle=arb?'background:'+arb+';border-radius:4px':'';
+  const pmStyle=prb?'background:'+prb+';border-radius:4px':'';
+  const aht=arb?'color:#a5f3fc':'',art=arb?'color:#bfdbfe':'';
+  const pht=prb?'color:#a5f3fc':'',prt=prb?'color:#bfdbfe':'';
+  const amRainHtml=(row.amRain&&row.amRain>0)?'<span class="slot-rain" style="'+art+'">🌧 '+row.amRain+'mm</span>':'';
+  const pmRainHtml=(row.pmRain&&row.pmRain>0)?'<span class="slot-rain" style="'+prt+'">🌧 '+row.pmRain+'mm</span>':'';
+  let confHtml='';
   if(type==='ai'){
-    var cc=row.confidence>=85?'cb-h':row.confidence>=75?'cb-m':'cb-l';
+    const cc=row.confidence>=85?'cb-h':row.confidence>=75?'cb-m':'cb-l';
     confHtml='<br><span class="conf-badge '+cc+'">'+row.confidence+'% 신뢰</span><span class="reason">'+row.reasoning+'</span>';
   }
-  return '<td class="weather-cell" style="background:'+bg+';'+tc+'">'+
-    '<div class="ampm-wrap">'+
-      '<div class="slot slot-am" style="'+amStyle+'">'+
-        '<span class="slot-lbl">오전</span>'+
-        '<span class="slot-icon">'+slotIcon(amC)+'</span>'+
-        '<span class="slot-cond">'+amC+'</span>'+
-        '<span class="slot-hum" style="'+aht+'">💧'+(row.amHumidity||row.humidity)+'%</span>'+
-        amRainHtml+
-      '</div>'+
-      '<div class="slot-divider"></div>'+
-      '<div class="slot slot-pm" style="'+pmStyle+'">'+
-        '<span class="slot-lbl">오후</span>'+
-        '<span class="slot-icon">'+slotIcon(pmC)+'</span>'+
-        '<span class="slot-cond">'+pmC+'</span>'+
-        '<span class="slot-hum" style="'+pht+'">💧'+(row.pmHumidity||row.humidity)+'%</span>'+
-        pmRainHtml+
-      '</div>'+
-    '</div>'+
-    '<div class="temp-row">'+
-      '<span class="tmin" style="'+(dark?'color:#bfdbfe':'')+'">'+row.tempMin+'°</span>'+
-      '<span style="color:#494949;margin:0 2px">/</span>'+
-      '<span class="tmax" style="'+(dark?'color:#fecaca':'')+'">'+row.tempMax+'°</span>'+
-      '<span style="font-size:10px;color:'+(dark?'#e0e7ff':'#7D7D7D')+';margin-left:3px">'+row.prob+'%</span>'+
-    '</div>'+
-    '<div style="font-size:10px;color:'+(dark?'#e0e7ff':'#7D7D7D')+';text-align:center;margin-top:1px">'+
-      (row.amount>0?'<span style="color:'+(dark?'#bfdbfe':'#93c5fd')+';font-weight:600">🌧 '+row.amount+'mm</span> ':'')+
-      '💨'+row.wind+'m/s'+
-    '</div>'+
-    confHtml+
-  '</td>';
+  return'<td class="weather-cell" style="background:'+bg+';'+tc+'">'
+    +'<div class="ampm-wrap">'
+      +'<div class="slot slot-am" style="'+amStyle+'">'
+        +'<span class="slot-lbl">오전</span>'
+        +'<span class="slot-icon">'+slotIcon(amC)+'</span>'
+        +'<span class="slot-cond">'+amC+'</span>'
+        +'<span class="slot-hum" style="'+aht+'">💧'+(row.amHumidity||row.humidity)+'%</span>'
+        +amRainHtml
+      +'</div>'
+      +'<div class="slot-divider"></div>'
+      +'<div class="slot slot-pm" style="'+pmStyle+'">'
+        +'<span class="slot-lbl">오후</span>'
+        +'<span class="slot-icon">'+slotIcon(pmC)+'</span>'
+        +'<span class="slot-cond">'+pmC+'</span>'
+        +'<span class="slot-hum" style="'+pht+'">💧'+(row.pmHumidity||row.humidity)+'%</span>'
+        +pmRainHtml
+      +'</div>'
+    +'</div>'
+    +'<div class="temp-row">'
+      +'<span class="tmin" style="'+(dark?'color:#bfdbfe':'')+'">'+row.tempMin+'°</span>'
+      +'<span style="color:#494949;margin:0 2px">/</span>'
+      +'<span class="tmax" style="'+(dark?'color:#fecaca':'')+'">'+row.tempMax+'°</span>'
+      +'<span style="font-size:10px;color:'+(dark?'#e0e7ff':'#7D7D7D')+';margin-left:3px">'+row.prob+'%</span>'
+    +'</div>'
+    +'<div style="font-size:10px;color:'+(dark?'#e0e7ff':'#7D7D7D')+';text-align:center;margin-top:1px">'
+      +(row.amount>0?'<span style="color:'+(dark?'#bfdbfe':'#93c5fd')+';font-weight:600">🌧 '+row.amount+'mm</span> ':'')
+      +'💨'+row.wind+'m/s'
+    +'</div>'
+    +confHtml
+  +'</td>';
 }
 
 /* ── KPI ── */
 function updateKPI(rows,city,country,s,e,years){
-  var v=rows.filter(Boolean);
+  const v=rows.filter(Boolean);
   if(!v.length) return;
-  var sH=0,sL=0,rain=0,tot=0,sHum=0,sWind=0;
+  let sH=0,sL=0,rain=0,tot=0,sHum=0,sWind=0;
   v.forEach(function(r){sH+=r.tempMax;sL+=r.tempMin;if(r.amount>0){rain++;tot+=r.amount;}sHum+=r.humidity;sWind+=r.wind;});
-  var n=v.length;
+  const n=v.length;
   document.getElementById('kpiTitle').textContent='📍 '+city+', '+country+'  ·  '+s+' ~ '+e+'  ·  과거 '+years+'년 실제 데이터';
   document.getElementById('kpiGrid').innerHTML=[
     {l:'평균 최고기온',v:(sH/n).toFixed(1)+'°C'},
@@ -579,34 +710,31 @@ function updateKPI(rows,city,country,s,e,years){
 /* ── 통계 예측 ── */
 function calcStats(histMap,yearList,dates){
   return dates.map(function(dt,i){
-    var validRows=yearList.map(function(yr){return histMap[yr]&&histMap[yr][i]?histMap[yr][i]:null;}).filter(Boolean);
+    const validRows=yearList.map(function(yr){return histMap[yr]&&histMap[yr][i]?histMap[yr][i]:null;}).filter(Boolean);
     if(!validRows.length) return null;
-    var n=validRows.length;
-    var wSum=validRows.reduce(function(s,_,wi){return s+(wi+1);},0);
-    var wMean=function(fn){return validRows.reduce(function(s,r,wi){return s+fn(r)*(wi+1);},0)/wSum;};
-    var mean=function(fn){return validRows.reduce(function(s,r){return s+fn(r);},0)/n;};
-    var tempMax=Math.round(wMean(function(r){return r.tempMax;})+1.0);
-    var tempMin=Math.round(wMean(function(r){return r.tempMin;})+0.6);
-    var amount=+wMean(function(r){return r.amount;}).toFixed(1);
-    var prob=Math.round(wMean(function(r){return r.prob;}));
-    var humidity=Math.round(mean(function(r){return r.humidity;}));
-    var wind=+mean(function(r){return r.wind;}).toFixed(1);
-    var amTempMax=validRows.some(function(r){return r.amTempMax!=null;})?Math.round(wMean(function(r){return r.amTempMax!=null?r.amTempMax:r.tempMax;})+1.0):tempMax;
-    var pmTempMax=validRows.some(function(r){return r.pmTempMax!=null;})?Math.round(wMean(function(r){return r.pmTempMax!=null?r.pmTempMax:r.tempMax;})+1.0):tempMax;
-    var amHumidity=Math.round(mean(function(r){return r.amHumidity!=null?r.amHumidity:r.humidity;}));
-    var pmHumidity=Math.round(mean(function(r){return r.pmHumidity!=null?r.pmHumidity:r.humidity;}));
-    var amRain=+wMean(function(r){return r.amRain!=null?r.amRain:0;}).toFixed(1);
-    var pmRain=+wMean(function(r){return r.pmRain!=null?r.pmRain:0;}).toFixed(1);
-    var condCounts={};
+    const n=validRows.length;
+    const wSum=validRows.reduce(function(s,_,wi){return s+(wi+1);},0);
+    const wMean=function(fn){return validRows.reduce(function(s,r,wi){return s+fn(r)*(wi+1);},0)/wSum;};
+    const mean=function(fn){return validRows.reduce(function(s,r){return s+fn(r);},0)/n;};
+    const tempMax=Math.round(wMean(function(r){return r.tempMax;})+1.0);
+    const tempMin=Math.round(wMean(function(r){return r.tempMin;})+0.6);
+    const amount=+wMean(function(r){return r.amount;}).toFixed(1);
+    const prob=Math.round(wMean(function(r){return r.prob;}));
+    const humidity=Math.round(mean(function(r){return r.humidity;}));
+    const wind=+mean(function(r){return r.wind;}).toFixed(1);
+    const amTempMax=validRows.some(function(r){return r.amTempMax!=null;})?Math.round(wMean(function(r){return r.amTempMax!=null?r.amTempMax:r.tempMax;})+1.0):tempMax;
+    const pmTempMax=validRows.some(function(r){return r.pmTempMax!=null;})?Math.round(wMean(function(r){return r.pmTempMax!=null?r.pmTempMax:r.tempMax;})+1.0):tempMax;
+    const amHumidity=Math.round(mean(function(r){return r.amHumidity!=null?r.amHumidity:r.humidity;}));
+    const pmHumidity=Math.round(mean(function(r){return r.pmHumidity!=null?r.pmHumidity:r.humidity;}));
+    const amRain=+wMean(function(r){return r.amRain!=null?r.amRain:0;}).toFixed(1);
+    const pmRain=+wMean(function(r){return r.pmRain!=null?r.pmRain:0;}).toFixed(1);
+    const condCounts={};
     validRows.forEach(function(r){condCounts[r.cond]=(condCounts[r.cond]||0)+1;});
-    var cond=Object.entries(condCounts).sort(function(a,b){return b[1]-a[1];})[0][0];
+    const cond=Object.entries(condCounts).sort(function(a,b){return b[1]-a[1];})[0][0];
     return{
-      date:dt.toISOString().slice(0,10),
-      cond:cond,icon:slotIcon(cond),
-      tempMin:tempMin,tempMax:tempMax,
-      amTempMax:amTempMax,pmTempMax:pmTempMax,
-      amHumidity:amHumidity,pmHumidity:pmHumidity,
-      amRain:amRain,pmRain:pmRain,
+      date:dt.toISOString().slice(0,10),cond:cond,icon:slotIcon(cond),
+      tempMin:tempMin,tempMax:tempMax,amTempMax:amTempMax,pmTempMax:pmTempMax,
+      amHumidity:amHumidity,pmHumidity:pmHumidity,amRain:amRain,pmRain:pmRain,
       amCond:slotCond(amRain,50),pmCond:slotCond(pmRain,50),
       amount:amount,prob:prob,humidity:humidity,wind:wind,
       confidence:72,reasoning:'과거 '+n+'년 가중평균 + 온난화 보정 (+1.0°C/+0.6°C)',
@@ -617,11 +745,11 @@ function calcStats(histMap,yearList,dates){
 /* ── 차트 ── */
 function renderCharts(yearList,histMap,offRows,dates){
   document.getElementById('chartPanel').style.display='block';
-  var labels=dates.map(function(d){return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');});
-  var tDs=[],rDs=[],tLeg=[],rLeg=[];
+  const labels=dates.map(function(d){return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');});
+  const tDs=[],rDs=[],tLeg=[],rLeg=[];
   yearList.forEach(function(yr,idx){
-    var rows=histMap[yr]||[];
-    var p=PALETTE[idx%PALETTE.length];
+    const rows=histMap[yr]||[];
+    const p=PALETTE[idx%PALETTE.length];
     tDs.push({label:yr+'년 오전',data:rows.map(function(r){return r?r.amTempMax||r.tempMax:null;}),borderColor:p.max,borderWidth:1.5,pointRadius:0,tension:.3,fill:false});
     tDs.push({label:yr+'년 오후',data:rows.map(function(r){return r?r.pmTempMax||r.tempMax:null;}),borderColor:p.pm,borderWidth:1.5,pointRadius:0,tension:.3,fill:false,borderDash:[3,3]});
     rDs.push({label:yr+'년',data:rows.map(function(r){return r?r.amount:0;}),backgroundColor:p.rain,borderRadius:2,borderSkipped:false});
@@ -640,84 +768,70 @@ function renderCharts(yearList,histMap,offRows,dates){
   document.getElementById('rainLegend').innerHTML=rLeg.map(function(it){
     return'<div class="cl-item"><span class="cl-dot" style="background:'+it.color+';height:10px;border-radius:2px"></span><span>'+it.label+'</span></div>';
   }).join('');
-  var opts=function(yFmt){return{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:14,color:'#7D7D7D'},grid:{color:'#202020'}},y:{ticks:{font:{size:10},callback:function(v){return v+yFmt;},color:'#7D7D7D'},grid:{color:'#202020'},beginAtZero:yFmt==='mm'}}};};
+  const opts=function(yFmt){return{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:14,color:'#7D7D7D'},grid:{color:'#202020'}},y:{ticks:{font:{size:10},callback:function(v){return v+yFmt;},color:'#7D7D7D'},grid:{color:'#202020'},beginAtZero:yFmt==='mm'}}};};
   if(tempChart) tempChart.destroy();
   tempChart=new Chart(document.getElementById('tempChart'),{type:'line',data:{labels:labels,datasets:tDs},options:opts('°')});
   if(rainChart) rainChart.destroy();
   rainChart=new Chart(document.getElementById('rainChart'),{type:'bar',data:{labels:labels,datasets:rDs},options:opts('mm')});
 }
 
-/* JSON 추출 — 모델이 부가 텍스트를 붙여도 배열만 꺼냄 */
 function extractJson(txt){
   txt=txt.replace(/```json|```/g,'').trim();
-  var start=txt.indexOf('[');
-  var end=txt.lastIndexOf(']');
+  const start=txt.indexOf('['),end=txt.lastIndexOf(']');
   if(start!==-1&&end!==-1&&end>start) return txt.slice(start,end+1);
   return txt;
 }
 
 /* ── 메인 조회 ── */
 async function applyFilter(){
-  var sel=getSelected();
-  var city=sel.city, country=sel.country, coords=sel.coords;
-  if(!city){alert('도시를 선택하거나 입력해 주세요.');return;}
-  var s=document.getElementById('dateStart').value;
-  var e=document.getElementById('dateEnd').value;
+  const sel=getSelected();
+  const city=sel.city,country=sel.country,coords=sel.coords;
+  if(!city){alert('지역을 검색하고 선택해 주세요.');return;}
+  const s=document.getElementById('dateStart').value;
+  const e=document.getElementById('dateEnd').value;
   if(!s||!e||s>e){alert('날짜 범위를 확인해 주세요.');return;}
-  var years=parseInt(document.getElementById('yearSlider').value);
-  var btn=document.getElementById('applyBtn');
+  const years=parseInt(document.getElementById('yearSlider').value);
+  const btn=document.getElementById('applyBtn');
   btn.disabled=true; btn.textContent='조회 중...';
   document.getElementById('matrixHead').innerHTML='';
   document.getElementById('matrixBody').innerHTML='';
   document.getElementById('chartPanel').style.display='none';
+  saveLastLocation(); saveSettings();
 
-  var key=country+' '+city;
-  recentSearches=[key].concat(recentSearches.filter(function(x){return x!==key;})).slice(0,5);
-  renderRecent();
+  const lat=coords[0],lon=coords[1];
+  const dates=getDates(s,e);
+  const startYear=new Date(s).getFullYear();
+  const yearList=[];
+  for(let i=0;i<years;i++) yearList.push(startYear-years+i);
 
-  var lat,lon;
-  try{
-    setStatus('좌표 확인 중...'); setProgress(3,'');
-    if(coords){lat=coords[0];lon=coords[1];}
-    else{var gc=await geocode(city,country);lat=gc[0];lon=gc[1];}
-  }catch(err){
-    setStatus(err.message,'err'); setProgress(-1);
-    btn.disabled=false; btn.textContent='조회'; return;
-  }
-
-  var dates=getDates(s,e);
-  var startYear=new Date(s).getFullYear();
-  var yearList=[];
-  for(var i=0;i<years;i++) yearList.push(startYear-years+i);
-
-  document.getElementById('matrixHead').innerHTML='<tr>'+
-    '<th rowspan="2" class="ch-h" style="min-width:72px">날짜</th>'+
-    '<th colspan="'+years+'" class="ch-h"><span class="sbadge sb-h">과거 실측 '+yearList[0]+'–'+yearList[years-1]+'</span></th>'+
-    '<th class="ch-o"><span class="sbadge sb-o">🔵 공식 예보</span></th>'+
-    '<th class="ch-a"><span class="sbadge sb-a">🟣 AI 예측</span></th>'+
-    '</tr><tr>'+
-    yearList.map(function(y){return'<th class="ch-h" style="min-width:130px">'+y+'년</th>';}).join('')+
-    '<th class="ch-o" style="min-width:140px">Open-Meteo</th>'+
-    '<th class="ch-a" style="min-width:150px">'+
-      (document.querySelector('input[name="aiMode"]:checked').value==='stats'?'통계 예측':'AI API')+
-    '</th></tr>';
+  document.getElementById('matrixHead').innerHTML='<tr>'
+    +'<th rowspan="2" class="ch-h" style="min-width:72px">날짜</th>'
+    +'<th colspan="'+years+'" class="ch-h"><span class="sbadge sb-h">과거 실측 '+yearList[0]+'–'+yearList[years-1]+'</span></th>'
+    +'<th class="ch-o"><span class="sbadge sb-o">🔵 공식 예보</span></th>'
+    +'<th class="ch-a"><span class="sbadge sb-a">🟣 AI 예측</span></th>'
+    +'</tr><tr>'
+    +yearList.map(function(y){return'<th class="ch-h" style="min-width:130px">'+y+'년</th>';}).join('')
+    +'<th class="ch-o" style="min-width:140px">Open-Meteo</th>'
+    +'<th class="ch-a" style="min-width:150px">'
+    +(document.querySelector('input[name="aiMode"]:checked').value==='stats'?'통계 예측':'AI API')
+    +'</th></tr>';
 
   setStatus('과거 '+years+'년 실측 데이터 수집 중...');
-  var done=0, histMap={};
+  let done=0; const histMap={};
   await Promise.all(yearList.map(async function(yr){
-    var ys=s.replace(/^\d{4}/,String(yr));
-    var ye=e.replace(/^\d{4}/,String(yr));
+    const ys=s.replace(/^\d{4}/,String(yr));
+    const ye=e.replace(/^\d{4}/,String(yr));
     try{histMap[yr]=await fetchWeather(lat,lon,ys,ye);}
-    catch(e){histMap[yr]=null;}
+    catch(err){histMap[yr]=null;}
     done++;
     setProgress(Math.round(done/yearList.length*75),'실측 수집 '+done+'/'+yearList.length+'년');
   }));
 
   setStatus('공식 예보 수집 중...'); setProgress(82,'');
-  var offRows=[];
-  var forecastMax=offsetDate(todayStr(),15);
-  var offEnd=e<=forecastMax?e:forecastMax;
-  var offOutOfRange=s>forecastMax;
+  let offRows=[];
+  const forecastMax=offsetDate(todayStr(),15);
+  const offEnd=e<=forecastMax?e:forecastMax;
+  const offOutOfRange=s>forecastMax;
   if(!offOutOfRange){
     try{offRows=await fetchWeather(lat,lon,s,offEnd);}
     catch(err){setStatus('예보 실패: '+err.message,'err');}
@@ -725,94 +839,88 @@ async function applyFilter(){
 
   setProgress(95,'렌더링 중...');
   document.getElementById('matrixBody').innerHTML=dates.map(function(dt,i){
-    var mm=String(dt.getMonth()+1).padStart(2,'0'), dd=String(dt.getDate()).padStart(2,'0');
-    var wknd=dt.getDay()===0||dt.getDay()===6;
-    var histCells=yearList.map(function(yr){
-      var rows=histMap[yr];
+    const mm=String(dt.getMonth()+1).padStart(2,'0'),dd=String(dt.getDate()).padStart(2,'0');
+    const wknd=dt.getDay()===0||dt.getDay()===6;
+    const histCells=yearList.map(function(yr){
+      const rows=histMap[yr];
       if(!rows) return'<td class="cell-fail">'+yr+'년 실패</td>';
       return makeCellHtml(rows[i]||null,'hist');
     }).join('');
-          var offCell;
-      if(offOutOfRange){
-        offCell='<td class="cell-ai-wait" style="font-size:10px;color:#7D7D7D">예보 범위<br>초과</td>';
-      } else if(offRows.length && offRows[i]){
-        offCell=makeCellHtml(offRows[i],'official');
-      } else {
-        offCell='<td class="cell-fail">예보 없음</td>';
-      }
-    return'<tr>'+
-      '<td style="background:#000;position:sticky;left:0;z-index:5;vertical-align:middle">'+
-        '<span style="font-size:12px;font-weight:600;color:'+(wknd?'#f87171':'#fff')+'">'+mm+'/'+dd+'</span><br>'+
-        '<span style="font-size:10px;color:#7D7D7D">'+DAYS[dt.getDay()]+'요일</span>'+
-      '</td>'+
-      histCells+offCell+
-      '<td class="cell-ai-wait" id="ai-'+i+'"><span class="spinner" style="border-top-color:#7c3aed;border-color:#ede9fe"></span></td>'+
-    '</tr>';
+    let offCell;
+    if(offOutOfRange){
+      offCell='<td class="cell-ai-wait" style="font-size:10px;color:#7D7D7D">예보 범위<br>초과</td>';
+    } else if(offRows.length&&offRows[i]){
+      offCell=makeCellHtml(offRows[i],'official');
+    } else {
+      offCell='<td class="cell-fail">예보 없음</td>';
+    }
+    return'<tr>'
+      +'<td style="background:#000;position:sticky;left:0;z-index:5;vertical-align:middle">'
+        +'<span style="font-size:12px;font-weight:600;color:'+(wknd?'#f87171':'#fff')+'">'+mm+'/'+dd+'</span><br>'
+        +'<span style="font-size:10px;color:#7D7D7D">'+DAYS[dt.getDay()]+'요일</span>'
+      +'</td>'
+      +histCells+offCell
+      +'<td class="cell-ai-wait" id="ai-'+i+'"><span class="spinner" style="border-top-color:#7c3aed;border-color:#ede9fe"></span></td>'
+    +'</tr>';
   }).join('');
 
   if(offRows.length) updateKPI(offRows,city,country,s,e,years);
   renderCharts(yearList,histMap,offRows,dates);
 
-  /* AI 예측 */
-  var mode=document.querySelector('input[name="aiMode"]:checked').value;
+  const mode=document.querySelector('input[name="aiMode"]:checked').value;
   if(mode==='stats'){
     setStatus('통계 기반 예측 계산 중...');
-    var statsRows=calcStats(histMap,yearList,dates);
+    const statsRows=calcStats(histMap,yearList,dates);
     statsRows.forEach(function(r,i){
-      var cell=document.getElementById('ai-'+i);
+      const cell=document.getElementById('ai-'+i);
       if(cell) cell.outerHTML=r?makeCellHtml(r,'ai'):'<td class="cell-fail">예측 불가</td>';
     });
   } else {
-    var API_KEY=document.getElementById('apiKeyInput').value.trim();
-    var provider=document.getElementById('apiProvider').value;
+    const API_KEY=document.getElementById('apiKeyInput').value.trim();
+    const provider=document.getElementById('apiProvider').value;
     if(API_KEY){
       setStatus((provider==='gemini'?'Gemini':'Claude')+' AI 예측 생성 중...');
       try{
-        var offSum=offRows.filter(Boolean).map(function(r){
+        const offSum=offRows.filter(Boolean).map(function(r){
           return r.date+': '+r.cond+' 최저'+r.tempMin+'°최고'+r.tempMax+'° 강수'+r.prob+'% '+r.amount+'mm 습도'+r.humidity+'%';
         }).join('\n');
-        var prompt='You are a weather prediction API. Respond ONLY with a JSON array. No explanations, no text, no markdown, no code blocks. Just the raw JSON array.\n\n'+
-'City: '+city+', '+country+'\n'+
-'Predict dates: '+dates.map(function(d){return d.toISOString().slice(0,10);}).join(', ')+'\n'+
-'Official forecast reference:\n'+offSum+'\n\n'+
-'Output format (JSON array only, nothing else):\n'+
-'[{"date":"YYYY-MM-DD","cond":"날씨명","icon":"이모지","tempMin":숫자,"tempMax":숫자,"amTempMax":숫자,"pmTempMax":숫자,"amCond":"날씨명","pmCond":"날씨명","amHumidity":숫자,"pmHumidity":숫자,"amRain":숫자,"pmRain":숫자,"amount":숫자,"prob":숫자,"humidity":숫자,"wind":숫자,"confidence":숫자,"reasoning":"한문장"}]\n'+
-'cond values: 맑음/구름조금/구름많음/흐림/비/소나기/눈/안개\n'+
-'confidence: integer 70-95\n'+
-'IMPORTANT: Return ONLY the JSON array. Start your response with [ and end with ].';
-        var rawTxt;
+        const prompt='You are a weather prediction API. Respond ONLY with a JSON array. No explanations, no text, no markdown, no code blocks. Just the raw JSON array.\n\n'
++'City: '+city+', '+country+'\n'
++'Predict dates: '+dates.map(function(d){return d.toISOString().slice(0,10);}).join(', ')+'\n'
++'Official forecast reference:\n'+offSum+'\n\n'
++'Output format (JSON array only, nothing else):\n'
++'[{"date":"YYYY-MM-DD","cond":"날씨명","icon":"이모지","tempMin":숫자,"tempMax":숫자,"amTempMax":숫자,"pmTempMax":숫자,"amCond":"날씨명","pmCond":"날씨명","amHumidity":숫자,"pmHumidity":숫자,"amRain":숫자,"pmRain":숫자,"amount":숫자,"prob":숫자,"humidity":숫자,"wind":숫자,"confidence":숫자,"reasoning":"한문장"}]\n'
++'cond values: 맑음/구름조금/구름많음/흐림/비/소나기/눈/안개\nconfidence: integer 70-95\n'
++'IMPORTANT: Return ONLY the JSON array. Start your response with [ and end with ].';
+        let rawTxt;
         if(provider==='gemini'){
-          var gRes=await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+API_KEY,{
-            method:'POST',headers:{'content-type':'application/json'},
-            body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{temperature:.3,maxOutputTokens:2000}})
-          });
-          var gData=await gRes.json();
-          if(gData.error) throw new Error(gData.error.message);
-          rawTxt=gData.candidates[0].content.parts[0].text;
+          const result=await callGemini(API_KEY,prompt);
+          rawTxt=result.text;
+          setStatus('Gemini AI 예측 완료 ('+result.model+')','ok');
         } else {
-          var cRes=await fetch('https://api.anthropic.com/v1/messages',{
+          const cRes=await fetch('https://api.anthropic.com/v1/messages',{
             method:'POST',
             headers:{'content-type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
             body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:2000,messages:[{role:'user',content:prompt}]})
           });
-          var cData=await cRes.json();
+          const cData=await cRes.json();
           if(cData.error) throw new Error(cData.error.message);
           rawTxt=cData.content.find(function(b){return b.type==='text';}).text;
         }
-        var aiRows=JSON.parse(extractJson(rawTxt));
+        const aiRows=JSON.parse(extractJson(rawTxt));
         aiRows.forEach(function(r,i){
-          var cell=document.getElementById('ai-'+i);
+          const cell=document.getElementById('ai-'+i);
           if(cell) cell.outerHTML=makeCellHtml(r,'ai');
         });
       }catch(err){
         dates.forEach(function(_,i){
-          var cell=document.getElementById('ai-'+i);
-          if(cell) cell.innerHTML='<span style="font-size:11px;color:#f87171">오류: '+err.message.slice(0,40)+'</span>';
+          const cell=document.getElementById('ai-'+i);
+          if(cell) cell.innerHTML='<span style="font-size:10px;color:#f87171;white-space:normal;line-height:1.4">오류: '+err.message+'</span>';
         });
       }
     } else {
       dates.forEach(function(_,i){
-        var cell=document.getElementById('ai-'+i);
+        const cell=document.getElementById('ai-'+i);
         if(cell) cell.innerHTML='<span style="font-size:11px;color:#c7c7cc">API 키 필요</span>';
       });
     }
@@ -822,20 +930,6 @@ async function applyFilter(){
   setProgress(-1);
   btn.disabled=false; btn.textContent='조회';
   setTimeout(function(){setStatus('');},4000);
-}
-
-function renderRecent(){
-  var el=document.getElementById('recentRow');
-  if(!recentSearches.length){el.innerHTML='';return;}
-  el.innerHTML='<span style="font-size:11px;color:#7D7D7D">최근:</span>'+
-    recentSearches.map(function(r){return'<span class="rtag" onclick="loadRecent(\''+r+'\')">'+r+'</span>';}).join('');
-}
-function loadRecent(key){
-  var p=key.trim().split(/\s+/);
-  document.getElementById('cityInput').value=p[p.length-1];
-  document.getElementById('cityInputGroup').style.display='flex';
-  document.getElementById('citySelectGroup').style.display='none';
-  applyFilter();
 }
 </script>
 </body>
