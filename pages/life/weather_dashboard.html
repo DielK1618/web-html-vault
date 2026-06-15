@@ -23,6 +23,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;font-si
 .query-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-top:10px;margin-top:8px;border-top:1px solid #313131}
 .query-bar .btn-primary{margin-left:auto;flex-shrink:0;height:34px;padding:0 20px;font-size:12px;white-space:nowrap}
 .qchip-empty{background:#181818;border-color:#313131;color:#494949}
+.qchip-mode{background:#1a0d2e;border-color:#4c1d95;color:#c4b5fd}
 .query-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center;min-height:26px}
 .qchip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;font-size:12px;font-weight:500;border:1px solid #313131;white-space:nowrap}
 .qchip-loc{background:#1a1400;border-color:#4a3800;color:#FFC000}
@@ -214,6 +215,7 @@ thead th:first-child{z-index:20;background:#181818}
     <span class="qchip qchip-empty" id="qcLoc">📍 지역 미선택</span>
     <span class="qchip qchip-date" id="qcDate">📅 —</span>
     <span class="qchip qchip-years" id="qcYears">📊 과거 5년</span>
+    <span class="qchip qchip-mode" id="qcMode">📊 통계</span>
     <button class="btn btn-primary" id="applyBtn" onclick="applyFilter()">조회</button>
   </div>
 </div>
@@ -225,7 +227,6 @@ thead th:first-child{z-index:20;background:#181818}
 </div>
 
 <div class="kpi-bar">
-  <div class="query-chips" id="kpiTitle"><span style="font-size:13px;color:#7D7D7D">지역을 검색하고 조회하세요</span></div>
   <div class="kpi-grid" id="kpiGrid">
     <div class="kc"><div class="kc-label">평균 최고기온</div><div class="kc-val">—</div></div>
     <div class="kc"><div class="kc-label">평균 최저기온</div><div class="kc-val">—</div></div>
@@ -497,6 +498,11 @@ function updateQueryBar(){
   }
   document.getElementById('qcDate').textContent='📅 '+fmt(s)+'~'+fmt(e);
   document.getElementById('qcYears').textContent='📊 과거 '+y;
+  const modeEl=document.getElementById('qcMode');
+  if(modeEl){
+    const isApi=document.querySelector('input[name="aiMode"]:checked')&&document.querySelector('input[name="aiMode"]:checked').value==='api';
+    modeEl.textContent=isApi?'🤖 AI':'📊 통계';
+  }
 }
 function collapseFilter(){
   const c=document.getElementById('filterContent');
@@ -529,6 +535,7 @@ function onModeChange(){
     desc.style.color='#7D7D7D';
   }
   saveSettings();
+  updateQueryBar();
 }
 function onProviderChange(){
   const p=document.getElementById('apiProvider').value;
@@ -754,10 +761,6 @@ function updateKPI(rows,city,country,s,e,years){
   let sH=0,sL=0,rain=0,tot=0,sHum=0,sWind=0;
   v.forEach(function(r){sH+=r.tempMax;sL+=r.tempMin;if(r.amount>0){rain++;tot+=r.amount;}sHum+=r.humidity;sWind+=r.wind;});
   const n=v.length;
-  document.getElementById('kpiTitle').innerHTML=
-    '<span class="qchip qchip-loc">📍 '+city+'</span>'+
-    '<span class="qchip qchip-date">📅 '+s.slice(5).replace('-','.')+'&nbsp;~&nbsp;'+e.slice(5).replace('-','.')+'</span>'+
-    '<span class="qchip qchip-years">📊 과거 '+years+'년</span>';
   document.getElementById('kpiGrid').innerHTML=[
     {l:'평균 최고기온',v:(sH/n).toFixed(1)+'°C'},
     {l:'평균 최저기온',v:(sL/n).toFixed(1)+'°C'},
