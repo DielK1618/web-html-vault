@@ -15,10 +15,18 @@ body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;font-si
 .filter-panel{background:#181818;border-bottom:1px solid #313131;padding:14px 20px;position:sticky;top:44px;z-index:100}
 .ver-badge{position:absolute;top:10px;right:14px;font-size:10px;font-weight:600;color:#7D7D7D;background:#202020;border:1px solid #313131;border-radius:0;padding:2px 7px}
 .filter-summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:8px;user-select:none;-webkit-user-select:none;min-height:20px}
-.filter-summary:hover .f-toggle{color:#FFC000}
+.filter-summary:hover .f-hamburger{border-color:#FFC000;color:#FFC000}
 .f-title{font-size:12px;font-weight:600;color:#7D7D7D;letter-spacing:.08em;text-transform:uppercase}
 .f-detail{font-size:12px;color:#fff;display:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
-.f-toggle{font-size:10px;color:#7D7D7D;transition:color .15s;flex-shrink:0;letter-spacing:.05em}
+.f-hamburger{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #313131;color:#7D7D7D;flex-shrink:0;transition:border-color .15s,color .15s;font-size:15px;line-height:1;background:none;cursor:pointer;padding:0;font-family:inherit}
+.f-hamburger.open{border-color:#FFC000;color:#FFC000}
+.apply-row{padding-top:12px;margin-top:4px;border-top:1px solid #313131}
+.apply-row button{width:100%;height:40px;font-size:13px}
+.query-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center;min-height:26px}
+.qchip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;font-size:12px;font-weight:500;border:1px solid #313131;white-space:nowrap}
+.qchip-loc{background:#1a1400;border-color:#4a3800;color:#FFC000}
+.qchip-date{background:#0f172a;border-color:#1e3a5f;color:#93c5fd}
+.qchip-years{background:#052e16;border-color:#14532d;color:#4ade80}
 .filter-content{overflow:hidden;max-height:800px;transition:max-height .35s cubic-bezier(.4,0,.2,1);padding-top:10px}
 .filter-content.collapsed{max-height:0;transition:max-height .25s cubic-bezier(.4,0,.2,1)}
 .filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
@@ -144,7 +152,7 @@ thead th:first-child{z-index:20;background:#181818}
   <div class="filter-summary" id="filterSummary" onclick="toggleFilter()">
     <span class="f-title" id="fTitle">날씨 조회 설정</span>
     <span class="f-detail" id="fDetail"></span>
-    <span class="f-toggle" id="fToggle">▲ 접기</span>
+    <button class="f-hamburger open" id="fToggle">✕</button>
   </div>
   <div class="filter-content" id="filterContent">
   <div class="filter-row">
@@ -174,9 +182,6 @@ thead th:first-child{z-index:20;background:#181818}
         <span class="sval" id="yearVal">5년</span>
       </div>
     </div>
-    <div class="fg" style="align-self:flex-end">
-      <button class="btn btn-primary" id="applyBtn" onclick="applyFilter()">조회</button>
-    </div>
   </div>
 
   <div id="locInfoBar"></div>
@@ -204,6 +209,9 @@ thead th:first-child{z-index:20;background:#181818}
     <button class="btn btn-gray" onclick="clearApiKey()">🗑️ 삭제</button>
     <span id="apiSaveStatus" style="font-size:11px;color:#7D7D7D"></span>
   </div>
+  <div class="apply-row">
+    <button class="btn btn-primary" id="applyBtn" onclick="applyFilter()">조회</button>
+  </div>
   </div><!-- /filter-content -->
 </div>
 
@@ -214,7 +222,7 @@ thead th:first-child{z-index:20;background:#181818}
 </div>
 
 <div class="kpi-bar">
-  <div class="kpi-title" id="kpiTitle">지역을 검색하고 조회하세요</div>
+  <div class="query-chips" id="kpiTitle"><span style="font-size:13px;color:#7D7D7D">지역을 검색하고 조회하세요</span></div>
   <div class="kpi-grid" id="kpiGrid">
     <div class="kc"><div class="kc-label">평균 최고기온</div><div class="kc-val">—</div></div>
     <div class="kc"><div class="kc-label">평균 최저기온</div><div class="kc-val">—</div></div>
@@ -482,7 +490,7 @@ function collapseFilter(){
   c.classList.add('collapsed');
   document.getElementById('fTitle').style.display='none';
   document.getElementById('fDetail').style.display='';
-  document.getElementById('fToggle').textContent='▼ 설정';
+  const t=document.getElementById('fToggle');t.textContent='☰';t.classList.remove('open');
 }
 function toggleFilter(){
   const c=document.getElementById('filterContent');
@@ -490,7 +498,7 @@ function toggleFilter(){
     c.classList.remove('collapsed');
     document.getElementById('fTitle').style.display='';
     document.getElementById('fDetail').style.display='none';
-    document.getElementById('fToggle').textContent='▲ 접기';
+    const t=document.getElementById('fToggle');t.textContent='✕';t.classList.add('open');
   } else {
     collapseFilter();
   }
@@ -736,7 +744,10 @@ function updateKPI(rows,city,country,s,e,years){
   let sH=0,sL=0,rain=0,tot=0,sHum=0,sWind=0;
   v.forEach(function(r){sH+=r.tempMax;sL+=r.tempMin;if(r.amount>0){rain++;tot+=r.amount;}sHum+=r.humidity;sWind+=r.wind;});
   const n=v.length;
-  document.getElementById('kpiTitle').textContent='📍 '+city+', '+country+'  ·  '+s+' ~ '+e+'  ·  과거 '+years+'년 실제 데이터';
+  document.getElementById('kpiTitle').innerHTML=
+    '<span class="qchip qchip-loc">📍 '+city+'</span>'+
+    '<span class="qchip qchip-date">📅 '+s.slice(5).replace('-','.')+'&nbsp;~&nbsp;'+e.slice(5).replace('-','.')+'</span>'+
+    '<span class="qchip qchip-years">📊 과거 '+years+'년</span>';
   document.getElementById('kpiGrid').innerHTML=[
     {l:'평균 최고기온',v:(sH/n).toFixed(1)+'°C'},
     {l:'평균 최저기온',v:(sL/n).toFixed(1)+'°C'},
