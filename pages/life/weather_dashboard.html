@@ -157,7 +157,7 @@ thead th:first-child{z-index:20;background:#181818}
   <div class="filter-summary" id="filterSummary" onclick="toggleFilter()">
     <button class="f-hamburger open" id="fToggle">✕</button>
     <span class="f-title">날씨 조회 설정</span>
-    <span class="ver-badge">v6.3</span>
+    <span class="ver-badge">v6.4</span>
   </div>
   <div class="filter-content" id="filterContent">
   <div class="filter-row">
@@ -295,7 +295,7 @@ const HVARS='temperature_2m,relative_humidity_2m,precipitation,cloud_cover';
 
 let tempChart=null,rainChart=null;
 let _tColors=[],_tWidths=[],_rColors=[];
-let _activeItems=new Set();
+let _activeItems=new Set(),_allItems=new Set();
 let currentLocation=null;
 let favorites=[];
 let _geoResults=[];
@@ -819,42 +819,49 @@ function withAlpha(c,a){
   return'rgba('+r+','+g+','+b+','+a+')';
 }
 function toggleItem(key){
-  if(_activeItems.has(key))_activeItems.delete(key);
-  else _activeItems.add(key);
+  if(_activeItems.size===_allItems.size){
+    _activeItems=new Set([key]);
+  } else if(_activeItems.size===1&&_activeItems.has(key)){
+    _activeItems=new Set(_allItems);
+  } else {
+    if(_activeItems.has(key))_activeItems.delete(key);
+    else _activeItems.add(key);
+  }
   applySelection();
 }
 function applySelection(){
   if(!tempChart||!rainChart)return;
+  const allOn=_activeItems.size===_allItems.size;
   tempChart.data.datasets.forEach(function(ds,i){
     const key=ds._yr!==null?ds._yr:'forecast';
-    const on=_activeItems.has(key);
+    const on=allOn||_activeItems.has(key);
     ds.borderColor=on?_tColors[i]:withAlpha(_tColors[i],.08);
     ds.borderWidth=on?_tWidths[i]:.5;
     ds.backgroundColor=on?(ds._bodyBg||withAlpha(_tColors[i],.45)):withAlpha(_tColors[i],.04);
   });
   rainChart.data.datasets.forEach(function(ds,i){
     const key=ds._yr!==null?ds._yr:'forecast';
-    const on=_activeItems.has(key);
+    const on=allOn||_activeItems.has(key);
     ds.backgroundColor=on?_rColors[i]:withAlpha(_rColors[i],.08);
   });
-  tempChart.update('none');rainChart.update('none');
+  tempChart.update();rainChart.update();
   document.querySelectorAll('[data-yr]').forEach(function(el){
     const k=el.dataset.yr==='forecast'?'forecast':parseInt(el.dataset.yr);
-    el.classList.toggle('sel-off',!_activeItems.has(k));
+    el.classList.toggle('sel-off',allOn?false:!_activeItems.has(k));
   });
 }
 function renderCharts(yearList,histMap,offRows,dates){
   document.getElementById('chartPanel').style.display='block';
   _tColors=[];_tWidths=[];_rColors=[];
-  _activeItems=new Set();
+  _activeItems=new Set();_allItems=new Set();
   const labels=dates.map(function(d){return String(d.getMonth()+1).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');});
   const tDs=[],rDs=[],tLeg=[],rLeg=[];
   yearList.forEach(function(yr,idx){
     const rows=histMap[yr]||[];
     const p=PALETTE[idx%PALETTE.length];
     const bg=withAlpha(p.max,.45);
-    _activeItems.add(yr);
-    tDs.push({label:yr+'년',type:'bar',
+    _activeItems.add(yr);_allItems.add(yr);
+    tDs.push({label:yr+'년',
       data:rows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
       backgroundColor:bg,_bodyBg:bg,borderColor:p.max,borderWidth:1.5,
       borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:yr});
@@ -866,8 +873,8 @@ function renderCharts(yearList,histMap,offRows,dates){
   });
   if(offRows.length){
     const bg=withAlpha(OFF.max,.55);
-    _activeItems.add('forecast');
-    tDs.push({label:'예보',type:'bar',
+    _activeItems.add('forecast');_allItems.add('forecast');
+    tDs.push({label:'예보',
       data:offRows.map(function(r){return r?[r.tempMin,r.tempMax]:null;}),
       backgroundColor:bg,_bodyBg:bg,borderColor:OFF.max,borderWidth:2,
       borderSkipped:false,borderRadius:1,barPercentage:.6,categoryPercentage:.85,_yr:null});
