@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사도 바울의 전도여행 대화형 대시보드</title>
+    <title>?щ룄 諛붿슱???꾨룄?ы뻾 ??뷀삎 ??쒕낫??/title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -55,9 +55,9 @@
 
     <!-- Vault Navbar -->
     <nav class="vault-nav">
-        <a class="vault-logo" href="https://dielk1618.github.io/html-vault/index.html">HTML <span>VAULT</span></a>
+        <a class="vault-logo" href="https://dielk1618.github.io/web-html-vault/index.html">HTML <span>VAULT</span></a>
         <div class="vault-nav-btns">
-            <a class="vbtn" href="https://dielk1618.github.io/html-vault/index.html">HOME</a>
+            <a class="vbtn" href="https://dielk1618.github.io/web-html-vault/index.html">HOME</a>
             <div class="vsep"></div>
             <button class="vbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
             <div class="vsep"></div>
@@ -65,7 +65,7 @@
         </div>
     </nav>
 
-    <!-- Map Container — fills all remaining height -->
+    <!-- Map Container ??fills all remaining height -->
     <div class="flex-1 relative overflow-hidden">
 
         <!-- Leaflet Map -->
@@ -74,53 +74,53 @@
         <!-- Drawer Backdrop -->
         <div id="drawer-backdrop" onclick="closeDrawer()" class="absolute inset-0 z-[100] opacity-0 pointer-events-none"></div>
 
-        <!-- ── Top Control Bar ───────────────────────────────────────────── -->
+        <!-- ?? Top Control Bar ????????????????????????????????????????????? -->
         <div id="top-bar" class="absolute top-0 left-0 right-0 h-11 z-[300] flex items-stretch bg-black border-b border-charcoal">
 
             <!-- Drawer toggle (leftmost) -->
-            <button onclick="toggleDrawer()" class="w-11 text-base font-bold text-ash hover:text-gold flex-shrink-0 transition-colors border-r border-charcoal flex items-center justify-center">≡</button>
+            <button onclick="toggleDrawer()" class="w-11 text-base font-bold text-ash hover:text-gold flex-shrink-0 transition-colors border-r border-charcoal flex items-center justify-center">??/button>
 
             <!-- Logo badge -->
             <div class="px-4 flex items-center gap-1.5 flex-shrink-0 border-r border-charcoal">
-                <span class="text-base">⛵</span>
-                <span class="text-[10px] font-bold text-gold uppercase tracking-wide hidden sm:block whitespace-nowrap">바울 전도여행</span>
+                <span class="text-base">??/span>
+                <span class="text-[10px] font-bold text-gold uppercase tracking-wide hidden sm:block whitespace-nowrap">諛붿슱 ?꾨룄?ы뻾</span>
             </div>
 
             <!-- Journey Tabs (scrollable) -->
             <div class="flex-1 flex overflow-x-auto border-r border-charcoal" style="scrollbar-width:none;">
                 <button onclick="switchJourney(1)" id="btn-journey-1" class="journey-tab h-full flex-shrink-0 px-3 text-[11px] font-bold bg-gold text-black transition-all duration-200 flex items-center">
-                    <span class="hidden sm:inline">1차 전도여행</span><span class="sm:hidden">1차</span>
+                    <span class="hidden sm:inline">1李??꾨룄?ы뻾</span><span class="sm:hidden">1李?/span>
                 </button>
                 <button onclick="switchJourney(2)" id="btn-journey-2" class="journey-tab h-full flex-shrink-0 px-3 text-[11px] font-bold text-ash hover:text-gold transition-all duration-200 flex items-center">
-                    <span class="hidden sm:inline">2차 전도여행</span><span class="sm:hidden">2차</span>
+                    <span class="hidden sm:inline">2李??꾨룄?ы뻾</span><span class="sm:hidden">2李?/span>
                 </button>
                 <button onclick="switchJourney(3)" id="btn-journey-3" class="journey-tab h-full flex-shrink-0 px-3 text-[11px] font-bold text-ash hover:text-gold transition-all duration-200 flex items-center">
-                    <span class="hidden sm:inline">3차 전도여행</span><span class="sm:hidden">3차</span>
+                    <span class="hidden sm:inline">3李??꾨룄?ы뻾</span><span class="sm:hidden">3李?/span>
                 </button>
                 <button onclick="switchJourney(4)" id="btn-journey-4" class="journey-tab h-full flex-shrink-0 px-3 text-[11px] font-bold text-ash hover:text-gold transition-all duration-200 flex items-center">
-                    <span class="hidden sm:inline">로마 압송</span><span class="sm:hidden">압송</span>
+                    <span class="hidden sm:inline">濡쒕쭏 ?뺤넚</span><span class="sm:hidden">?뺤넚</span>
                 </button>
                 <button onclick="switchJourney(5)" id="btn-journey-5" class="journey-tab h-full flex-shrink-0 px-3 text-[11px] font-bold text-ash hover:text-gold transition-all duration-200 flex items-center">
-                    <span class="hidden sm:inline">4차 여정</span><span class="sm:hidden">4차</span>
+                    <span class="hidden sm:inline">4李??ъ젙</span><span class="sm:hidden">4李?/span>
                 </button>
             </div>
 
             <!-- Play button -->
-            <button id="btn-animate" onclick="toggleVoyageAnimation()" class="px-4 text-[11px] font-bold flex-shrink-0 flex items-center transition-all" style="color:#FFC000;">▶ 재생</button>
+            <button id="btn-animate" onclick="toggleVoyageAnimation()" class="px-4 text-[11px] font-bold flex-shrink-0 flex items-center transition-all" style="color:#FFC000;">???ъ깮</button>
 
         </div>
 
-        <!-- ── Left Timeline Drawer ──────────────────────────────────────── -->
+        <!-- ?? Left Timeline Drawer ???????????????????????????????????????? -->
         <div id="timeline-drawer" class="absolute top-0 bottom-0 left-0 w-72 z-[200] flex flex-col -translate-x-full" style="background:rgba(24,24,24,0.97);backdrop-filter:blur(8px);border-right:1px solid #202020;">
 
             <!-- Drawer Header -->
             <div class="px-4 py-3 border-b border-charcoal flex items-start justify-between flex-shrink-0">
                 <div class="flex-1 min-w-0">
                     <span id="journey-period" class="inline-block text-[10px] font-bold text-gold bg-gold-bg/60 px-2 py-0.5 border border-gold-border/60 mb-1">AD 47~49</span>
-                    <h2 id="journey-title" class="text-sm font-bold text-white leading-snug">1차 전도여행 개요</h2>
+                    <h2 id="journey-title" class="text-sm font-bold text-white leading-snug">1李??꾨룄?ы뻾 媛쒖슂</h2>
                     <p id="journey-letters" class="text-[10px] text-gold mt-0.5"></p>
                 </div>
-                <button onclick="closeDrawer()" class="text-ash hover:text-white ml-2 p-1 flex-shrink-0 transition-colors text-sm">✕</button>
+                <button onclick="closeDrawer()" class="text-ash hover:text-white ml-2 p-1 flex-shrink-0 transition-colors text-sm">??/button>
             </div>
 
             <!-- Journey Description -->
@@ -130,14 +130,14 @@
 
             <!-- Companions -->
             <div class="px-4 py-2 border-b border-charcoal flex-shrink-0">
-                <p class="text-[9px] font-bold text-ash uppercase tracking-wider mb-1.5">동행자</p>
+                <p class="text-[9px] font-bold text-ash uppercase tracking-wider mb-1.5">?숉뻾??/p>
                 <div id="companions-list" class="flex flex-wrap gap-1"></div>
             </div>
 
             <!-- Timeline List -->
             <div class="flex-1 overflow-y-auto p-2.5 scrollbar-thin">
                 <div class="flex items-center justify-between mb-2 px-1">
-                    <span class="text-[9px] font-bold text-ash uppercase tracking-wider">주요 거점 루트</span>
+                    <span class="text-[9px] font-bold text-ash uppercase tracking-wider">二쇱슂 嫄곗젏 猷⑦듃</span>
                 </div>
                 <div id="timeline-list" class="space-y-1"></div>
             </div>
@@ -146,38 +146,38 @@
             <div class="border-t border-charcoal flex-shrink-0">
                 <details class="group">
                     <summary class="flex items-center justify-between px-4 py-2.5 cursor-pointer text-[11px] font-bold text-gold hover:bg-charcoal/40 select-none">
-                        <span>👥 동역자 인물 사전</span>
-                        <span class="transition-transform duration-200 group-open:rotate-180 text-[9px]">▼</span>
+                        <span>?뫁 ?숈뿭???몃Ъ ?ъ쟾</span>
+                        <span class="transition-transform duration-200 group-open:rotate-180 text-[9px]">??/span>
                     </summary>
                     <div class="max-h-52 overflow-y-auto border-t border-charcoal bg-black/60 scrollbar-thin">
                         <div class="p-2.5 space-y-2">
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">🧔 바울 (Paul)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">모든 선교 여행의 실질적 주역. 다메섹 회심 후 순교의 자리까지 이방 전도를 수호했습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?쭟 諛붿슱 (Paul)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">紐⑤뱺 ?좉탳 ?ы뻾???ㅼ쭏??二쇱뿭. ?ㅻ찓???뚯떖 ???쒓탳???먮━源뚯? ?대갑 ?꾨룄瑜??섑샇?덉뒿?덈떎.</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">👨‍🦱 바나바 (Barnabas)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">1차 여행의 은혜로운 리더. 2차 때 결별 후 구브로로 이동 사역했습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?뫅?랅윦?諛붾굹諛?(Barnabas)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">1李??ы뻾????쒕줈??由щ뜑. 2李???寃곕퀎 ??援щ툕濡쒕줈 ?대룞 ?ъ뿭?덉뒿?덈떎.</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">👨 실라 (Silas)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">2차 여행의 고난 동반자. 예루살렘 공의회 소식을 수송한 선지자이자 시민권 소유자.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?뫅 ?ㅻ씪 (Silas)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">2李??ы뻾??怨좊궃 ?숇컲?? ?덈（?대젞 怨듭쓽???뚯떇???섏넚???좎??먯씠???쒕?沅??뚯쑀??</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">🧒 디모데 (Timothy)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">루스드라 출신 바울의 '믿음의 아들'. 에베소 교회를 눈물로 지켰습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?쭜 ?붾え??(Timothy)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">猷⑥뒪?쒕씪 異쒖떊 諛붿슱??'誘우쓬???꾨뱾'. ?먮쿋??援먰쉶瑜??덈Ъ濡?吏耳곗뒿?덈떎.</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">👨‍⚕️ 누가 (Luke)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">사도행전 기록자이자 충직한 의사. 최후 감방까지 바울 곁을 지켰습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?뫅?띯슃截??꾧? (Luke)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">?щ룄?됱쟾 湲곕줉?먯씠??異⑹쭅???섏궗. 理쒗썑 媛먮갑源뚯? 諛붿슱 怨곸쓣 吏耳곗뒿?덈떎.</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">👦 마가 요한 (Mark)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">1차 버가에서 중도 하차. 훗날 "나의 일에 유익한 자"로 복권되었습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?뫂 留덇? ?뷀븳 (Mark)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">1李?踰꾧??먯꽌 以묐룄 ?섏감. ?쀫궇 "?섏쓽 ?쇱뿉 ?좎씡????濡?蹂듦텒?섏뿀?듬땲??</p>
                             </div>
                             <div class="p-2 bg-charcoal/40 border border-charcoal/60">
-                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">🧔‍♂️ 디도 (Titus)</h4>
-                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">이방 사역의 해결사. 그레데 섬 초대 감독으로 안수받았습니다.</p>
+                                <h4 class="text-[11px] font-bold text-gold flex items-center gap-1">?쭟?띯셽截??붾룄 (Titus)</h4>
+                                <p class="mt-0.5 text-[10px] text-ash leading-relaxed">?대갑 ?ъ뿭???닿껐?? 洹몃젅????珥덈? 媛먮룆?쇰줈 ?덉닔諛쏆븯?듬땲??</p>
                             </div>
                         </div>
                     </div>
@@ -185,31 +185,31 @@
             </div>
         </div>
 
-        <!-- ── Station Info Card (bottom-right / bottom on mobile) ──────── -->
+        <!-- ?? Station Info Card (bottom-right / bottom on mobile) ???????? -->
         <div id="floating-info-card"
              class="absolute bottom-0 right-0 left-0 md:bottom-4 md:right-4 md:left-auto md:w-[400px] z-[200] transform translate-y-full opacity-0 pointer-events-none"
              style="border-radius:0;background:rgba(0,0,0,0.96);backdrop-filter:blur(10px);border:1px solid #202020;">
-            <!-- [C] Peek handle — mobile only -->
+            <!-- [C] Peek handle ??mobile only -->
             <div id="card-peek-handle" onclick="toggleCardExpand()" class="md:hidden flex items-center justify-center py-2 border-b border-charcoal cursor-pointer select-none flex-shrink-0">
                 <div style="width:32px;height:3px;background:#444;border-radius:2px;"></div>
             </div>
             <!-- Card Header -->
             <div class="flex items-center gap-2 px-3 pt-3 pb-2 border-b border-charcoal">
                 <div class="flex-1 min-w-0">
-                    <h3 id="station-name-ko" class="text-base font-bold text-white leading-tight truncate">안디옥</h3>
+                    <h3 id="station-name-ko" class="text-base font-bold text-white leading-tight truncate">?덈뵒??/h3>
                     <p id="station-name-en" class="text-[10px] text-ash mt-0.5 truncate">Antioch (Syrian Antioch)</p>
                 </div>
                 <div class="flex flex-shrink-0">
-                    <button id="btn-prev-station" onclick="prevStation()" class="w-7 h-7 flex items-center justify-center text-xl text-gold hover:text-white transition-colors" title="이전 지역">‹</button>
-                    <button id="btn-next-station" onclick="nextStation()" class="w-7 h-7 flex items-center justify-center text-xl text-gold hover:text-white transition-colors" title="다음 지역">›</button>
+                    <button id="btn-prev-station" onclick="prevStation()" class="w-7 h-7 flex items-center justify-center text-xl text-gold hover:text-white transition-colors" title="?댁쟾 吏??>??/button>
+                    <button id="btn-next-station" onclick="nextStation()" class="w-7 h-7 flex items-center justify-center text-xl text-gold hover:text-white transition-colors" title="?ㅼ쓬 吏??>??/button>
                 </div>
-                <button onclick="closeInfoCard()" class="text-ash hover:text-white p-1 flex-shrink-0 transition-colors">✕</button>
+                <button onclick="closeInfoCard()" class="text-ash hover:text-white p-1 flex-shrink-0 transition-colors">??/button>
             </div>
             <!-- Card Body -->
             <div class="px-4 py-3 space-y-2.5 max-h-[55vh] md:max-h-[60vh] overflow-y-auto scrollbar-thin">
                 <!-- Intro box -->
                 <div class="p-2.5 bg-gold-bg/20" style="border-left:3px solid #FFC000;border-top:1px solid rgba(61,46,0,.35);border-right:1px solid rgba(61,46,0,.35);border-bottom:1px solid rgba(61,46,0,.35);">
-                    <span class="text-[9px] font-bold text-gold uppercase tracking-wider block mb-1">📍 지역 배경 및 선교적 의미</span>
+                    <span class="text-[9px] font-bold text-gold uppercase tracking-wider block mb-1">?뱧 吏??諛곌꼍 諛??좉탳???섎?</span>
                     <p id="station-intro" class="text-[11px] text-gold/70 leading-relaxed"></p>
                 </div>
                 <!-- Verse -->
@@ -218,7 +218,7 @@
                 <p id="station-desc" class="text-xs text-smoke leading-relaxed"></p>
                 <!-- Companions -->
                 <div class="pt-2 border-t border-charcoal">
-                    <span class="text-[9px] font-semibold text-ash uppercase tracking-wider block mb-1.5">현지 동행</span>
+                    <span class="text-[9px] font-semibold text-ash uppercase tracking-wider block mb-1.5">?꾩? ?숉뻾</span>
                     <div id="station-companions" class="flex flex-wrap gap-1"></div>
                 </div>
             </div>
@@ -228,118 +228,118 @@
 
     <script>
         const companionIcons = {
-            "바울":     {icon:"🧔",    role:"선교 총괄"},
-            "바나바":   {icon:"👨‍🦱",  role:"1차 동역"},
-            "실라":     {icon:"👨",    role:"2차 동역"},
-            "디모데":   {icon:"🧒",    role:"믿음의 아들"},
-            "누가":     {icon:"👨‍⚕️", role:"의사·기록"},
-            "마가요한": {icon:"👦",    role:"1차 수종"},
-            "디도":     {icon:"🧔‍♂️", role:"이방 사역"},
-            "아리스다고":{icon:"👥",   role:"마게도냐"}
+            "諛붿슱":     {icon:"?쭟",    role:"?좉탳 珥앷큵"},
+            "諛붾굹諛?:   {icon:"?뫅?랅윦?,  role:"1李??숈뿭"},
+            "?ㅻ씪":     {icon:"?뫅",    role:"2李??숈뿭"},
+            "?붾え??:   {icon:"?쭜",    role:"誘우쓬???꾨뱾"},
+            "?꾧?":     {icon:"?뫅?띯슃截?, role:"?섏궗쨌湲곕줉"},
+            "留덇??뷀븳": {icon:"?뫂",    role:"1李??섏쥌"},
+            "?붾룄":     {icon:"?쭟?띯셽截?, role:"?대갑 ?ъ뿭"},
+            "?꾨━?ㅻ떎怨?:{icon:"?뫁",   role:"留덇쾶?꾨깘"}
         };
 
         const regionsData = [
-            {name:"이달리야",       coords:[42.1,13.0],  size:"text-[14px] font-bold text-slate-700"},
-            {name:"시실리",         coords:[37.4,14.1],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"구레네",         coords:[32.8,22.0],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"이집트",         coords:[30.4,31.2],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"그레데",         coords:[35.1,24.8],  size:"text-[13px] font-bold text-slate-700"},
-            {name:"구브로",         coords:[35.0,33.0],  size:"text-[13px] font-bold text-slate-700"},
-            {name:"마게도냐",       coords:[40.8,21.8],  size:"text-[15px] font-bold text-slate-700"},
-            {name:"아가야",         coords:[38.3,22.3],  size:"text-[14px] font-bold text-slate-700"},
-            {name:"아시아",         coords:[38.5,28.0],  size:"text-[16px] font-bold text-slate-700"},
-            {name:"무시아",         coords:[39.9,27.3],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"비두니아 & 본도", coords:[41.2,33.2],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"갈라디아",       coords:[39.3,32.8],  size:"text-[16px] font-bold text-slate-700"},
-            {name:"밤빌리아",       coords:[36.9,31.0],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"길리기아",       coords:[37.1,35.0],  size:"text-[12px] font-bold text-slate-600"},
-            {name:"수리아",         coords:[35.2,36.8],  size:"text-[14px] font-bold text-slate-700"}
+            {name:"?대떖由ъ빞",       coords:[42.1,13.0],  size:"text-[14px] font-bold text-slate-700"},
+            {name:"?쒖떎由?,         coords:[37.4,14.1],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"援щ젅??,         coords:[32.8,22.0],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"?댁쭛??,         coords:[30.4,31.2],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"洹몃젅??,         coords:[35.1,24.8],  size:"text-[13px] font-bold text-slate-700"},
+            {name:"援щ툕濡?,         coords:[35.0,33.0],  size:"text-[13px] font-bold text-slate-700"},
+            {name:"留덇쾶?꾨깘",       coords:[40.8,21.8],  size:"text-[15px] font-bold text-slate-700"},
+            {name:"?꾧???,         coords:[38.3,22.3],  size:"text-[14px] font-bold text-slate-700"},
+            {name:"?꾩떆??,         coords:[38.5,28.0],  size:"text-[16px] font-bold text-slate-700"},
+            {name:"臾댁떆??,         coords:[39.9,27.3],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"鍮꾨몢?덉븘 & 蹂몃룄", coords:[41.2,33.2],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"媛덈씪?붿븘",       coords:[39.3,32.8],  size:"text-[16px] font-bold text-slate-700"},
+            {name:"諛ㅻ퉴由ъ븘",       coords:[36.9,31.0],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"湲몃━湲곗븘",       coords:[37.1,35.0],  size:"text-[12px] font-bold text-slate-600"},
+            {name:"?섎━??,         coords:[35.2,36.8],  size:"text-[14px] font-bold text-slate-700"}
         ];
 
         const journeysData = {
             1:{
-                title:"1차 전도여행 (AD 47~49)", period:"AD 47~49", letters:"갈라디아서 집필 추정 (1~2차 사이)",
-                description:"수리아 안디옥 교회에서 성령의 보내심을 받아 바나바, 마가 요한과 함께 출발하여 구브로 섬을 거친 뒤, 소아시아 남부 갈라디아 지역에 교회를 개척한 최초의 선교 운동입니다.",
-                companions:["바울","바나바","마가요한"],
+                title:"1李??꾨룄?ы뻾 (AD 47~49)", period:"AD 47~49", letters:"媛덈씪?붿븘??吏묓븘 異붿젙 (1~2李??ъ씠)",
+                description:"?섎━???덈뵒??援먰쉶?먯꽌 ?깅졊??蹂대궡?ъ쓣 諛쏆븘 諛붾굹諛? 留덇? ?뷀븳怨??④퍡 異쒕컻?섏뿬 援щ툕濡??ъ쓣 嫄곗튇 ?? ?뚯븘?쒖븘 ?⑤? 媛덈씪?붿븘 吏??뿉 援먰쉶瑜?媛쒖쿃??理쒖큹???좉탳 ?대룞?낅땲??",
+                companions:["諛붿슱","諛붾굹諛?,"留덇??뷀븳"],
                 stations:[
-                    {nameKo:"수리아 안디옥", nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"행 13:1-3", intro:"제국 내 제3대 대도시이자 최초로 '그리스도인'이라 일컬음을 받은 이방 선교의 산실입니다.", desc:"안디옥 교회에서 성령의 엄중한 부르심을 따라 교회의 안수 기도를 받았습니다. 이방 선교 역사의 시발점이자, 바울 및 바나바가 공식적인 선교사로 파송을 받아 지중해 전체를 무대로 복음 행전을 기록하는 영광스러운 출발지입니다.", companions:["바울","바나바","마가요한"]},
-                    {nameKo:"실루기아", nameEn:"Seleucia", coords:[36.1281,35.9258], verse:"행 13:4", intro:"안디옥의 서쪽 약 8마일에 위치한 외항이자 지중해 해상 관문으로, 선교단의 감격 어린 첫 출항지입니다.", desc:"안디옥의 관문 항구도시로 내려와 구브로 섬으로 가기 위해 생애 최초의 선교 항해선에 오르는 역사적인 첫 출항지입니다.", companions:["바울","바나바","마가요한"]},
-                    {nameKo:"살라미", nameEn:"Salamis", coords:[35.1852,33.9042], verse:"행 13:5", intro:"바나바의 고향 구브로의 거대 상업 시장으로, 유대 회당 전도의 첫 신호탄을 쏘아 올린 포구입니다.", desc:"동역자 바나바의 실제 고향 구브로의 동편 항구에 정박했습니다. 구브로가 첫 전도지로 선택된 이유는 스데반의 환난으로 흩어진 성도들이 이미 이 땅에 복음을 전하여 마음 밭이 준비되어 있었기 때문이며, 살라미는 로마 식민지 중 가장 큰 시장으로 각국 사람들이 왕래하는 복음 전파의 최적지였습니다. 여러 유대인 회당들을 빠짐없이 방문하며 예수의 부활 소식을 열렬히 전파하기 시작했습니다.", companions:["바울","바나바","마가요한"]},
-                    {nameKo:"바보", nameEn:"Paphos", coords:[34.7720,32.4245], verse:"행 13:6-12", intro:"구브로 섬의 행정 수도이자 로마 총독부 소재지입니다. 바울이 대적자를 이기고 로마식 이름으로 선교를 공고화한 장소입니다.", desc:"주 총독 서기오 바울이 말씀을 귀담아듣고자 할 때 대적자 엘루마가 가로막자, 바울이 성령 충만하여 그의 눈을 어둡게 하는 권능을 나타냈습니다. 이때부터 히브리식 '사울' 대신 로마식 이름 '바울'이 전면에 등장하게 됩니다.", companions:["바울","바나바","마가요한"]},
-                    {nameKo:"버가", nameEn:"Perga", coords:[36.9537,30.8523], verse:"행 13:13", intro:"밤빌리아 도의 내륙 첫 도시입니다. 마가 요한이 사역을 포기하고 예루살렘으로 귀환한 아픔의 성읍입니다.", desc:"험난한 타우루스 산맥 돌파를 앞두고, 수종을 들던 마가 요한이 예루살렘으로 일방 복귀해 버렸습니다. 부유한 가정 출신의 마가는 앞에 놓인 험한 산악 행로와 바울의 눈에 띄는 육체적 연약함(안질 추정, 갈 4:13-15)을 보고 시험을 받은 것으로 학자들은 봅니다. 이 이탈은 훗날 2차 출발 시 바울과 바나바가 결별하게 만드는 불씨가 되었습니다.", companions:["바울","바나바"]},
-                    {nameKo:"비시디아 안디옥", nameEn:"Pisidian Antioch", coords:[38.2917,31.1853], verse:"행 13:14-52", intro:"해발 1,100m의 군사 요충지입니다. 메시아 강론으로 큰 부흥을 일으켰으나 핍박받은 첫 내륙 개척지입니다.", desc:"바울이 이 고산 지방을 방문하게 된 직접적 원인은 '육체의 약함'(갈 4:13)으로, 학자들은 이를 안질로 추측합니다. '너희 눈이라도 빼어 나를 주었으리라'(갈 4:15)는 고백이 그 증거이며, 람세이는 이 풍토병이 해발 1,100m 산악지대의 건조한 기후에서 호전된다고 분석합니다. 바울은 고통 중에도 메시아 구속사 대설교를 단행했으나, 완악한 유대 지도자들에 의해 성읍 밖으로 쫓겨났습니다.", companions:["바울","바나바"]},
-                    {nameKo:"이고니온", nameEn:"Iconium", coords:[37.8714,32.4847], verse:"행 14:1-7", intro:"갈라디아 남부 중심 고원의 비옥한 요충지로, 부흥과 동시에 돌팔매질 음모를 피해 탈출한 격전지입니다.", desc:"오랜 기간 머물며 주의 은혜의 표적과 기사들을 행했습니다. 허다한 신자들이 영접했으나 완악한 군중들이 돌로 쳐 죽이려 음모를 구상하자 루스드라로 급박히 몸을 피했습니다.", companions:["바울","바나바"]},
-                    {nameKo:"루스드라", nameEn:"Lystra", coords:[37.5833,32.4500], verse:"행 14:8-20", intro:"로마의 군사 식민지이자 디모데의 고향입니다. 제우스와 헤르메스로 오해받았던 역사적 영적 격전지입니다.", desc:"태어나면서부터 걷지 못하던 자를 고치자 원주민들이 바나바를 '제우스', 바울을 '헤르메스(말의 신)'로 불렀습니다. 바울이 설교를 주도했기에 말의 신으로 여겨진 것이며, 이때까지도 바나바가 여전히 지도자로 앞서 있었음을 알 수 있습니다. 그러나 비시디아 안디옥과 이고니온에서 온 유대인들의 선동으로 군중이 바울을 돌로 쳐 성 밖에 버렸습니다. 제자들이 둘러섰을 때 주의 은혜로 일어나 다시 성안으로 들어갔으며, 이곳에서 훗날 신실한 디모데가 주님을 따르게 됩니다.", companions:["바울","바나바"]},
-                    {nameKo:"더베", nameEn:"Derbe", coords:[37.3500,33.2500], verse:"행 14:21-22", intro:"갈라디아 최남단 국경 성읍으로, 고난을 극복하고 가이오 등 칭찬받는 형제들을 제자로 삼은 은혜의 땅입니다.", desc:"기적적으로 탈출해 더베에 도달, 복음을 전파해 많은 이들을 제자로 이끌었습니다. 이전에 핍박당했던 루스드라, 이고니온, 비시디아 안디옥을 목숨을 걸고 거꾸로 재차 순회하며 교회 장로들을 장립했습니다.", companions:["바울","바나바"]},
-                    {nameKo:"아딸리아", nameEn:"Attalia", coords:[36.8847,30.7042], verse:"행 14:25", intro:"밤빌리아의 대무역 항구입니다. 1차 선교 사역을 매듭짓고 안디옥으로 귀향하기 위해 승선한 포구입니다.", desc:"내륙 여정을 성공적으로 종결하고 아딸리아에서 파송지 수리아 안디옥으로 복귀하는 지중해 직항 항로선에 올랐습니다.", companions:["바울","바나바"]},
-                    {nameKo:"수리아 안디옥(복귀)", nameEn:"Antioch of Syria (Return)", coords:[36.2121,36.1697], verse:"행 14:26-28", intro:"이방 선교의 보고이자 '믿음의 문'이 열렸음을 보고한 감격의 전당입니다.", desc:"파송 본거지로 영광스럽게 귀국하여 대대적인 전도 보고를 펼쳤습니다. 주님께서 전도단을 기사와 표적으로 세우신 행적과 이방인들에게 '믿음의 문'을 여신 위대한 역사를 함께 기뻐했습니다.", companions:["바울","바나바"]}
+                    {nameKo:"?섎━???덈뵒??, nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"??13:1-3", intro:"?쒓뎅 ????? ??꾩떆?댁옄 理쒖큹濡?'洹몃━?ㅻ룄???대씪 ?쇱뺄?뚯쓣 諛쏆? ?대갑 ?좉탳???곗떎?낅땲??", desc:"?덈뵒??援먰쉶?먯꽌 ?깅졊???꾩쨷??遺瑜댁떖???곕씪 援먰쉶???덉닔 湲곕룄瑜?諛쏆븯?듬땲?? ?대갑 ?좉탳 ??궗???쒕컻?먯씠?? 諛붿슱 諛?諛붾굹諛붽? 怨듭떇?곸씤 ?좉탳?щ줈 ?뚯넚??諛쏆븘 吏以묓빐 ?꾩껜瑜?臾대?濡?蹂듭쓬 ?됱쟾??湲곕줉?섎뒗 ?곴킅?ㅻ윭??異쒕컻吏?낅땲??", companions:["諛붿슱","諛붾굹諛?,"留덇??뷀븳"]},
+                    {nameKo:"?ㅻ（湲곗븘", nameEn:"Seleucia", coords:[36.1281,35.9258], verse:"??13:4", intro:"?덈뵒?μ쓽 ?쒖そ ??8留덉씪???꾩튂???명빆?댁옄 吏以묓빐 ?댁긽 愿臾몄쑝濡? ?좉탳?⑥쓽 媛먭꺽 ?대┛ 泥?異쒗빆吏?낅땲??", desc:"?덈뵒?μ쓽 愿臾???뎄?꾩떆濡??대젮? 援щ툕濡??ъ쑝濡?媛湲??꾪빐 ?앹븷 理쒖큹???좉탳 ??빐?좎뿉 ?ㅻⅤ????궗?곸씤 泥?異쒗빆吏?낅땲??", companions:["諛붿슱","諛붾굹諛?,"留덇??뷀븳"]},
+                    {nameKo:"?대씪誘?, nameEn:"Salamis", coords:[35.1852,33.9042], verse:"??13:5", intro:"諛붾굹諛붿쓽 怨좏뼢 援щ툕濡쒖쓽 嫄곕? ?곸뾽 ?쒖옣?쇰줈, ?좊? ?뚮떦 ?꾨룄??泥??좏샇?꾩쓣 ?섏븘 ?щ┛ ?ш뎄?낅땲??", desc:"?숈뿭??諛붾굹諛붿쓽 ?ㅼ젣 怨좏뼢 援щ툕濡쒖쓽 ?숉렪 ??뎄???뺣컯?덉뒿?덈떎. 援щ툕濡쒓? 泥??꾨룄吏濡??좏깮???댁쑀???ㅻ뜲諛섏쓽 ?섎궃?쇰줈 ?⑹뼱吏??깅룄?ㅼ씠 ?대? ???낆뿉 蹂듭쓬???꾪븯??留덉쓬 諛?씠 以鍮꾨릺???덉뿀湲??뚮Ц?대ŉ, ?대씪誘몃뒗 濡쒕쭏 ?앸?吏 以?媛?????쒖옣?쇰줈 媛곴뎅 ?щ엺?ㅼ씠 ?뺣옒?섎뒗 蹂듭쓬 ?꾪뙆??理쒖쟻吏??듬땲?? ?щ윭 ?좊????뚮떦?ㅼ쓣 鍮좎쭚?놁씠 諛⑸Ц?섎ŉ ?덉닔??遺???뚯떇???대젹???꾪뙆?섍린 ?쒖옉?덉뒿?덈떎.", companions:["諛붿슱","諛붾굹諛?,"留덇??뷀븳"]},
+                    {nameKo:"諛붾낫", nameEn:"Paphos", coords:[34.7720,32.4245], verse:"??13:6-12", intro:"援щ툕濡??ъ쓽 ?됱젙 ?섎룄?댁옄 濡쒕쭏 珥앸룆遺 ?뚯옱吏?낅땲?? 諛붿슱????곸옄瑜??닿린怨?濡쒕쭏???대쫫?쇰줈 ?좉탳瑜?怨듦퀬?뷀븳 ?μ냼?낅땲??", desc:"二?珥앸룆 ?쒓린??諛붿슱??留먯???洹?댁븘?ｊ퀬????????곸옄 ?섎（留덇? 媛濡쒕쭑?? 諛붿슱???깅졊 異⑸쭔?섏뿬 洹몄쓽 ?덉쓣 ?대몼寃??섎뒗 沅뚮뒫???섑??덉뒿?덈떎. ?대븣遺???덈툕由ъ떇 '?ъ슱' ???濡쒕쭏???대쫫 '諛붿슱'???꾨㈃???깆옣?섍쾶 ?⑸땲??", companions:["諛붿슱","諛붾굹諛?,"留덇??뷀븳"]},
+                    {nameKo:"踰꾧?", nameEn:"Perga", coords:[36.9537,30.8523], verse:"??13:13", intro:"諛ㅻ퉴由ъ븘 ?꾩쓽 ?대쪠 泥??꾩떆?낅땲?? 留덇? ?뷀븳???ъ뿭???ш린?섍퀬 ?덈（?대젞?쇰줈 洹?섑븳 ?꾪뵒???깆쓭?낅땲??", desc:"?섎궃????곕（???곕㎘ ?뚰뙆瑜??욌몢怨? ?섏쥌???ㅻ뜕 留덇? ?뷀븳???덈（?대젞?쇰줈 ?쇰갑 蹂듦???踰꾨졇?듬땲?? 遺?좏븳 媛??異쒖떊??留덇????욎뿉 ?볦씤 ?섑븳 ?곗븙 ?됰줈? 諛붿슱???덉뿉 ?꾨뒗 ?≪껜???곗빟???덉쭏 異붿젙, 媛?4:13-15)??蹂닿퀬 ?쒗뿕??諛쏆? 寃껋쑝濡??숈옄?ㅼ? 遊낅땲?? ???댄깉? ?쀫궇 2李?異쒕컻 ??諛붿슱怨?諛붾굹諛붽? 寃곕퀎?섍쾶 留뚮뱶??遺덉뵪媛 ?섏뿀?듬땲??", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"鍮꾩떆?붿븘 ?덈뵒??, nameEn:"Pisidian Antioch", coords:[38.2917,31.1853], verse:"??13:14-52", intro:"?대컻 1,100m??援곗궗 ?붿땐吏?낅땲?? 硫붿떆??媛뺣줎?쇰줈 ??遺?μ쓣 ?쇱쑝耳곗쑝???띾컯諛쏆? 泥??대쪠 媛쒖쿃吏?낅땲??", desc:"諛붿슱????怨좎궛 吏諛⑹쓣 諛⑸Ц?섍쾶 ??吏곸젒???먯씤? '?≪껜???쏀븿'(媛?4:13)?쇰줈, ?숈옄?ㅼ? ?대? ?덉쭏濡?異붿륫?⑸땲?? '?덊씗 ?덉씠?쇰룄 鍮쇱뼱 ?섎? 二쇱뿀?쇰━??(媛?4:15)??怨좊갚??洹?利앷굅?대ŉ, ?뚯꽭?대뒗 ???랁넗蹂묒씠 ?대컻 1,100m ?곗븙吏???嫄댁“??湲고썑?먯꽌 ?몄쟾?쒕떎怨?遺꾩꽍?⑸땲?? 諛붿슱? 怨좏넻 以묒뿉??硫붿떆??援ъ냽????ㅺ탳瑜??⑦뻾?덉쑝?? ?꾩븙???좊? 吏?꾩옄?ㅼ뿉 ?섑빐 ?깆쓭 諛뽰쑝濡?已볤꺼?ъ뒿?덈떎.", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"?닿퀬?덉삩", nameEn:"Iconium", coords:[37.8714,32.4847], verse:"??14:1-7", intro:"媛덈씪?붿븘 ?⑤? 以묒떖 怨좎썝??鍮꾩삦???붿땐吏濡? 遺?κ낵 ?숈떆???뚰뙏留ㅼ쭏 ?뚮え瑜??쇳빐 ?덉텧??寃⑹쟾吏?낅땲??", desc:"?ㅻ옖 湲곌컙 癒몃Ъ硫?二쇱쓽 ??쒖쓽 ?쒖쟻怨?湲곗궗?ㅼ쓣 ?됲뻽?듬땲?? ?덈떎???좎옄?ㅼ씠 ?곸젒?덉쑝???꾩븙??援곗쨷?ㅼ씠 ?뚮줈 爾?二쎌씠???뚮え瑜?援ъ긽?섏옄 猷⑥뒪?쒕씪濡?湲됰컯??紐몄쓣 ?쇳뻽?듬땲??", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"猷⑥뒪?쒕씪", nameEn:"Lystra", coords:[37.5833,32.4500], verse:"??14:8-20", intro:"濡쒕쭏??援곗궗 ?앸?吏?댁옄 ?붾え?곗쓽 怨좏뼢?낅땲?? ?쒖슦?ㅼ? ?ㅻⅤ硫붿뒪濡??ㅽ빐諛쏆븯????궗???곸쟻 寃⑹쟾吏?낅땲??", desc:"?쒖뼱?섎㈃?쒕???嫄룹? 紐삵븯???먮? 怨좎튂???먯＜誘쇰뱾??諛붾굹諛붾? '?쒖슦??, 諛붿슱??'?ㅻⅤ硫붿뒪(留먯쓽 ??'濡?遺덈??듬땲?? 諛붿슱???ㅺ탳瑜?二쇰룄?덇린??留먯쓽 ?좎쑝濡??ш꺼吏?寃껋씠硫? ?대븣源뚯???諛붾굹諛붽? ?ъ쟾??吏?꾩옄濡??욎꽌 ?덉뿀?뚯쓣 ?????덉뒿?덈떎. 洹몃윭??鍮꾩떆?붿븘 ?덈뵒?κ낵 ?닿퀬?덉삩?먯꽌 ???좊??몃뱾???좊룞?쇰줈 援곗쨷??諛붿슱???뚮줈 爾???諛뽰뿉 踰꾨졇?듬땲?? ?쒖옄?ㅼ씠 ?섎윭?곗쓣 ??二쇱쓽 ??쒕줈 ?쇱뼱???ㅼ떆 ?깆븞?쇰줈 ?ㅼ뼱媛붿쑝硫? ?닿납?먯꽌 ?쀫궇 ?좎떎???붾え?곌? 二쇰떂???곕Ⅴ寃??⑸땲??", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"?붾쿋", nameEn:"Derbe", coords:[37.3500,33.2500], verse:"??14:21-22", intro:"媛덈씪?붿븘 理쒕궓??援?꼍 ?깆쓭?쇰줈, 怨좊궃??洹밸났?섍퀬 媛?댁삤 ??移?갔諛쏅뒗 ?뺤젣?ㅼ쓣 ?쒖옄濡??쇱? ??쒖쓽 ?낆엯?덈떎.", desc:"湲곗쟻?곸쑝濡??덉텧???붾쿋???꾨떖, 蹂듭쓬???꾪뙆??留롮? ?대뱾???쒖옄濡??대걣?덉뒿?덈떎. ?댁쟾???띾컯?뱁뻽??猷⑥뒪?쒕씪, ?닿퀬?덉삩, 鍮꾩떆?붿븘 ?덈뵒?μ쓣 紐⑹닲??嫄멸퀬 嫄곌씀濡??ъ감 ?쒗쉶?섎ŉ 援먰쉶 ?λ줈?ㅼ쓣 ?λ┰?덉뒿?덈떎.", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"?꾨뵺由ъ븘", nameEn:"Attalia", coords:[36.8847,30.7042], verse:"??14:25", intro:"諛ㅻ퉴由ъ븘???臾댁뿭 ??뎄?낅땲?? 1李??좉탳 ?ъ뿭??留ㅻ벊吏볤퀬 ?덈뵒?μ쑝濡?洹?ν븯湲??꾪빐 ?뱀꽑???ш뎄?낅땲??", desc:"?대쪠 ?ъ젙???깃났?곸쑝濡?醫낃껐?섍퀬 ?꾨뵺由ъ븘?먯꽌 ?뚯넚吏 ?섎━???덈뵒?μ쑝濡?蹂듦??섎뒗 吏以묓빐 吏곹빆 ??줈?좎뿉 ?щ옄?듬땲??", companions:["諛붿슱","諛붾굹諛?]},
+                    {nameKo:"?섎━???덈뵒??蹂듦?)", nameEn:"Antioch of Syria (Return)", coords:[36.2121,36.1697], verse:"??14:26-28", intro:"?대갑 ?좉탳??蹂닿퀬?댁옄 '誘우쓬??臾????대졇?뚯쓣 蹂닿퀬??媛먭꺽???꾨떦?낅땲??", desc:"?뚯넚 蹂멸굅吏濡??곴킅?ㅻ읇寃?洹援?븯?????곸씤 ?꾨룄 蹂닿퀬瑜??쇱낀?듬땲?? 二쇰떂猿섏꽌 ?꾨룄?⑥쓣 湲곗궗? ?쒖쟻?쇰줈 ?몄슦???됱쟻怨??대갑?몃뱾?먭쾶 '誘우쓬??臾????ъ떊 ?꾨?????궗瑜??④퍡 湲곕퍙?덉뒿?덈떎.", companions:["諛붿슱","諛붾굹諛?]}
                 ]
             },
             2:{
-                title:"2차 전도여행 (AD 50~53)", period:"AD 50~53", letters:"데살로니가전서, 데살로니가후서 기록",
-                description:"마가 요한 문제로 바나바와 결별한 바울이 실라와 함께 아시아를 지나 환상을 보고 유럽으로 건너가 빌립보, 데살로니가, 베뢰아, 아덴, 고린도 교회를 차례로 세운 선교적 도약기입니다.",
-                companions:["바울","실라","디모데","누가"],
+                title:"2李??꾨룄?ы뻾 (AD 50~53)", period:"AD 50~53", letters:"?곗궡濡쒕땲媛?꾩꽌, ?곗궡濡쒕땲媛?꾩꽌 湲곕줉",
+                description:"留덇? ?뷀븳 臾몄젣濡?諛붾굹諛붿? 寃곕퀎??諛붿슱???ㅻ씪? ?④퍡 ?꾩떆?꾨? 吏???섏긽??蹂닿퀬 ?좊읇?쇰줈 嫄대꼫媛 鍮뚮┰蹂? ?곗궡濡쒕땲媛, 踰좊ː?? ?꾨뜶, 怨좊┛??援먰쉶瑜?李⑤?濡??몄슫 ?좉탳???꾩빟湲곗엯?덈떎.",
+                companions:["諛붿슱","?ㅻ씪","?붾え??,"?꾧?"],
                 stations:[
-                    {nameKo:"수리아 안디옥", nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"행 15:36-40", intro:"마가 동행 분쟁으로 바나바와 결별 후 실라를 동반자로 삼아 새 출발한 무대입니다.", desc:"마가를 데려가자는 바나바의 주장과 동의할 수 없어 결별하였습니다. 바나바는 마가와 구브로로 떠났고, 바울은 로마 시민권자인 실라를 택해 북방 육로로 대전진을 개시했습니다.", companions:["바울","실라"]},
-                    {nameKo:"다소", nameEn:"Tarsus", coords:[36.9164,34.8951], verse:"행 15:41", intro:"길리기아 주의 수도이자 사도 바울의 고향입니다. 회심 후 은거 사역의 터전이기도 했습니다.", desc:"바울의 영적 모태가 된 고향 다소를 통과하며 수리아와 길리기아 일대의 형제 교회들을 주님의 말씀 위에 견고히 보수했습니다.", companions:["바울","실라"]},
-                    {nameKo:"루스드라", nameEn:"Lystra", coords:[37.5833,32.4500], verse:"행 16:1-3", intro:"바울의 신실한 동역자인 디모데를 전도단에 영입하고 할례를 베푼 자리입니다.", desc:"칭찬받는 젊은 제자 디모데를 발견했습니다. 유대 사역의 장벽을 무너뜨리기 위해 이방인 부친을 둔 디모데에게 할례를 행하고 전도단에 전격 합류시켰습니다.", companions:["바울","실라","디모데"]},
-                    {nameKo:"드로아", nameEn:"Troas", coords:[39.7500,26.1667], verse:"행 16:6-10", intro:"에게해의 대형 무역항입니다. 마게도냐인의 환상에 응답해 유럽 전도를 결정한 성지입니다.", desc:"성령이 아시아 방향을 막으시던 중, 드로아에서 잠들었을 때 '마게도냐 사람이 와서 우리를 도우라'는 환상을 보았습니다. 이를 하나님의 서방 파송 뜻으로 결론지었습니다. 의사 누가가 여기서부터 전도단에 합류했습니다.", companions:["바울","실라","디모데","누가"]},
-                    {nameKo:"네압볼리", nameEn:"Neapolis", coords:[40.9333,24.4167], verse:"행 16:11", intro:"마게도냐 관문 항구로 유럽 땅에 복음이 처음 상륙한 역사적인 부두입니다.", desc:"에게해를 가로질러 마게도냐 관문 항구에 역사적인 첫 발을 내디뎠습니다. 유럽 대륙에 생명의 말씀이 공식 수입되는 위대한 첫 교두보입니다.", companions:["바울","실라","디모데","누가"]},
-                    {nameKo:"빌립보", nameEn:"Philippi", coords:[41.0125,24.2858], verse:"행 16:12-40", intro:"마게도냐의 로마 식민 대도시입니다. 루디아 개척 부흥과 빌립보 옥문 찬송 기적으로 간수 가문을 구원한 시발지입니다.", desc:"강가에서 자주장사 루디아를 만나 가문을 복음화했습니다. 루디아는 유럽 대륙에서 바울이 얻은 첫 번째 회심자이며, 빌립보 교회는 이후 바울이 어느 교회에게도 받지 않은 물질적 후원을 아끼지 않은 유일한 교회였습니다(빌 4:15). 점치는 여종을 고쳐주자 투옥되었으나, 바울과 실라가 밤중에 찬양할 때 대지진이 나며 착고가 풀리고 간수 가문을 구원했습니다. 이후 로마 시민권을 제시해 공식 사과를 받으며 석방되었습니다.", companions:["바울","실라","디모데"]},
-                    {nameKo:"데살로니가", nameEn:"Thessalonica", coords:[40.6401,22.9444], verse:"행 17:1-9", intro:"마게도냐 행정 수도이자 상업 요충지입니다. 3주간의 뜨거운 회당 강론 후 폭력 소동으로 밤중에 야반도주를 겪은 격동의 일터입니다.", desc:"세 안식일 동안 예수가 메시아임을 성경으로 강론했습니다. 학자 람세이는 회당에서의 기간은 3주이나 실제 총 체류는 6개월에 이르렀을 가능성을 주장합니다. 경건한 헬라인과 귀부인이 폭발적으로 모여 '천하를 어지럽게 하던 자들'이라는 말을 들을 만큼 그 영향력이 강렬했으나, 유대 세력이 야손의 집을 급습해 밤중에 탈출을 감행했습니다.", companions:["바울","실라","디모데"]},
-                    {nameKo:"베뢰아", nameEn:"Berea", coords:[40.5218,22.2039], verse:"행 17:10-14", intro:"마게도냐 남부의 산간 성읍입니다. 신사적인 성도들이 날마다 성경을 스스로 탐구했던 깊은 부흥지입니다.", desc:"이곳 사람들은 너그럽고 신사적이어서 성경을 진지하게 상고했습니다. 유대 명사들과 헬라 귀부인들이 믿음에 동참했습니다. 그러나 원정 박해가 오자 형제들이 바울만 밤중에 아덴으로 대피시켰습니다.", companions:["바울"]},
-                    {nameKo:"아덴", nameEn:"Athens", coords:[37.9838,23.7275], verse:"행 17:15-34", intro:"고대 철학과 우상숭배가 들끓던 헬라 문화의 상징 아테네입니다. 아레오바고 광장에서 정교한 부활 논증을 펼쳤습니다.", desc:"온 도시에 우상이 가득한 것을 보며 회당과 철학의 광장에서 매일 변론했습니다. 아레오바고에서 '알지 못하는 신에게'라는 제단을 메타포로 삼아 우주 만물을 지으신 참 하나님과 예수 그리스도의 부활을 선포했습니다.", companions:["바울"]},
-                    {nameKo:"고린도", nameEn:"Corinth", coords:[37.9356,22.9249], verse:"행 18:1-18", intro:"아가야 주의 거대 무역 도시입니다. 아굴라 브리스길라와 동역하며 1년 6개월간 교회를 견고히 개척했습니다.", desc:"아굴라는 글라우디오 황제의 유대인 추방령으로 로마에서 온 본도 출신 유대인이었고, 브리스길라는 로마의 저명한 브리스가 가문 출신으로 사회적 지위가 높았습니다(성경에서 남편보다 아내 이름이 먼저 나오는 이유). 같은 천막 제조업으로 생계를 함께하며 사역을 시작했고, 이후 하나님을 경외하는 디도 유스도의 집을 거점으로 1년 6개월간 교회를 다졌습니다. 이 기간 '데살로니가전·후서'를 집필했습니다.", companions:["바울","실라","디모데"]},
-                    {nameKo:"에베소", nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"행 18:19", intro:"아시아 선교의 전초기지입니다. 브리스길라와 아굴라를 목회 파수꾼으로 두고 예루살렘으로 향했습니다.", desc:"회당에서 잠시 토론하여 엄청난 사역적 관심을 끌었으나 예루살렘 절기가 다가와 '하나님의 뜻이면 반드시 돌아오리라' 약속을 남긴 채 브리스길라와 아굴라 부부를 상주 파수꾼으로 머물게 했습니다.", companions:["바울"]},
-                    {nameKo:"가이사랴", nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"행 18:22", intro:"로마 총독부가 주둔하는 군사 포구입니다. 유럽 개척 보고를 완수하고 안디옥 본부로 귀항하는 항해 관문입니다.", desc:"유대 가이사랴 해안에 착륙하여 예루살렘 모교회를 공식 방문해 감사를 표하고 파송지 안디옥으로 복귀해 2차 여행의 숨을 골랐습니다.", companions:["바울"]}
+                    {nameKo:"?섎━???덈뵒??, nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"??15:36-40", intro:"留덇? ?숉뻾 遺꾩웳?쇰줈 諛붾굹諛붿? 寃곕퀎 ???ㅻ씪瑜??숇컲?먮줈 ?쇱븘 ??異쒕컻??臾대??낅땲??", desc:"留덇?瑜??곕젮媛?먮뒗 諛붾굹諛붿쓽 二쇱옣怨??숈쓽?????놁뼱 寃곕퀎?섏??듬땲?? 諛붾굹諛붾뒗 留덇?? 援щ툕濡쒕줈 ?좊궗怨? 諛붿슱? 濡쒕쭏 ?쒕?沅뚯옄???ㅻ씪瑜??앺빐 遺곷갑 ?〓줈濡???꾩쭊??媛쒖떆?덉뒿?덈떎.", companions:["諛붿슱","?ㅻ씪"]},
+                    {nameKo:"?ㅼ냼", nameEn:"Tarsus", coords:[36.9164,34.8951], verse:"??15:41", intro:"湲몃━湲곗븘 二쇱쓽 ?섎룄?댁옄 ?щ룄 諛붿슱??怨좏뼢?낅땲?? ?뚯떖 ???嫄??ъ뿭???곗쟾?닿린???덉뒿?덈떎.", desc:"諛붿슱???곸쟻 紐⑦깭媛 ??怨좏뼢 ?ㅼ냼瑜??듦낵?섎ŉ ?섎━?꾩? 湲몃━湲곗븘 ?쇰????뺤젣 援먰쉶?ㅼ쓣 二쇰떂??留먯? ?꾩뿉 寃ш퀬??蹂댁닔?덉뒿?덈떎.", companions:["諛붿슱","?ㅻ씪"]},
+                    {nameKo:"猷⑥뒪?쒕씪", nameEn:"Lystra", coords:[37.5833,32.4500], verse:"??16:1-3", intro:"諛붿슱???좎떎???숈뿭?먯씤 ?붾え?곕? ?꾨룄?⑥뿉 ?곸엯?섍퀬 ?좊?瑜?踰좏뫜 ?먮━?낅땲??", desc:"移?갔諛쏅뒗 ?딆? ?쒖옄 ?붾え?곕? 諛쒓껄?덉뒿?덈떎. ?좊? ?ъ뿭???λ꼍??臾대꼫?⑤━湲??꾪빐 ?대갑??遺移쒖쓣 ???붾え?곗뿉寃??좊?瑜??됲븯怨??꾨룄?⑥뿉 ?꾧꺽 ?⑸쪟?쒖섟?듬땲??", companions:["諛붿슱","?ㅻ씪","?붾え??]},
+                    {nameKo:"?쒕줈??, nameEn:"Troas", coords:[39.7500,26.1667], verse:"??16:6-10", intro:"?먭쾶?댁쓽 ???臾댁뿭??엯?덈떎. 留덇쾶?꾨깘?몄쓽 ?섏긽???묐떟???좊읇 ?꾨룄瑜?寃곗젙???깆??낅땲??", desc:"?깅졊???꾩떆??諛⑺뼢??留됱쑝?쒕뜕 以? ?쒕줈?꾩뿉???좊뱾?덉쓣 ??'留덇쾶?꾨깘 ?щ엺??????곕━瑜??꾩슦?????섏긽??蹂댁븯?듬땲?? ?대? ?섎굹?섏쓽 ?쒕갑 ?뚯넚 ?살쑝濡?寃곕줎吏?덉뒿?덈떎. ?섏궗 ?꾧?媛 ?ш린?쒕????꾨룄?⑥뿉 ?⑸쪟?덉뒿?덈떎.", companions:["諛붿슱","?ㅻ씪","?붾え??,"?꾧?"]},
+                    {nameKo:"?ㅼ븬蹂쇰━", nameEn:"Neapolis", coords:[40.9333,24.4167], verse:"??16:11", intro:"留덇쾶?꾨깘 愿臾???뎄濡??좊읇 ?낆뿉 蹂듭쓬??泥섏쓬 ?곷쪠????궗?곸씤 遺?먯엯?덈떎.", desc:"?먭쾶?대? 媛濡쒖쭏??留덇쾶?꾨깘 愿臾???뎄????궗?곸씤 泥?諛쒖쓣 ?대뵒?좎뒿?덈떎. ?좊읇 ?瑜숈뿉 ?앸챸??留먯???怨듭떇 ?섏엯?섎뒗 ?꾨???泥?援먮몢蹂댁엯?덈떎.", companions:["諛붿슱","?ㅻ씪","?붾え??,"?꾧?"]},
+                    {nameKo:"鍮뚮┰蹂?, nameEn:"Philippi", coords:[41.0125,24.2858], verse:"??16:12-40", intro:"留덇쾶?꾨깘??濡쒕쭏 ?앸? ??꾩떆?낅땲?? 猷⑤뵒??媛쒖쿃 遺?κ낵 鍮뚮┰蹂??λЦ 李ъ넚 湲곗쟻?쇰줈 媛꾩닔 媛臾몄쓣 援ъ썝???쒕컻吏?낅땲??", desc:"媛뺢??먯꽌 ?먯＜?μ궗 猷⑤뵒?꾨? 留뚮굹 媛臾몄쓣 蹂듭쓬?뷀뻽?듬땲?? 猷⑤뵒?꾨뒗 ?좊읇 ?瑜숈뿉??諛붿슱???살? 泥?踰덉㎏ ?뚯떖?먯씠硫? 鍮뚮┰蹂?援먰쉶???댄썑 諛붿슱???대뒓 援먰쉶?먭쾶??諛쏆? ?딆? 臾쇱쭏???꾩썝???꾨겮吏 ?딆? ?좎씪??援먰쉶??듬땲??鍮?4:15). ?먯튂???ъ쥌??怨좎퀜二쇱옄 ?ъ삦?섏뿀?쇰굹, 諛붿슱怨??ㅻ씪媛 諛ㅼ쨷??李ъ뼇?????吏吏꾩씠 ?섎ŉ 李⑷퀬媛 ?由ш퀬 媛꾩닔 媛臾몄쓣 援ъ썝?덉뒿?덈떎. ?댄썑 濡쒕쭏 ?쒕?沅뚯쓣 ?쒖떆??怨듭떇 ?ш낵瑜?諛쏆쑝硫??앸갑?섏뿀?듬땲??", companions:["諛붿슱","?ㅻ씪","?붾え??]},
+                    {nameKo:"?곗궡濡쒕땲媛", nameEn:"Thessalonica", coords:[40.6401,22.9444], verse:"??17:1-9", intro:"留덇쾶?꾨깘 ?됱젙 ?섎룄?댁옄 ?곸뾽 ?붿땐吏?낅땲?? 3二쇨컙???④굅???뚮떦 媛뺣줎 ????젰 ?뚮룞?쇰줈 諛ㅼ쨷???쇰컲?꾩＜瑜?寃れ? 寃⑸룞???쇳꽣?낅땲??", desc:"???덉떇???숈븞 ?덉닔媛 硫붿떆?꾩엫???깃꼍?쇰줈 媛뺣줎?덉뒿?덈떎. ?숈옄 ?뚯꽭?대뒗 ?뚮떦?먯꽌??湲곌컙? 3二쇱씠???ㅼ젣 珥?泥대쪟??6媛쒖썡???대Ⅴ???媛?μ꽦??二쇱옣?⑸땲?? 寃쎄굔???щ씪?멸낵 洹遺?몄씠 ??컻?곸쑝濡?紐⑥뿬 '泥쒗븯瑜??댁??쎄쾶 ?섎뜕 ?먮뱾'?대씪??留먯쓣 ?ㅼ쓣 留뚰겮 洹??곹뼢?μ씠 媛뺣젹?덉쑝?? ?좊? ?몃젰???쇱넀??吏묒쓣 湲됱뒿??諛ㅼ쨷???덉텧??媛먰뻾?덉뒿?덈떎.", companions:["諛붿슱","?ㅻ씪","?붾え??]},
+                    {nameKo:"踰좊ː??, nameEn:"Berea", coords:[40.5218,22.2039], verse:"??17:10-14", intro:"留덇쾶?꾨깘 ?⑤????곌컙 ?깆쓭?낅땲?? ?좎궗?곸씤 ?깅룄?ㅼ씠 ?좊쭏???깃꼍???ㅼ뒪濡??먭뎄?덈뜕 源딆? 遺?μ??낅땲??", desc:"?닿납 ?щ엺?ㅼ? ?덇렇?쎄퀬 ?좎궗?곸씠?댁꽌 ?깃꼍??吏꾩??섍쾶 ?곴퀬?덉뒿?덈떎. ?좊? 紐낆궗?ㅺ낵 ?щ씪 洹遺?몃뱾??誘우쓬???숈갭?덉뒿?덈떎. 洹몃윭???먯젙 諛뺥빐媛 ?ㅼ옄 ?뺤젣?ㅼ씠 諛붿슱留?諛ㅼ쨷???꾨뜶?쇰줈 ??쇱떆耳곗뒿?덈떎.", companions:["諛붿슱"]},
+                    {nameKo:"?꾨뜶", nameEn:"Athens", coords:[37.9838,23.7275], verse:"??17:15-34", intro:"怨좊? 泥좏븰怨??곗긽??같媛 ?ㅻ걪???щ씪 臾명솕???곸쭠 ?꾪뀒?ㅼ엯?덈떎. ?꾨젅?ㅻ컮怨?愿묒옣?먯꽌 ?뺢탳??遺???쇱쬆???쇱낀?듬땲??", desc:"???꾩떆???곗긽??媛?앺븳 寃껋쓣 蹂대ŉ ?뚮떦怨?泥좏븰??愿묒옣?먯꽌 留ㅼ씪 蹂濡좏뻽?듬땲?? ?꾨젅?ㅻ컮怨좎뿉??'?뚯? 紐삵븯???좎뿉寃??쇰뒗 ?쒕떒??硫뷀??щ줈 ?쇱븘 ?곗＜ 留뚮Ъ??吏?쇱떊 李??섎굹?섍낵 ?덉닔 洹몃━?ㅻ룄??遺?쒖쓣 ?좏룷?덉뒿?덈떎.", companions:["諛붿슱"]},
+                    {nameKo:"怨좊┛??, nameEn:"Corinth", coords:[37.9356,22.9249], verse:"??18:1-18", intro:"?꾧???二쇱쓽 嫄곕? 臾댁뿭 ?꾩떆?낅땲?? ?꾧뎬??釉뚮━?ㅺ만?쇱? ?숈뿭?섎ŉ 1??6媛쒖썡媛?援먰쉶瑜?寃ш퀬??媛쒖쿃?덉뒿?덈떎.", desc:"?꾧뎬?쇰뒗 湲?쇱슦?붿삤 ?⑹젣???좊???異붾갑?뱀쑝濡?濡쒕쭏?먯꽌 ??蹂몃룄 異쒖떊 ?좊??몄씠?덇퀬, 釉뚮━?ㅺ만?쇰뒗 濡쒕쭏???紐낇븳 釉뚮━?ㅺ? 媛臾?異쒖떊?쇰줈 ?ы쉶??吏?꾧? ?믪븯?듬땲???깃꼍?먯꽌 ?⑦렪蹂대떎 ?꾨궡 ?대쫫??癒쇱? ?섏삤???댁쑀). 媛숈? 泥쒕쭑 ?쒖“?낆쑝濡??앷퀎瑜??④퍡?섎ŉ ?ъ뿭???쒖옉?덇퀬, ?댄썑 ?섎굹?섏쓣 寃쎌쇅?섎뒗 ?붾룄 ?좎뒪?꾩쓽 吏묒쓣 嫄곗젏?쇰줈 1??6媛쒖썡媛?援먰쉶瑜??ㅼ죱?듬땲?? ??湲곌컙 '?곗궡濡쒕땲媛?꽷룻썑??瑜?吏묓븘?덉뒿?덈떎.", companions:["諛붿슱","?ㅻ씪","?붾え??]},
+                    {nameKo:"?먮쿋??, nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"??18:19", intro:"?꾩떆???좉탳???꾩큹湲곗??낅땲?? 釉뚮━?ㅺ만?쇱? ?꾧뎬?쇰? 紐⑺쉶 ?뚯닔袁쇱쑝濡??먭퀬 ?덈（?대젞?쇰줈 ?ν뻽?듬땲??", desc:"?뚮떦?먯꽌 ?좎떆 ?좊줎?섏뿬 ?꾩껌???ъ뿭??愿?ъ쓣 ?뚯뿀?쇰굹 ?덈（?대젞 ?덇린媛 ?ㅺ?? '?섎굹?섏쓽 ?살씠硫?諛섎뱶???뚯븘?ㅻ━?? ?쎌냽???④릿 梨?釉뚮━?ㅺ만?쇱? ?꾧뎬??遺遺瑜??곸＜ ?뚯닔袁쇱쑝濡?癒몃Ъ寃??덉뒿?덈떎.", companions:["諛붿슱"]},
+                    {nameKo:"媛?댁궗??, nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"??18:22", intro:"濡쒕쭏 珥앸룆遺媛 二쇰몦?섎뒗 援곗궗 ?ш뎄?낅땲?? ?좊읇 媛쒖쿃 蹂닿퀬瑜??꾩닔?섍퀬 ?덈뵒??蹂몃?濡?洹??븯????빐 愿臾몄엯?덈떎.", desc:"?좊? 媛?댁궗???댁븞??李⑸쪠?섏뿬 ?덈（?대젞 紐④탳?뚮? 怨듭떇 諛⑸Ц??媛먯궗瑜??쒗븯怨??뚯넚吏 ?덈뵒?μ쑝濡?蹂듦???2李??ы뻾???⑥쓣 怨⑤옄?듬땲??", companions:["諛붿슱"]}
                 ]
             },
             3:{
-                title:"3차 전도여행 (AD 53~57)", period:"AD 53~57", letters:"고린도전서, 고린도후서, 로마서 기록",
-                description:"에베소를 본격 선교 거점으로 장악한 뒤, 두란노 서원에서 3년간 날마다 말씀을 강론하여 소아시아 전역의 부흥을 이끌었습니다. 이후 마게도냐와 헬라를 순회하며 예루살렘으로 진격하는 위대한 여정입니다.",
-                companions:["바울","디모데","누가","아리스다고","디도"],
+                title:"3李??꾨룄?ы뻾 (AD 53~57)", period:"AD 53~57", letters:"怨좊┛?꾩쟾?? 怨좊┛?꾪썑?? 濡쒕쭏??湲곕줉",
+                description:"?먮쿋?뚮? 蹂멸꺽 ?좉탳 嫄곗젏?쇰줈 ?μ븙???? ?먮????쒖썝?먯꽌 3?꾧컙 ?좊쭏??留먯???媛뺣줎?섏뿬 ?뚯븘?쒖븘 ?꾩뿭??遺?μ쓣 ?대걣?덉뒿?덈떎. ?댄썑 留덇쾶?꾨깘? ?щ씪瑜??쒗쉶?섎ŉ ?덈（?대젞?쇰줈 吏꾧꺽?섎뒗 ?꾨????ъ젙?낅땲??",
+                companions:["諛붿슱","?붾え??,"?꾧?","?꾨━?ㅻ떎怨?,"?붾룄"],
                 stations:[
-                    {nameKo:"수리아 안디옥", nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"행 18:23", intro:"3차 사역 출범지입니다. 소아시아 내륙 지체들을 돌보고자 도보 행전을 시작한 성지입니다.", desc:"3차 여행을 시작하여 이전에 개척된 갈라디아와 브루기아 심장부들을 순방하며 제자들의 심령을 기도로 견고하게 세웠습니다.", companions:["바울","디모데"]},
-                    {nameKo:"에베소", nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"행 19:1-41", intro:"아데미 신전 폭동이 일어났던 아시아의 거대 수도입니다. 두란노 서원에서 2년간 아시아 전역을 부흥시켰습니다.", desc:"3년의 금빛 전성기입니다. 회당에서 3개월, '두란노 서원'에서 2년간 날마다 말씀을 가르치니 온 아시아가 복음을 들었습니다(행 19:10). 학자들은 이 기간 복음이 사방으로 확산되어 요한계시록의 일곱 교회가 이때 세워졌을 가능성이 크다고 봅니다. 은장색 데메드리오의 아데미 신전 폭동은 신앙적 이유가 아닌 사업 위기감에서 비롯된 경제적 동기의 박해였습니다. 고린도 분열 소식을 듣고 '고린도전서'를 집필해 보냈습니다.", companions:["바울","디모데","아리스다고"]},
-                    {nameKo:"드로아", nameEn:"Troas", coords:[39.7500,26.1667], verse:"고후 2:12", intro:"복음의 문은 열렸으나 디도의 소식을 기다리며 마음에 애달픔을 겪은 항구입니다.", desc:"복음의 문이 열렸으나 고린도 상황을 전할 동역자 디도를 만나지 못해 편치 않은 마음으로 마게도냐로 향했습니다.", companions:["바울"]},
-                    {nameKo:"마게도냐 (빌립보)", nameEn:"Philippi (Macedonia)", coords:[41.0125,24.2858], verse:"고후 7:5-6", intro:"디도와의 극적 재회로 고린도의 회개 고백을 받고 감격 속에 고린도후서를 집필했습니다.", desc:"마게도냐에서 디도를 극적으로 만나 교회의 기쁜 회개 소식을 듣고 고린도후서를 집필해 보냈습니다.", companions:["바울","디모데","디도","누가"]},
-                    {nameKo:"고린도 (헬라)", nameEn:"Corinth (Greece)", coords:[37.9356,22.9249], verse:"행 20:2-3", intro:"헬라 아가야 주의 심장입니다. 석 달간 유하며 불멸의 대작 '로마서'를 집필해 보냈습니다.", desc:"3달간 머물며 예루살렘을 위한 구제 모금을 마쳤고, 향후 선교 중심이 될 로마의 성도들을 위해 '로마서' 대서신을 저술했습니다.", companions:["바울","디모데","누가"]},
-                    {nameKo:"드로아 (귀환길)", nameEn:"Troas (Return)", coords:[39.7500,26.1667], verse:"행 20:6-12", intro:"밤샘 집회 중 졸음사 한 청년 유두고를 바울의 안수로 다시 살려낸 기적의 현장입니다.", desc:"유대인들의 살해 음모를 피해 드로아에 이르렀습니다. 밤집회 중 3층 난간에서 추락해 즉사한 청년 유두고를 부둥켜안고 하나님의 신비한 능력으로 다시 살려내어 밤새 떡을 떼며 위로를 나눈 역사의 성읍입니다.", companions:["바울","디모데","누가","아리스다고"]},
-                    {nameKo:"밀레도", nameEn:"Miletus", coords:[37.5311,27.2764], verse:"행 20:17-38", intro:"에베소 남방의 고대 해안 항구입니다. 에베소 장로들을 불러 눈물의 고별 예배를 드렸습니다.", desc:"오순절 전에 예루살렘에 도착하려는 일정 때문에 에베소를 직접 방문하지 않고 밀레도로 에베소 장로들을 청했습니다(행 20:16). '성령이 각 성에서 결박과 환란이 기다린다'고 고백하며(행 20:22-23), 눈물 어린 영적 고별 설교와 기도로 사랑하는 에베소 교회를 하나님께 부탁했습니다.", companions:["바울","디모데","누가","아리스다고"]},
-                    {nameKo:"두로", nameEn:"Tyre", coords:[33.2708,35.1964], verse:"행 21:3-4", intro:"페니키아의 유서 깊은 해안 무역항입니다. 제자들의 성령 어린 통곡을 받으며 예루살렘 도정을 강행했습니다.", desc:"시리아에 도착, 제자들이 성령의 감동으로 예루살렘에 가지 말라고 강력 만류했습니다.", companions:["바울","디모데","누가","아리스다고"]},
-                    {nameKo:"가이사랴", nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"행 21:8-14", intro:"일곱 집사 빌립의 영적 거점 도성입니다. 아가보의 결박 예언에도 '죽을 것도 각오했다'며 사명을 천명한 곳입니다.", desc:"선지자 아가보가 바울의 띠를 가져가 결박 예언을 행하자, 성도들이 통곡했으나 바울은 죽을 각오가 되었다고 결의했습니다.", companions:["바울","디모데","누가","아리스다고"]},
-                    {nameKo:"예루살렘", nameEn:"Jerusalem", coords:[31.7683,35.2137], verse:"행 21:17-36", intro:"유대교와 율법의 심장 성읍입니다. 구제 헌금 전달 직후 체포되며 3차 전도를 종결했습니다.", desc:"예루살렘 도착 후 영접을 받았으나 아시아에서 밀려든 유대 선동 세력에 의해 성전에서 부당하게 구타당하고 체포되었습니다.", companions:["바울","누가","아리스다고"]}
+                    {nameKo:"?섎━???덈뵒??, nameEn:"Antioch of Syria", coords:[36.2021,36.1597], verse:"??18:23", intro:"3李??ъ뿭 異쒕쾾吏?낅땲?? ?뚯븘?쒖븘 ?대쪠 吏泥대뱾???뚮낫怨좎옄 ?꾨낫 ?됱쟾???쒖옉???깆??낅땲??", desc:"3李??ы뻾???쒖옉?섏뿬 ?댁쟾??媛쒖쿃??媛덈씪?붿븘? 釉뚮（湲곗븘 ?ъ옣遺?ㅼ쓣 ?쒕갑?섎ŉ ?쒖옄?ㅼ쓽 ?щ졊??湲곕룄濡?寃ш퀬?섍쾶 ?몄썱?듬땲??", companions:["諛붿슱","?붾え??]},
+                    {nameKo:"?먮쿋??, nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"??19:1-41", intro:"?꾨뜲誘??좎쟾 ??룞???쇱뼱?щ뜕 ?꾩떆?꾩쓽 嫄곕? ?섎룄?낅땲?? ?먮????쒖썝?먯꽌 2?꾧컙 ?꾩떆???꾩뿭??遺?μ떆耳곗뒿?덈떎.", desc:"3?꾩쓽 湲덈튆 ?꾩꽦湲곗엯?덈떎. ?뚮떦?먯꽌 3媛쒖썡, '?먮????쒖썝'?먯꽌 2?꾧컙 ?좊쭏??留먯???媛瑜댁튂?????꾩떆?꾧? 蹂듭쓬???ㅼ뿀?듬땲????19:10). ?숈옄?ㅼ? ??湲곌컙 蹂듭쓬???щ갑?쇰줈 ?뺤궛?섏뼱 ?뷀븳怨꾩떆濡앹쓽 ?쇨낢 援먰쉶媛 ?대븣 ?몄썙議뚯쓣 媛?μ꽦???щ떎怨?遊낅땲?? ??μ깋 ?곕찓?쒕━?ㅼ쓽 ?꾨뜲誘??좎쟾 ??룞? ?좎븰???댁쑀媛 ?꾨땶 ?ъ뾽 ?꾧린媛먯뿉??鍮꾨’??寃쎌젣???숆린??諛뺥빐??듬땲?? 怨좊┛??遺꾩뿴 ?뚯떇???ｊ퀬 '怨좊┛?꾩쟾??瑜?吏묓븘??蹂대깉?듬땲??", companions:["諛붿슱","?붾え??,"?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?쒕줈??, nameEn:"Troas", coords:[39.7500,26.1667], verse:"怨좏썑 2:12", intro:"蹂듭쓬??臾몄? ?대졇?쇰굹 ?붾룄???뚯떇??湲곕떎由щŉ 留덉쓬???좊떖?붿쓣 寃れ? ??뎄?낅땲??", desc:"蹂듭쓬??臾몄씠 ?대졇?쇰굹 怨좊┛???곹솴???꾪븷 ?숈뿭???붾룄瑜?留뚮굹吏 紐삵빐 ?몄튂 ?딆? 留덉쓬?쇰줈 留덇쾶?꾨깘濡??ν뻽?듬땲??", companions:["諛붿슱"]},
+                    {nameKo:"留덇쾶?꾨깘 (鍮뚮┰蹂?", nameEn:"Philippi (Macedonia)", coords:[41.0125,24.2858], verse:"怨좏썑 7:5-6", intro:"?붾룄???洹뱀쟻 ?ы쉶濡?怨좊┛?꾩쓽 ?뚭컻 怨좊갚??諛쏄퀬 媛먭꺽 ?띿뿉 怨좊┛?꾪썑?쒕? 吏묓븘?덉뒿?덈떎.", desc:"留덇쾶?꾨깘?먯꽌 ?붾룄瑜?洹뱀쟻?쇰줈 留뚮굹 援먰쉶??湲곗걶 ?뚭컻 ?뚯떇???ｊ퀬 怨좊┛?꾪썑?쒕? 吏묓븘??蹂대깉?듬땲??", companions:["諛붿슱","?붾え??,"?붾룄","?꾧?"]},
+                    {nameKo:"怨좊┛??(?щ씪)", nameEn:"Corinth (Greece)", coords:[37.9356,22.9249], verse:"??20:2-3", intro:"?щ씪 ?꾧???二쇱쓽 ?ъ옣?낅땲?? ???ш컙 ?좏븯硫?遺덈㈇?????'濡쒕쭏??瑜?吏묓븘??蹂대깉?듬땲??", desc:"3?ш컙 癒몃Ъ硫??덈（?대젞???꾪븳 援ъ젣 紐④툑??留덉낀怨? ?ν썑 ?좉탳 以묒떖????濡쒕쭏???깅룄?ㅼ쓣 ?꾪빐 '濡쒕쭏?? ??쒖떊????좏뻽?듬땲??", companions:["諛붿슱","?붾え??,"?꾧?"]},
+                    {nameKo:"?쒕줈??(洹?섍만)", nameEn:"Troas (Return)", coords:[39.7500,26.1667], verse:"??20:6-12", intro:"諛ㅼ깦 吏묓쉶 以?議몄쓬????泥?뀈 ?좊몢怨좊? 諛붿슱???덉닔濡??ㅼ떆 ?대젮??湲곗쟻???꾩옣?낅땲??", desc:"?좊??몃뱾???댄빐 ?뚮え瑜??쇳빐 ?쒕줈?꾩뿉 ?대Ⅴ??듬땲?? 諛ㅼ쭛??以?3痢??쒓컙?먯꽌 異붾씫??利됱궗??泥?뀈 ?좊몢怨좊? 遺?μ폒?덇퀬 ?섎굹?섏쓽 ?좊퉬???λ젰?쇰줈 ?ㅼ떆 ?대젮?댁뼱 諛ㅼ깉 ?≪쓣 ?쇰ŉ ?꾨줈瑜??섎늿 ??궗???깆쓭?낅땲??", companions:["諛붿슱","?붾え??,"?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"諛?덈룄", nameEn:"Miletus", coords:[37.5311,27.2764], verse:"??20:17-38", intro:"?먮쿋???⑤갑??怨좊? ?댁븞 ??뎄?낅땲?? ?먮쿋???λ줈?ㅼ쓣 遺덈윭 ?덈Ъ??怨좊퀎 ?덈같瑜??쒕졇?듬땲??", desc:"?ㅼ닚???꾩뿉 ?덈（?대젞???꾩갑?섎젮???쇱젙 ?뚮Ц???먮쿋?뚮? 吏곸젒 諛⑸Ц?섏? ?딄퀬 諛?덈룄濡??먮쿋???λ줈?ㅼ쓣 泥?뻽?듬땲????20:16). '?깅졊??媛??깆뿉??寃곕컯怨??섎???湲곕떎由곕떎'怨?怨좊갚?섎ŉ(??20:22-23), ?덈Ъ ?대┛ ?곸쟻 怨좊퀎 ?ㅺ탳? 湲곕룄濡??щ옉?섎뒗 ?먮쿋??援먰쉶瑜??섎굹?섍퍡 遺?곹뻽?듬땲??", companions:["諛붿슱","?붾え??,"?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?먮줈", nameEn:"Tyre", coords:[33.2708,35.1964], verse:"??21:3-4", intro:"?섎땲?ㅼ븘???좎꽌 源딆? ?댁븞 臾댁뿭??엯?덈떎. ?쒖옄?ㅼ쓽 ?깅졊 ?대┛ ?듦끝??諛쏆쑝硫??덈（?대젞 ?꾩젙??媛뺥뻾?덉뒿?덈떎.", desc:"?쒕━?꾩뿉 ?꾩갑, ?쒖옄?ㅼ씠 ?깅졊??媛먮룞?쇰줈 ?덈（?대젞??媛吏 留먮씪怨?媛뺣젰 留뚮쪟?덉뒿?덈떎.", companions:["諛붿슱","?붾え??,"?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"媛?댁궗??, nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"??21:8-14", intro:"?쇨낢 吏묒궗 鍮뚮┰???곸쟻 嫄곗젏 ?꾩꽦?낅땲?? ?꾧?蹂댁쓽 寃곕컯 ?덉뼵?먮룄 '二쎌쓣 寃껊룄 媛곸삤?덈떎'硫??щ챸??泥쒕챸??怨녹엯?덈떎.", desc:"?좎????꾧?蹂닿? 諛붿슱???좊? 媛?멸? 寃곕컯 ?덉뼵???됲븯?? ?깅룄?ㅼ씠 ?듦끝?덉쑝??諛붿슱? 二쎌쓣 媛곸삤媛 ?섏뿀?ㅺ퀬 寃곗쓽?덉뒿?덈떎.", companions:["諛붿슱","?붾え??,"?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?덈（?대젞", nameEn:"Jerusalem", coords:[31.7683,35.2137], verse:"??21:17-36", intro:"?좊?援먯? ?⑤쾿???ъ옣 ?깆쓭?낅땲?? 援ъ젣 ?뚭툑 ?꾨떖 吏곹썑 泥댄룷?섎ŉ 3李??꾨룄瑜?醫낃껐?덉뒿?덈떎.", desc:"?덈（?대젞 ?꾩갑 ???곸젒??諛쏆븯?쇰굹 ?꾩떆?꾩뿉??諛?ㅻ뱺 ?좊? ?좊룞 ?몃젰???섑빐 ?깆쟾?먯꽌 遺?뱁븯寃?援ы??뱁븯怨?泥댄룷?섏뿀?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]}
                 ]
             },
             4:{
-                title:"로마 압송 여행 (AD 59~61)", period:"AD 59~61", letters:"에베소서, 빌립보서, 골로새서, 빌레몬서(옥중서신)",
-                description:"예루살렘 체포 후 가이사랴 총독부에서 2년간 감금되었다가, 가이사에게 상소하여 죄수 신분으로 로마 호송선에 올랐습니다. 지중해 광풍(유라굴로) 속에서도 모두를 보존하고 로마에서 복음을 전했습니다.",
-                companions:["바울","누가","아리스다고"],
+                title:"濡쒕쭏 ?뺤넚 ?ы뻾 (AD 59~61)", period:"AD 59~61", letters:"?먮쿋?뚯꽌, 鍮뚮┰蹂댁꽌, 怨⑤줈?덉꽌, 鍮뚮젅紐ъ꽌(?μ쨷?쒖떊)",
+                description:"?덈（?대젞 泥댄룷 ??媛?댁궗??珥앸룆遺?먯꽌 2?꾧컙 媛먭툑?섏뿀?ㅺ?, 媛?댁궗?먭쾶 ?곸냼?섏뿬 二꾩닔 ?좊텇?쇰줈 濡쒕쭏 ?몄넚?좎뿉 ?щ옄?듬땲?? 吏以묓빐 愿묓뭾(?좊씪援대줈) ?띿뿉?쒕룄 紐⑤몢瑜?蹂댁〈?섍퀬 濡쒕쭏?먯꽌 蹂듭쓬???꾪뻽?듬땲??",
+                companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?],
                 stations:[
-                    {nameKo:"가이사랴", nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"행 27:1", intro:"2년 감금 후 백부장 율리오의 통제하에 로마군 수송선에 승선한 역사적인 압송 시발지입니다.", desc:"베스도 총독에 상소함에 따라 아구사도대의 백부장 율리오 호위하에 로마행 압송선에 승선했습니다. 가이사랴는 유대지방 로마 행정 수도로, 1961년 이곳 극장 폐허에서 '유다총독 본디오 빌라도'라 씌인 금석문이 발견되어 성경 역사의 고고학적 증거가 되었습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"시돈", nameEn:"Sidon", coords:[33.5631,35.3689], verse:"행 27:3", intro:"해안 압송의 첫 기항지 페니키아의 시돈입니다. 백부장의 호의로 현지 형제들의 영접을 수종받았습니다.", desc:"시돈에 도달했을 때 백부장 율리오의 친절한 배려로 바울이 현지 성도들의 극진한 공궤와 대접을 누렸습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"무라", nameEn:"Myra in Lycia", coords:[36.2581,29.9847], verse:"행 27:5-6", intro:"루기아 지방의 대표 무역 항구입니다. 알렉산드리아 대형 곡물 수송선으로 전원 환승한 곳입니다.", desc:"루기아 무라에 다다라 로마 황제에게 올릴 곡물을 실은 이탈리아행 알렉산드리아 대형 수송선으로 갈아탔습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"그레데 미항", nameEn:"Fair Havens (Crete)", coords:[34.9333,24.8167], verse:"행 27:8-12", intro:"그레데 섬 남단 항구입니다. 기후 위기 경고를 무시하고 무리한 항해를 지시했다가 지옥 같은 풍랑을 부른 기로입니다.", desc:"기후가 악화되어 바울이 항해 연기를 경고했으나, 백부장이 선장과 선주의 의견을 따라 무리한 항해를 지시했습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"지중해 (풍랑)", nameEn:"Adriatic Sea Storm", coords:[35.5,18.5], verse:"행 27:13-26", intro:"광풍 '유라굴로'가 요동치는 지중해 중심부입니다. 14일간 파선 직전 276인의 생명 구명을 선포한 신앙의 바다입니다.", desc:"유라굴로라 부르는 미친 광풍을 만났습니다. 짐과 배의 모든 기구를 바다에 던지며 구명에 매달렸으나 14일간 표류했습니다. 바울은 하나님의 사자의 위로를 받아 정확히 276명 전 인원의 구명을 선포했으며(행 27:37), 실제로 단 한 명의 희생도 없이 전원이 구출되었습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"멜리데 섬 (말타)", nameEn:"Melite (Malta)", coords:[35.8989,14.5146], verse:"행 28:1-10", intro:"파선 후 극적 구출을 누린 몰타 섬입니다. 모닥불 독사 기적과 추장 부친 치유로 석 달간 복음 열매를 맺었습니다.", desc:"호송선 파선 후 전원 극적으로 헤엄쳐 상륙했습니다. 바울이 모닥불을 피우던 중 뱀에 물렸으나 무사하여 신으로 여겨졌고 추장 보블리오 부친의 병을 치유하며 3개월간 사역했습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"수라구사", nameEn:"Syracuse", coords:[37.0755,15.2866], verse:"행 28:12", intro:"시칠리아 섬의 지중해 무역 거점입니다. 과동 종료 후 로마 도정 진입에 앞서 사흘간 숨을 고른 항구입니다.", desc:"멜리데를 떠나 시칠리아 섬의 수라구사에 정박해 사흘 동안 머물렀습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"보디올", nameEn:"Puteoli", coords:[40.8224,14.1221], verse:"행 28:13-14", intro:"나폴리 만에 인접한 로마 본토 상륙 관문 항구입니다. 기독교 제자들과 상봉하여 7일간 사랑을 나누었습니다.", desc:"이탈리아 본토 상륙지. 현지의 기독교인 형제들을 만나 그들의 청함에 따라 7일 동안 함께 머물며 위로를 나누었습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"압비오 저자 / 삼관", nameEn:"Appian Way / Three Taverns", coords:[41.4833,12.9833], verse:"행 28:15", intro:"로마 외곽 아피아 가도 길목입니다. 환영 인파로 달려 나온 로마 성도들을 대면하며 담대한 용기를 얻었습니다.", desc:"로마 시내에서부터 바울을 환영하러 나온 로마 성도들의 영접단을 보았습니다. 그 성도들을 대면하며 담대한 격려와 희망을 얻었습니다.", companions:["바울","누가","아리스다고"]},
-                    {nameKo:"로마 (1차 투옥)", nameEn:"Rome", coords:[41.9028,12.4964], verse:"행 28:16-31", intro:"세계 제국의 심장 로마 도성입니다. 죄수 사슬로 지킴받으면서도 2년간 거침없이 복음을 전하며 옥중 서신들을 완성한 결실지입니다.", desc:"셋집을 얻어 가택연금 상태에 머물면서 한 명의 군사와 동거했습니다. 2년 동안 자신을 찾아오는 모든 사람에게 주 예수의 도를 담대히 전했습니다. 이때 에베소서, 골로새서, 빌레몬서, 빌립보서를 집필했습니다.", companions:["바울","누가","아리스다고"]}
+                    {nameKo:"媛?댁궗??, nameEn:"Caesarea", coords:[32.5036,34.8931], verse:"??27:1", intro:"2??媛먭툑 ??諛깅????⑤━?ㅼ쓽 ?듭젣?섏뿉 濡쒕쭏援??섏넚?좎뿉 ?뱀꽑????궗?곸씤 ?뺤넚 ?쒕컻吏?낅땲??", desc:"踰좎뒪??珥앸룆???곸냼?⑥뿉 ?곕씪 ?꾧뎄?щ룄???諛깅????⑤━???몄쐞?섏뿉 濡쒕쭏???뺤넚?좎뿉 ?뱀꽑?덉뒿?덈떎. 媛?댁궗?대뒗 ?좊?吏諛?濡쒕쭏 ?됱젙 ?섎룄濡? 1961???닿납 洹뱀옣 ?먰뿀?먯꽌 '?좊떎珥앸룆 蹂몃뵒??鍮뚮씪?????뚯씤 湲덉꽍臾몄씠 諛쒓껄?섏뼱 ?깃꼍 ??궗??怨좉퀬?숈쟻 利앷굅媛 ?섏뿀?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?쒕룉", nameEn:"Sidon", coords:[33.5631,35.3689], verse:"??27:3", intro:"?댁븞 ?뺤넚??泥?湲고빆吏 ?섎땲?ㅼ븘???쒕룉?낅땲?? 諛깅??μ쓽 ?몄쓽濡??꾩? ?뺤젣?ㅼ쓽 ?곸젒???섏쥌諛쏆븯?듬땲??", desc:"?쒕룉???꾨떖?덉쓣 ??諛깅????⑤━?ㅼ쓽 移쒖젅??諛곕젮濡?諛붿슱???꾩? ?깅룄?ㅼ쓽 洹뱀쭊??怨듦땄? ??묒쓣 ?꾨졇?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"臾대씪", nameEn:"Myra in Lycia", coords:[36.2581,29.9847], verse:"??27:5-6", intro:"猷④린??吏諛⑹쓽 ???臾댁뿭 ??뎄?낅땲?? ?뚮젆?곕뱶由ъ븘 ???怨〓Ъ ?섏넚?좎쑝濡??꾩썝 ?섏듅??怨녹엯?덈떎.", desc:"猷④린??臾대씪???ㅻ떎??濡쒕쭏 ?⑹젣?먭쾶 ?щ┫ 怨〓Ъ???ㅼ? ?댄깉由ъ븘???뚮젆?곕뱶由ъ븘 ????섏넚?좎쑝濡?媛덉븘?붿뒿?덈떎.", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"洹몃젅??誘명빆", nameEn:"Fair Havens (Crete)", coords:[34.9333,24.8167], verse:"??27:8-12", intro:"洹몃젅?????⑤떒 ??뎄?낅땲?? 湲고썑 ?꾧린 寃쎄퀬瑜?臾댁떆?섍퀬 臾대━????빐瑜?吏?쒗뻽?ㅺ? 吏??媛숈? ?띾옉??遺瑜?湲곕줈?낅땲??", desc:"湲고썑媛 ?낇솕?섏뼱 諛붿슱????빐 ?곌린瑜?寃쎄퀬?덉쑝?? 諛깅??μ씠 ?좎옣怨??좎＜???섍껄???곕씪 臾대━????빐瑜?吏?쒗뻽?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"吏以묓빐 (?띾옉)", nameEn:"Adriatic Sea Storm", coords:[35.5,18.5], verse:"??27:13-26", intro:"愿묓뭾 '?좊씪援대줈'媛 ?붾룞移섎뒗 吏以묓빐 以묒떖遺?낅땲?? 14?쇨컙 ?뚯꽑 吏곸쟾 276?몄쓽 ?앸챸 援щ챸???좏룷???좎븰??諛붾떎?낅땲??", desc:"?좊씪援대줈??遺瑜대뒗 誘몄튇 愿묓뭾??留뚮궗?듬땲?? 吏먭낵 諛곗쓽 紐⑤뱺 湲곌뎄瑜?諛붾떎???섏?硫?援щ챸??留ㅻ떖?몄쑝??14?쇨컙 ?쒕쪟?덉뒿?덈떎. 諛붿슱? ?섎굹?섏쓽 ?ъ옄???꾨줈瑜?諛쏆븘 ?뺥솗??276紐????몄썝??援щ챸???좏룷?덉쑝硫???27:37), ?ㅼ젣濡?????紐낆쓽 ?ъ깮???놁씠 ?꾩썝??援ъ텧?섏뿀?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"硫쒕━????(留먰?)", nameEn:"Melite (Malta)", coords:[35.8989,14.5146], verse:"??28:1-10", intro:"?뚯꽑 ??洹뱀쟻 援ъ텧???꾨┛ 紐고? ?ъ엯?덈떎. 紐⑤떏遺??낆궗 湲곗쟻怨?異붿옣 遺移?移섏쑀濡????ш컙 蹂듭쓬 ?대ℓ瑜?留븐뿀?듬땲??", desc:"?몄넚???뚯꽑 ???꾩썝 洹뱀쟻?쇰줈 ?ㅼ뾼爾??곷쪠?덉뒿?덈떎. 諛붿슱??紐⑤떏遺덉쓣 ?쇱슦??以?諭??臾쇰졇?쇰굹 臾댁궗?섏뿬 ?좎쑝濡??ш꺼議뚭퀬 異붿옣 蹂대툝由ъ삤 遺移쒖쓽 蹂묒쓣 移섏쑀?섎ŉ 3媛쒖썡媛??ъ뿭?덉뒿?덈떎.", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?섎씪援ъ궗", nameEn:"Syracuse", coords:[37.0755,15.2866], verse:"??28:12", intro:"?쒖튌由ъ븘 ?ъ쓽 吏以묓빐 臾댁뿭 嫄곗젏?낅땲?? 怨쇰룞 醫낅즺 ??濡쒕쭏 ?꾩젙 吏꾩엯???욎꽌 ?ы쓽媛??⑥쓣 怨좊Ⅸ ??뎄?낅땲??", desc:"硫쒕━?곕? ?좊굹 ?쒖튌由ъ븘 ?ъ쓽 ?섎씪援ъ궗???뺣컯???ы쓽 ?숈븞 癒몃Ъ??듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"蹂대뵒??, nameEn:"Puteoli", coords:[40.8224,14.1221], verse:"??28:13-14", intro:"?섑뤃由?留뚯뿉 ?몄젒??濡쒕쭏 蹂명넗 ?곷쪠 愿臾???뎄?낅땲?? 湲곕룆援??쒖옄?ㅺ낵 ?곷큺?섏뿬 7?쇨컙 ?щ옉???섎늻?덉뒿?덈떎.", desc:"?댄깉由ъ븘 蹂명넗 ?곷쪠吏. ?꾩???湲곕룆援먯씤 ?뺤젣?ㅼ쓣 留뚮굹 洹몃뱾??泥?븿???곕씪 7???숈븞 ?④퍡 癒몃Ъ硫??꾨줈瑜??섎늻?덉뒿?덈떎.", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"?뺣퉬?????/ ?쇨?", nameEn:"Appian Way / Three Taverns", coords:[41.4833,12.9833], verse:"??28:15", intro:"濡쒕쭏 ?멸낸 ?꾪뵾??媛??湲몃ぉ?낅땲?? ?섏쁺 ?명뙆濡??щ젮 ?섏삩 濡쒕쭏 ?깅룄?ㅼ쓣 ?硫댄븯硫??대????⑷린瑜??살뿀?듬땲??", desc:"濡쒕쭏 ?쒕궡?먯꽌遺??諛붿슱???섏쁺?섎윭 ?섏삩 濡쒕쭏 ?깅룄?ㅼ쓽 ?곸젒?⑥쓣 蹂댁븯?듬땲?? 洹??깅룄?ㅼ쓣 ?硫댄븯硫??대???寃⑸젮? ?щ쭩???살뿀?듬땲??", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]},
+                    {nameKo:"濡쒕쭏 (1李??ъ삦)", nameEn:"Rome", coords:[41.9028,12.4964], verse:"??28:16-31", intro:"?멸퀎 ?쒓뎅???ъ옣 濡쒕쭏 ?꾩꽦?낅땲?? 二꾩닔 ?ъ뒳濡?吏?대컺?쇰㈃?쒕룄 2?꾧컙 嫄곗묠?놁씠 蹂듭쓬???꾪븯硫??μ쨷 ?쒖떊?ㅼ쓣 ?꾩꽦??寃곗떎吏?낅땲??", desc:"?뗭쭛???살뼱 媛?앹뿰湲??곹깭??癒몃Ъ硫댁꽌 ??紐낆쓽 援곗궗? ?숆굅?덉뒿?덈떎. 2???숈븞 ?먯떊??李얠븘?ㅻ뒗 紐⑤뱺 ?щ엺?먭쾶 二??덉닔???꾨? ?대????꾪뻽?듬땲?? ?대븣 ?먮쿋?뚯꽌, 怨⑤줈?덉꽌, 鍮뚮젅紐ъ꽌, 鍮뚮┰蹂댁꽌瑜?吏묓븘?덉뒿?덈떎.", companions:["諛붿슱","?꾧?","?꾨━?ㅻ떎怨?]}
                 ]
             },
             5:{
-                title:"4차 전도여행 (석방 후 여정, AD 62~67경)", period:"AD 62~67경", letters:"디모데전서, 디도서, 디모데후서(임종 서신)",
-                description:"로마 1차 투옥에서 무죄 석방된 후, 마게도냐와 소아시아, 지중해 지역을 순회하며 디모데와 디도를 각각의 목회지로 파송한 후 네로의 대박해 시기 다시 투옥되어 순교한 마지막 선교 여정입니다.",
-                companions:["바울","디모데","디도","누가"],
+                title:"4李??꾨룄?ы뻾 (?앸갑 ???ъ젙, AD 62~67寃?", period:"AD 62~67寃?, letters:"?붾え?곗쟾?? ?붾룄?? ?붾え?고썑???꾩쥌 ?쒖떊)",
+                description:"濡쒕쭏 1李??ъ삦?먯꽌 臾댁즲 ?앸갑???? 留덇쾶?꾨깘? ?뚯븘?쒖븘, 吏以묓빐 吏??쓣 ?쒗쉶?섎ŉ ?붾え?곗? ?붾룄瑜?媛곴컖??紐⑺쉶吏濡??뚯넚?????ㅻ줈???諛뺥빐 ?쒓린 ?ㅼ떆 ?ъ삦?섏뼱 ?쒓탳??留덉?留??좉탳 ?ъ젙?낅땲??",
+                companions:["諛붿슱","?붾え??,"?붾룄","?꾧?"],
                 stations:[
-                    {nameKo:"로마 (석방)", nameEn:"Rome (Released)", coords:[41.9028,12.4964], verse:"딤전 1:3 / 딛 1:5", intro:"로마 1차 투옥에서 무죄 방면된 시발지입니다. 자유를 얻은 후 즉시 아시아 성도들을 향해 순회 도정을 결행했습니다.", desc:"로마의 1차 가택 연금에서 무사히 석방된 사도 바울은 이전 계획대로 지중해와 아시아의 성도들을 재회하러 출발했습니다.", companions:["바울","누가"]},
-                    {nameKo:"그레데 섬", nameEn:"Crete", coords:[35.1558,24.8944], verse:"딛 1:5", intro:"지중해 중심의 역사적 요충 섬입니다. 이단을 척결하고 영적 장로를 세우도록 디도를 남겨두었습니다.", desc:"그레데 섬에 복음을 전했습니다. 이후 그레데 교회를 보호하고 장로를 장립하기 위해 신실한 동역자 디도를 현지 책임자로 두고 떠났습니다.", companions:["바울","디도"]},
-                    {nameKo:"에베소", nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"딤전 1:3", intro:"아시아 사역의 황금 거점지입니다. 거짓 가르침에 직면하여 교회를 수호하도록 디모데를 위임했습니다.", desc:"에베소 교회의 거짓된 가르침에 직면하여, 교회를 지키고 수호하도록 믿음의 아들 디모데를 현지 목회자로 정식 위임했습니다.", companions:["바울","디모데"]},
-                    {nameKo:"마게도냐 (빌립보)", nameEn:"Philippi", coords:[41.0125,24.2858], verse:"딤전 1:3", intro:"지속적인 후원을 아끼지 않은 소망의 빌립보 교회입니다. 디모데를 위로하고 디모데전서를 저술한 곳입니다.", desc:"에베소에서 마게도냐로 이동하며 에베소에 남겨진 디모데를 위로하고 목회지침을 주기 위해 디모데전서를 기록했습니다.", companions:["바울","누가"]},
-                    {nameKo:"니고볼리", nameEn:"Nicopolis", coords:[39.0089,20.7350], verse:"딛 3:12", intro:"그리스 아드리아해 연안의 처소입니다. 겨울 과동을 결정하고 그레데의 디도에게 디도서를 송고한 은거지입니다.", desc:"이곳에서 겨울을 나며 그레데에 있는 디도에게 격려 서신(디도서)을 기록했고, 교대사역자로 두기고를 지목했습니다.", companions:["바울","디도"]},
-                    {nameKo:"드로아", nameEn:"Troas", coords:[39.7500,26.1667], verse:"딤후 4:13", intro:"가보의 집이 위치한 역사적 포구입니다. 겉옷과 가죽책을 남겨둔 채 네로의 대박해령에 의해 2차 체포당한 시련지입니다.", desc:"가보의 집에 중요한 가죽 책들과 겨울 겉옷을 맡겨두었으나, 네로 황제의 급습 기독교인 대박해령으로 갑작스럽게 로마 군대에 의해 2차 체포되어 끌려갔습니다.", companions:["바울"]},
-                    {nameKo:"로마 (2차 투옥 & 순교)", nameEn:"Rome (Martyrdom)", coords:[41.9028,12.4964], verse:"딤후 4:6-8", intro:"혹독한 지하 마메르틴 감옥입니다. 오직 누가만이 끝까지 곁을 지키며 참수 순교로 면류관을 차지한 성지입니다.", desc:"차가운 지하 감옥에 죄수로 갇혔습니다. 유일하게 의사 누가만이 곁을 끝까지 지켰습니다. 참수형 직전 아들 디모데에게 마지막 편지(디모데후서)를 남기며 선한 싸움을 마쳤다고 유언했습니다.", companions:["바울","누가"]}
+                    {nameKo:"濡쒕쭏 (?앸갑)", nameEn:"Rome (Released)", coords:[41.9028,12.4964], verse:"?ㅼ쟾 1:3 / ??1:5", intro:"濡쒕쭏 1李??ъ삦?먯꽌 臾댁즲 諛⑸㈃???쒕컻吏?낅땲?? ?먯쑀瑜??살? ??利됱떆 ?꾩떆???깅룄?ㅼ쓣 ?ν빐 ?쒗쉶 ?꾩젙??寃고뻾?덉뒿?덈떎.", desc:"濡쒕쭏??1李?媛???곌툑?먯꽌 臾댁궗???앸갑???щ룄 諛붿슱? ?댁쟾 怨꾪쉷?濡?吏以묓빐? ?꾩떆?꾩쓽 ?깅룄?ㅼ쓣 ?ы쉶?섎윭 異쒕컻?덉뒿?덈떎.", companions:["諛붿슱","?꾧?"]},
+                    {nameKo:"洹몃젅????, nameEn:"Crete", coords:[35.1558,24.8944], verse:"??1:5", intro:"吏以묓빐 以묒떖????궗???붿땐 ?ъ엯?덈떎. ?대떒??泥숆껐?섍퀬 ?곸쟻 ?λ줈瑜??몄슦?꾨줉 ?붾룄瑜??④꺼?먯뿀?듬땲??", desc:"洹몃젅???ъ뿉 蹂듭쓬???꾪뻽?듬땲?? ?댄썑 洹몃젅??援먰쉶瑜?蹂댄샇?섍퀬 ?λ줈瑜??λ┰?섍린 ?꾪빐 ?좎떎???숈뿭???붾룄瑜??꾩? 梨낆엫?먮줈 ?먭퀬 ?좊궗?듬땲??", companions:["諛붿슱","?붾룄"]},
+                    {nameKo:"?먮쿋??, nameEn:"Ephesus", coords:[37.9409,27.3413], verse:"?ㅼ쟾 1:3", intro:"?꾩떆???ъ뿭???⑷툑 嫄곗젏吏?낅땲?? 嫄곗쭞 媛瑜댁묠??吏곷㈃?섏뿬 援먰쉶瑜??섑샇?섎룄濡??붾え?곕? ?꾩엫?덉뒿?덈떎.", desc:"?먮쿋??援먰쉶??嫄곗쭞??媛瑜댁묠??吏곷㈃?섏뿬, 援먰쉶瑜?吏?ㅺ퀬 ?섑샇?섎룄濡?誘우쓬???꾨뱾 ?붾え?곕? ?꾩? 紐⑺쉶?먮줈 ?뺤떇 ?꾩엫?덉뒿?덈떎.", companions:["諛붿슱","?붾え??]},
+                    {nameKo:"留덇쾶?꾨깘 (鍮뚮┰蹂?", nameEn:"Philippi", coords:[41.0125,24.2858], verse:"?ㅼ쟾 1:3", intro:"吏?띿쟻???꾩썝???꾨겮吏 ?딆? ?뚮쭩??鍮뚮┰蹂?援먰쉶?낅땲?? ?붾え?곕? ?꾨줈?섍퀬 ?붾え?곗쟾?쒕? ??좏븳 怨녹엯?덈떎.", desc:"?먮쿋?뚯뿉??留덇쾶?꾨깘濡??대룞?섎ŉ ?먮쿋?뚯뿉 ?④꺼吏??붾え?곕? ?꾨줈?섍퀬 紐⑺쉶吏移⑥쓣 二쇨린 ?꾪빐 ?붾え?곗쟾?쒕? 湲곕줉?덉뒿?덈떎.", companions:["諛붿슱","?꾧?"]},
+                    {nameKo:"?덇퀬蹂쇰━", nameEn:"Nicopolis", coords:[39.0089,20.7350], verse:"??3:12", intro:"洹몃━???꾨뱶由ъ븘???곗븞??泥섏냼?낅땲?? 寃⑥슱 怨쇰룞??寃곗젙?섍퀬 洹몃젅?곗쓽 ?붾룄?먭쾶 ?붾룄?쒕? ?↔퀬???嫄곗??낅땲??", desc:"?닿납?먯꽌 寃⑥슱???섎ŉ 洹몃젅?곗뿉 ?덈뒗 ?붾룄?먭쾶 寃⑸젮 ?쒖떊(?붾룄????湲곕줉?덇퀬, 援먮??ъ뿭?먮줈 ?먭린怨좊? 吏紐⑺뻽?듬땲??", companions:["諛붿슱","?붾룄"]},
+                    {nameKo:"?쒕줈??, nameEn:"Troas", coords:[39.7500,26.1667], verse:"?ㅽ썑 4:13", intro:"媛蹂댁쓽 吏묒씠 ?꾩튂????궗???ш뎄?낅땲?? 寃됱샆怨?媛二쎌콉???④꺼??梨??ㅻ줈???諛뺥빐?뱀뿉 ?섑빐 2李?泥댄룷?뱁븳 ?쒕젴吏?낅땲??", desc:"媛蹂댁쓽 吏묒뿉 以묒슂??媛二?梨낅뱾怨?寃⑥슱 寃됱샆??留↔꺼?먯뿀?쇰굹, ?ㅻ줈 ?⑹젣??湲됱뒿 湲곕룆援먯씤 ?諛뺥빐?뱀쑝濡?媛묒옉?ㅻ읇寃?濡쒕쭏 援곕????섑빐 2李?泥댄룷?섏뼱 ?뚮젮媛붿뒿?덈떎.", companions:["諛붿슱"]},
+                    {nameKo:"濡쒕쭏 (2李??ъ삦 & ?쒓탳)", nameEn:"Rome (Martyrdom)", coords:[41.9028,12.4964], verse:"?ㅽ썑 4:6-8", intro:"?밸룆??吏??留덈찓瑜댄떞 媛먯삦?낅땲?? ?ㅼ쭅 ?꾧?留뚯씠 ?앷퉴吏 怨곸쓣 吏?ㅻŉ 李몄닔 ?쒓탳濡?硫대쪟愿??李⑥????깆??낅땲??", desc:"李④???吏??媛먯삦??二꾩닔濡?媛뉙삍?듬땲?? ?좎씪?섍쾶 ?섏궗 ?꾧?留뚯씠 怨곸쓣 ?앷퉴吏 吏耳곗뒿?덈떎. 李몄닔??吏곸쟾 ?꾨뱾 ?붾え?곗뿉寃?留덉?留??몄?(?붾え?고썑??瑜??④린硫??좏븳 ?몄???留덉낀?ㅺ퀬 ?좎뼵?덉뒿?덈떎.", companions:["諛붿슱","?꾧?"]}
                 ]
             }
         };
@@ -435,7 +435,7 @@
 
             // Update drawer content
             document.getElementById('journey-period').textContent = j.period;
-            document.getElementById('journey-letters').textContent = `📝 ${j.letters}`;
+            document.getElementById('journey-letters').textContent = `?뱷 ${j.letters}`;
             document.getElementById('journey-title').textContent = j.title;
             document.getElementById('journey-description').textContent = j.description;
 
@@ -519,7 +519,7 @@
             document.getElementById('station-name-ko').textContent = s.nameKo;
             document.getElementById('station-name-en').textContent = s.nameEn;
             document.getElementById('station-intro').textContent = s.intro;
-            document.getElementById('station-verse').textContent = `📖 ${s.verse}`;
+            document.getElementById('station-verse').textContent = `?뱰 ${s.verse}`;
             document.getElementById('station-desc').textContent = s.desc;
             const cc = document.getElementById('station-companions');
             cc.innerHTML = '';
@@ -540,7 +540,7 @@
             card.style.opacity = '1';
             card.style.pointerEvents = 'auto';
 
-            // [C] Mobile: preserve expanded/peek state when navigating; first open → peek
+            // [C] Mobile: preserve expanded/peek state when navigating; first open ??peek
             if (window.innerWidth < 768) {
                 if (cardState === 'expanded') {
                     card.style.transform = 'translateY(0)';
@@ -614,7 +614,7 @@
             const j = journeysData[currentJourneyId];
             isAnimating = true; currentAnimationStep = 0;
             const btn = document.getElementById('btn-animate');
-            btn.textContent = '⏹ 정지'; btn.style.color = '#ef4444';
+            btn.textContent = '???뺤?'; btn.style.color = '#ef4444';
             closeInfoCard();
             map.setView(j.stations[0].coords, 6);
             focusStation(0); currentAnimationStep = 1;
@@ -628,7 +628,7 @@
             if (animationTimer) { clearInterval(animationTimer); animationTimer = null; }
             isAnimating = false; currentAnimationStep = 0;
             const btn = document.getElementById('btn-animate');
-            if (btn) { btn.textContent = '▶ 재생'; btn.style.color = '#FFC000'; }
+            if (btn) { btn.textContent = '???ъ깮'; btn.style.color = '#FFC000'; }
         }
 
         window.addEventListener('resize', () => { if (map) map.invalidateSize(); });

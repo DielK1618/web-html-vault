@@ -7,7 +7,7 @@
 ## 현재 파일 구조
 
 ```
-html-vault/
+web-html-vault/
 ├── index.html                          # 홈 (DESIGN_Lamborghini.md 기준 리뉴얼 완료)
 ├── CLAUDE.md                           # 작업 지침
 ├── LOG.md                              # 작업 로그

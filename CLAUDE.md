@@ -1,7 +1,7 @@
 # HTML VAULT — Claude 작업 지침
 
 ## 프로젝트 개요
-- **저장소**: `html-vault` (GitHub Pages: https://dielk1618.github.io/html-vault/)
+- **저장소**: `web-html-vault` (GitHub Pages: https://dielk1618.github.io/web-html-vault/)
 - **루트 index**: `index.html` (Absolute Black `#000000`, DESIGN_Lamborghini.md 기준)
 - **페이지 위치**: `pages/` 하위 카테고리 폴더에 작성
 
@@ -19,11 +19,11 @@
 
 ```html
 <nav class="vault-nav">
-  <a class="vault-logo" href="https://dielk1618.github.io/html-vault/index.html">
+  <a class="vault-logo" href="https://dielk1618.github.io/web-html-vault/index.html">
     HTML <span>VAULT</span>
   </a>
   <div class="vault-nav-btns">
-    <a class="vbtn" href="https://dielk1618.github.io/html-vault/index.html">HOME</a>
+    <a class="vbtn" href="https://dielk1618.github.io/web-html-vault/index.html">HOME</a>
     <div class="vsep"></div>
     <button class="vbtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">TOP</button>
     <div class="vsep"></div>
@@ -65,7 +65,7 @@
 
 ## 디자인 기본 스타일
 
-새 HTML 파일의 색상, 타이포그래피, 간격 등 기본 스타일은 반드시 **`d:\CLOUD\OneDrive\DIEL_VAULT\DEVELOPMENT\Git\DesignGuide\DESIGN_Lamborghini.md`** 를 기준으로 한다.
+새 HTML 파일의 색상, 타이포그래피, 간격 등 기본 스타일은 반드시 **`d:\CLOUD\OneDrive\DIEL_VAULT\DEVELOPMENT\Git\ref-design\DESIGN_Lamborghini.md`** 를 기준으로 한다.
 작업 전 해당 파일을 먼저 읽고 정의된 디자인 토큰·컴포넌트 규칙을 준수한다.
 
 ## 반응형 디자인
