@@ -8,30 +8,30 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',Roboto,'Helvetica Neue',Arial,sans-serif;background:#000;color:#fff;min-height:100vh}
 
-    /* ?? Header ?? */
+    /* ── Header ── */
     .site-header{padding:56px 40px 36px;border-bottom:1px solid #202020}
     .site-title{font-size:clamp(36px,6vw,64px);font-weight:700;letter-spacing:-.01em;line-height:1;text-transform:uppercase}
     .site-title span{color:#FFC000}
     .site-sub{font-size:11px;color:#7D7D7D;letter-spacing:.14em;text-transform:uppercase;margin-top:10px}
 
-    /* ?? Container ?? */
+    /* ── Container ── */
     .wrap{max-width:880px;margin:0 auto;padding:32px 40px 80px}
 
-    /* ?? Back button ?? */
+    /* ── Back button ── */
     .back-btn{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;background:transparent;border:1px solid rgba(255,255,255,.12);color:#7D7D7D;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .15s;margin-bottom:24px;font-family:inherit}
     .back-btn:hover{background:#202020;color:#fff;border-color:rgba(255,255,255,.28)}
 
-    /* ?? Breadcrumb ?? */
+    /* ── Breadcrumb ── */
     .breadcrumb{display:flex;align-items:center;gap:8px;font-size:11px;color:#494949;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;flex-wrap:wrap}
     .breadcrumb .sep{color:#313131}
     .breadcrumb a{color:#FFC000;text-decoration:none;cursor:pointer;transition:color .12s}
     .breadcrumb a:hover{color:#fff}
     .breadcrumb .cur{color:#fff}
 
-    /* ?? Count ?? */
+    /* ── Count ── */
     .count{font-size:10px;color:#494949;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
 
-    /* ?? List ?? */
+    /* ── List ── */
     #list{display:flex;flex-direction:column;gap:2px}
 
     .item{display:flex;align-items:center;gap:14px;padding:16px 20px;background:#181818;text-decoration:none;font-size:13px;font-weight:500;color:#fff;cursor:pointer;border-left:2px solid transparent;transition:background .13s,border-color .13s}
@@ -77,7 +77,7 @@
       for(var i=0;i<parts.length;i++){
         built+=(i===0?"":"/")+parts[i];
         if(i===0) continue;
-        html+='<span class="sep">??/span>';
+        html+='<span class="sep">›</span>';
         if(i===parts.length-1){
           html+='<span class="cur">'+parts[i].toUpperCase()+'</span>';
         } else {
@@ -93,7 +93,7 @@
       if(path===BASE){wrap.innerHTML="";return;}
       var pp=path.split("/");pp.pop();
       var parentPath=pp.join("/");
-      wrap.innerHTML='<button class="back-btn" onclick="navigate(\''+parentPath+'\')">??Back</button>';
+      wrap.innerHTML='<button class="back-btn" onclick="navigate(\''+parentPath+'\')">← Back</button>';
     }
 
     function loadPath(path){
@@ -117,7 +117,7 @@
           var parts=[];
           if(folders.length) parts.push("Folders "+folders.length);
           if(files.length) parts.push("Files "+files.length);
-          count.textContent=parts.join("  쨌  ").toUpperCase();
+          count.textContent=parts.join("  ·  ").toUpperCase();
           list.innerHTML="";
 
           if(!folders.length && !files.length){
@@ -128,7 +128,7 @@
           folders.forEach(function(f){
             var el=document.createElement("div");
             el.className="item";
-            el.innerHTML='<span style="font-size:11px;color:#494949;letter-spacing:.06em;text-transform:uppercase">Folder</span><span style="font-weight:600">'+f.name.toUpperCase()+'</span><span class="item-arrow">??/span>';
+            el.innerHTML='<span style="font-size:11px;color:#494949;letter-spacing:.06em;text-transform:uppercase">Folder</span><span style="font-weight:600">'+f.name.toUpperCase()+'</span><span class="item-arrow">→</span>';
             el.onclick=function(){navigate(f.path);};
             list.appendChild(el);
           });
@@ -142,7 +142,7 @@
                 var el=document.createElement("a");
                 el.className="item";
                 el.href="./"+f.path;
-                el.innerHTML='<span style="font-size:11px;color:#494949;letter-spacing:.06em;text-transform:uppercase">HTML</span><span style="font-weight:600">'+title+'</span><span class="item-arrow">??/span>';
+                el.innerHTML='<span style="font-size:11px;color:#494949;letter-spacing:.06em;text-transform:uppercase">HTML</span><span style="font-weight:600">'+title+'</span><span class="item-arrow">→</span>';
                 list.appendChild(el);
               });
           });
