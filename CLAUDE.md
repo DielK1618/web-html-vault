@@ -1,5 +1,7 @@
 # HTML VAULT — Claude 작업 지침
 
+> **트러블슈팅**: 작업 전 또는 오류 발생 시 → [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) 먼저 확인. 없으면 LOG.md → 웹 검색 순으로 진행. 해결 후 반드시 `TROUBLESHOOTING.md`에 추가.
+
 ## 프로젝트 개요
 - **저장소**: `web-html-vault` (GitHub Pages: https://dielk1618.github.io/web-html-vault/)
 - **루트 index**: `index.html` (Absolute Black `#000000`, DESIGN_Lamborghini.md 기준)
