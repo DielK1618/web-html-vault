@@ -489,7 +489,7 @@
 
         function focusStation(index) {
             const s = journeysData[currentJourneyId].stations[index];
-            map.setView(s.coords, 7, {animate:true, duration:1.2});
+            map.setView(s.coords, 7, {animate:true, duration:0.4});
             const lastIdx = journeysData[currentJourneyId].stations.length - 1;
             markers.forEach((m,i) => {
                 if (i===index) { m.setIcon(createActiveIcon(currentJourneyId)); if (m.setZIndexOffset) m.setZIndexOffset(1000); }
@@ -549,7 +549,10 @@
                     cardState = 'peek';
                     card.style.transform = `translateY(calc(100% - ${PEEK_H}px))`;
                     document.getElementById('map').style.bottom = PEEK_H + 'px';
-                    setTimeout(() => map.invalidateSize(), 60);
+                    setTimeout(() => {
+                        map.invalidateSize();
+                        if (s) map.panTo(s.coords, {animate: true, duration: 0.4});
+                    }, 450);
                 }
             } else {
                 cardState = 'expanded';
