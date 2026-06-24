@@ -544,7 +544,12 @@
             if (window.innerWidth < 768) {
                 if (cardState === 'expanded') {
                     card.style.transform = 'translateY(0)';
-                    map.panTo(s.coords, {animate: true, duration: 0.4});
+                    const cardH = card.offsetHeight;
+                    document.getElementById('map').style.bottom = cardH + 'px';
+                    setTimeout(() => {
+                        map.invalidateSize();
+                        if (s) map.panTo(s.coords, {animate: true, duration: 0.4});
+                    }, 450);
                 } else {
                     cardState = 'peek';
                     card.style.transform = `translateY(calc(100% - ${PEEK_H}px))`;
