@@ -1,5 +1,7 @@
 # HANDOFF — pages/life
 
+> **보관 기록 (2026-10-16 고정)** — 대표 문서이며 모델은 수정하지 않는다. 새 기록은 같은 폴더의 `HANDOFF.<모델>.md`(예: `HANDOFF.claude.md`, `HANDOFF.codex.md`)에 쓰고, 읽을 때는 이 문서와 `HANDOFF.*.md`를 모두 읽는다. 규칙: `Git/CLAUDE.md` 3절.
+
 ## 현재 상태
 - `weather_dashboard.html` v6.4 — 정상 작동 중 (GitHub Pages 배포 완료)
 
