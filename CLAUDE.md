@@ -67,7 +67,7 @@
 
 ## 디자인 기본 스타일
 
-새 HTML 파일의 색상, 타이포그래피, 간격 등 기본 스타일은 반드시 **`d:\CLOUD\OneDrive\DIEL_VAULT\DEVELOPMENT\Git\ref-design\DESIGN_Lamborghini.md`** 를 기준으로 한다.
+새 HTML 파일의 색상, 타이포그래피, 간격 등 기본 스타일은 반드시 **`%USERPROFILE%\DriveSync\DEVELOPMENT\Git\ref-design\DESIGN_Lamborghini.md`** 를 기준으로 한다.
 작업 전 해당 파일을 먼저 읽고 정의된 디자인 토큰·컴포넌트 규칙을 준수한다.
 
 ## 반응형 디자인
