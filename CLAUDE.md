@@ -1,6 +1,6 @@
 # HTML VAULT — Claude 작업 지침
 
-> **트러블슈팅**: 작업 전 또는 오류 발생 시 → [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) 먼저 확인. 없으면 LOG.md → 웹 검색 순으로 진행. 해결 후 반드시 `TROUBLESHOOTING.md`에 추가.
+> **트러블슈팅**: 작업 전 또는 오류 발생 시 → [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) 먼저 확인. 없으면 LOG.md → 웹 검색 순으로 진행. 해결 후 `TROUBLESHOOTING.<모델>.md`에 추가(대표 `TROUBLESHOOTING.md`는 보관용, 수정 금지 — Git/CLAUDE.md 3절).
 
 ## 프로젝트 개요
 - **저장소**: `web-html-vault` (GitHub Pages: https://dielk1618.github.io/web-html-vault/)
@@ -61,8 +61,8 @@
 ## 파일 관리 규칙
 
 - 새 카테고리 폴더를 만들 때 해당 폴더에도 `CLAUDE.md`, `LOG.md`, `HANDOFF.md` 파일셋을 생성한다
-- `LOG.md`에 작업 날짜·내용·파일 목록을 기록한다
-- `HANDOFF.md`는 현재 상태 + 다음 작업 항목을 항상 최신으로 유지한다
+- 작업 날짜·내용·파일 목록은 `LOG.<모델>.md`에 기록한다(대표 `LOG.md`는 보관용, Git/CLAUDE.md 3절)
+- 현재 상태 + 다음 작업 항목은 `HANDOFF.<모델>.md`에 항목을 추가해 최신으로 유지한다
 - 언더스코어(`_`)로 시작하는 파일은 작업용이며 배포 대상이 아니다 — index.html 목록에서도 자동 제외됨
 
 ## 디자인 기본 스타일
